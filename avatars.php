@@ -57,6 +57,8 @@ echo $OUTPUT->header();
 // Delete an avatar, after confirmation.
 if ($hasmanage && $delete && confirm_sesskey()) {
     $avatar = $DB->get_record('block_ludifica_avatars', array('id' => $delete), '*', MUST_EXIST);
+    $getavatar = $DB->get_record('block_ludifica_avatars', array('id' => $avatar->id));
+    $recorduser = $DB->get_records('block_ludifica_general', array('avatarid' => $getavatar->id));
 
     if ($confirm != md5($delete)) {
         $returnurl = new moodle_url('/blocks/ludifica/avatars.php', array('sort' => $sort, 'bypage' => $bypage, 'spage' => $spage));
@@ -73,6 +75,14 @@ if ($hasmanage && $delete && confirm_sesskey()) {
 
         foreach ($files as $file) {
             $file->delete();
+        }
+
+        // Update users records.
+        foreach ($recorduser as $user => $value) {
+            $updaterecord = new stdClass();
+            $updaterecord->id = $value->id;
+            $updaterecord->avatarid = null;
+            $DB->update_record('block_ludifica_general', $updaterecord);
         }
 
         $DB->delete_records('block_ludifica_useravatars', array('avatarid' => $avatar->id));
