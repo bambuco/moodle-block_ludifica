@@ -157,6 +157,14 @@ $string['overcomelevel'] = 'Get <strong>{$a->maxpoints} points</strong> to reach
 $string['owner'] = 'Owner';
 $string['playerhead'] = 'Player';
 $string['pointshead'] = 'Points';
+$string['pointsbyembedquestion'] = 'Points by answer an"<i>Embed question</i>"';
+$string['pointsbyembedquestion_help'] = 'Amount of points given to a user when a Embed Question is answered correctly';
+$string['pointsbyembedquestion_all'] = 'All "<i>Embed question</i> of this site give points?"';
+$string['pointsbyembedquestion_all_help'] = 'Otherwise, write a list with idnumber of questions that give points to users';
+$string['pointsbyembedquestion_ids'] = 'Idnumber of "<i>Embed question</i>" that give points';
+$string['pointsbyembedquestion_ids_help'] = 'Comma separated list of idnumbers';
+$string['pointsbyembedquestion_partial'] = 'Points if embed question is answered partially correct?';
+$string['pointsbyembedquestion_partial_help'] = 'If the question is answered only partially correct, give points?';
 $string['pointsbychangemail'] = 'Points by change email';
 $string['pointsbychangemail_help'] = 'Points assigned to the user when he modifies his profile and establishes a valid email address.
 Points are only awarded once per user.

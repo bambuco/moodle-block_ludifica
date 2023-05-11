@@ -360,6 +360,106 @@ class controller {
     }
 
     /**
+     * Add points when a user answers properly an embed question.
+     *
+     * @param int $userid
+     * @param int $courseid
+     * @param int $contextid
+     * @param int $objectid Refers to Question Id.
+     * @return bool True if points was assigned, false in other case.
+     */
+    public static function points_embedquestion($userid, $courseid, $contextid, $objectid = null) {
+        global $DB;
+
+        $conditions = [
+                      'userid' => $userid,
+                      'courseid' => $courseid,
+                      'objectid' => $objectid,
+                      'type' => player::POINTS_TYPE_EMBEDQUESTION
+        ];
+        $record = $DB->get_record('block_ludifica_userpoints', $conditions);
+
+        // If exists not add more points.
+        if ($record) {
+            return false;
+        }
+
+        $iscorrect = false;
+        $ispartialcorrect = false;
+        $questionidnumber = $DB->get_field('question', 'idnumber', array('id' => $objectid));
+        $questionusagequery = "SELECT questionusageid FROM {report_embedquestion_attempt}
+                               WHERE userid = $userid AND
+                                     contextid = $contextid AND ".
+                                     $DB->sql_like('embedid', ':questionidnumber');
+        $questionusageresult = $DB->get_record_sql($questionusagequery,
+                                                   ['questionidnumber' => "%/$questionidnumber"]);
+        $questionusageid = $questionusageresult->questionusageid;
+
+        // We check first response only.
+        $questionattemptsquery = "SELECT MIN(id) as minid FROM {question_attempts}
+                                  WHERE questionusageid = $questionusageid AND
+                                        responsesummary IS NOT NULL";
+        $questionattemptsresult = $DB->get_record_sql($questionattemptsquery);
+        $questionattemptid = $questionattemptsresult->minid;
+
+        if ($DB->record_exists('question_attempt_steps',
+                               array('questionattemptid' => $questionattemptid, 'state' => 'gradedright'))) {
+            $iscorrect = true;
+        }
+
+        if ($DB->record_exists('question_attempt_steps',
+                                  array('questionattemptid' => $questionattemptid, 'state' => 'gradedpartial'))) {
+            $ispartialcorrect = true;
+        }
+
+        $points = -1;
+
+        $allembedquestions = get_config('block_ludifica', 'pointsbyembedquestion_all');
+        $partialquestions = get_config('block_ludifica', 'pointsbyembedquestion_partial');
+
+        // All embed questions in site or only a list of them give points to users?
+        if ($allembedquestions) {
+            if ($iscorrect || $ispartialcorrect) {
+                $points = get_config('block_ludifica', 'pointsbyembedquestion');
+            } else {
+                $points = 0;
+            }
+        } else {
+            $questionlist = get_config('block_ludifica', 'pointsbyembedquestion_ids');
+
+            if (!empty($questionlist)) {
+                $questionsarray = array();
+                $questionlistwithoutspaces = str_replace(' ', '', $questionlist);
+                $questionlistasarray = explode(',', $questionlistwithoutspaces);
+                foreach ($questionlistasarray as $questionitem) {
+                        $questionsarray[] = $questionitem;
+                }
+
+                if (in_array($questionidnumber, $questionsarray)) {
+                    if ($iscorrect || $ispartialcorrect) {
+                        $points = get_config('block_ludifica', 'pointsbyembedquestion');
+                    } else {
+                        $points = 0;
+                    }
+                } // Question is in given list.
+            } // There is question list.
+        } // Not all questions give points.
+
+        if ($points != -1) {
+            // Save specific course points.
+            $infodata = new \stdClass();
+            $infodata->embedquestionid = $objectid;
+
+            $player = new player($userid);
+            $player->add_points($points, $courseid, player::POINTS_TYPE_EMBEDQUESTION, $infodata, $objectid);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Calc current level according the points.
      *
      * @param int $points

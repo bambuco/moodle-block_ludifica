@@ -62,6 +62,11 @@ class player extends entity {
     const POINTS_TYPE_MODULECOMPLETED = 'modulecompleted';
 
     /**
+     * var string Points by answer an embed_question.
+     */
+    const POINTS_TYPE_EMBEDQUESTION = 'embedquestion';
+
+    /**
      * var string Points by change email.
      */
     const POINTS_TYPE_EMAILCHANGED = 'emailchanged';

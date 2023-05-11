@@ -97,4 +97,17 @@ class observer {
             controller::points_userupdated($event->userid);
         }
     }
+
+    /**
+     * Calculate points when a user answers an embed question.
+     *
+     * @param \filter_embedquestion\event\question_attempted $event
+     */
+    public static function question_attempted(\filter_embedquestion\event\question_attempted $event) {
+
+        controller::points_embedquestion($event->userid,
+                                         $event->courseid,
+                                         $event->contextid,
+                                         $event->objectid);
+    }
 }

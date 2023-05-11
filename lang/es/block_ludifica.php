@@ -158,6 +158,14 @@ $string['overcomelevel'] = 'Obten <strong>{$a->maxpoints} puntos</strong> para a
 $string['owner'] = 'Dueño';
 $string['playerhead'] = 'Jugador';
 $string['pointshead'] = 'Puntos';
+$string['pointsbyembedquestion'] = 'Puntos por responder una "<i>Embed Question</i>"';
+$string['pointsbyembedquestion_help'] = 'Cantidad de puntos asignados al usuario por responder correctamente una Embed Question';
+$string['pointsbyembedquestion_all'] = '¿Todas las "<i>Embed question</i> puntúan?"';
+$string['pointsbyembedquestion_all_help'] = 'En caso contrario, indicar el listado de los idnumber correspondientes a las preguntas que sí puntúan';
+$string['pointsbyembedquestion_ids'] = 'Idnumber de las "<i>Embed question</i>" que dan puntos';
+$string['pointsbyembedquestion_ids_help'] = "Listado de idnumber's de las preguntas que puntúan, separados por comas";
+$string['pointsbyembedquestion_partial'] = '¿Puntúan las "<i>Embed question</i>" parcialmente correctas?';
+$string['pointsbyembedquestion_partial_help'] = 'Si una respuesta sólo es parcialmente correcta, ¿Se asignan puntos?';
 $string['pointsbychangemail'] = 'Puntos por actualizar el correo';
 $string['pointsbychangemail_help'] = 'Puntos asignados al usuario cuando modifica su perfil y establece una dirección de correo válida.
 Solamente se da puntos una vez por usuario.
