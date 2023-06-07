@@ -469,3 +469,39 @@
     color: #fff;
 }
 /* End of Local badges admin */
+
+
+.block_ludifica * {
+    border: 1px solid red;
+}
+
+.block_ludifica .default_template .player_info {
+    flex-wrap: nowrap;
+}
+
+.block_ludifica .default_template .ludifica_stats > div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.block_ludifica .default_template .onebadge {
+    width: 100px;
+}
+
+.block_ludifica .default_template .userbadges-ludifica {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.block_ludifica .default_template .avatar-box {
+    width: 60%;
+    margin: 0;
+}
+
+.block_ludifica .default_template .avatar-box > div:first-child {
+    display: flex;
+    justify-content: space-between
+}

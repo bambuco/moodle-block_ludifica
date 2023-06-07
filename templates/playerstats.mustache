@@ -29,16 +29,16 @@
 }}
 
 {{#player}}
-<h3>
-    <span>{{#str}} numpoints, block_ludifica, {{points}} {{/str}}</span>
+
+<div>
+    <span>{{#pix}} i/star, core {{/pix}} {{points}}</span>
 
     {{#myprofile}}
-        <span>{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}</span>
-    {{/myprofile}}
 
-    <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
-    {{#myprofile}}
+        <span>{{#pix}} i/db, core {{/pix}} {{coins}}</span>
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}points_help, block_ludifica{{/str}}"></button>
+
     {{/myprofile}}
-</h3>
+
+</div>
 {{/player}}
