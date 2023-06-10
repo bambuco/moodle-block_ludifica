@@ -191,19 +191,21 @@
     {{/hasdynamichelps}}
 
     {{#player}}
-    <div class="tab-profile block_ludifica-tabcontent {{profilestate}}">
+    <div class="tab-profile block_ludifica-tabcontent {{profilestate}}" style="background-image: url('{{avatarurl}}');">
 
         <div class="player_info">
             <div class="avatar-box">
                 <div>
-                    <button class="btn btn-secondary notice-ludifica">{{#pix}} i/gradingnotifications, core {{/pix}}</button>
                     <div class="ludifica_stats">
 
                         {{>block_ludifica/playerstats}}
 
                     </div>
+                    <button class="btn btn-secondary notice-ludifica">{{#pix}} i/notifications, core {{/pix}}</button>
                 </div>
-                <img src="{{avatarurl}}" alt="{{nickname}}" /><br />
+                <div class="avatarbust">
+                    <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
+                </div>
                 <div>
                     <h2>
 
@@ -232,12 +234,21 @@
                     {{/badges}}
                 </div>
             </div>
-            <div>
+            <div class="lateralbar-ludifica">
                 {{#myprofile}}
                     <button class="btn btn-secondary">Ver ranking</button>
-                    <a href="{{baseurl}}/blocks/ludifica/tickets.php" class="btn btn-secondary">{{#str}} tickets, block_ludifica {{/str}}</a>
-                    <a href="{{baseurl}}/blocks/ludifica/avatars.php" class="btn btn-secondary">{{#str}} avatars, block_ludifica {{/str}}</a>
-                    <a href="{{baseurl}}/blocks/ludifica/badges.php" class="btn btn-secondary">{{#str}} badges, block_ludifica {{/str}}</a>
+                    <div>
+                        <div>
+                            <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
+                        </div>
+                        <div>
+                            <a href="{{baseurl}}/blocks/ludifica/avatars.php"><span style = "background-image: url('{{avataricon}}');" class="avatar-ico"></span> {{#str}} avatars, block_ludifica {{/str}}</a>
+
+                        </div>
+                        <div>
+                            <a href="{{baseurl}}/blocks/ludifica/badges.php"><span style = "background-image: url('{{badgeicon}}');" class="badge-ico"></span> {{#str}} badges, block_ludifica {{/str}}</a>
+                        </div>
+                    </div>
                 {{/myprofile}}
             </div>
         </div>

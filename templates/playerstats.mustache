@@ -31,11 +31,11 @@
 {{#player}}
 
 <div>
-    <span>{{#pix}} i/star, core {{/pix}} {{points}}</span>
+    <span title="{{#str}} numpoints, block_ludifica, {{points}} {{/str}}">{{#pix}} i/star, core {{/pix}} {{points}}</span>
 
     {{#myprofile}}
 
-        <span>{{#pix}} i/db, core {{/pix}} {{coins}}</span>
+        <span title="{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}">{{#pix}} i/db, core {{/pix}} {{coins}}</span>
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}points_help, block_ludifica{{/str}}"></button>
 
     {{/myprofile}}

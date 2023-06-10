@@ -470,20 +470,19 @@
 }
 /* End of Local badges admin */
 
-
-.block_ludifica * {
-    border: 1px solid red;
-}
+/* Default template */
 
 .block_ludifica .default_template .player_info {
     flex-wrap: nowrap;
+    min-height: 530px;
 }
 
 .block_ludifica .default_template .ludifica_stats > div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: flex-start;
+    color: #4c4c4c;
 }
 
 .block_ludifica .default_template .onebadge {
@@ -494,14 +493,196 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-top: 20px;
 }
 
 .block_ludifica .default_template .avatar-box {
-    width: 60%;
+    width: 40%;
     margin: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
+    padding: 20px 50px 0 0;
 }
 
 .block_ludifica .default_template .avatar-box > div:first-child {
     display: flex;
     justify-content: space-between
+}
+
+.block_ludifica .default_template .notice-ludifica {
+    background-color: #4c4c4c;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    padding-left: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.block_ludifica .default_template .notice-ludifica:hover,
+.block_ludifica .default_template .lateralbar-ludifica > button:hover {
+    background-color: #fff;
+    color: #4c4c4c;
+}
+
+.block_ludifica .default_template .tab-profile {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+
+.block_ludifica .default_template .block_ludifica-tabcontent {
+    padding: 0;
+}
+
+.block_ludifica .default_template .avatarbust {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    padding-top: 14px;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid #4c4c4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.block_ludifica .default_template .avatarbust img,
+.block_ludifica .default_template .onebadge img {
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    transition: transform 0.1s ease;
+}
+
+.block_ludifica .default_template .onebadge img:hover {
+    transform: scale(1.1);
+}
+
+.block_ludifica .default_template .avatarbust + div + span {
+    font-size: 20px;
+    color: #808080;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 15px;
+    margin-top: 15px;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica > button {
+    background-color: #4c4c4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    margin-bottom: 50px;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica > div {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    text-align: center;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica  > div span {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    display: block;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #4c4c4c;
+    height: 70px;
+    width: 70px;
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.1s ease;
+    margin-bottom: 7px;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica  > div a:hover > span {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.block_ludifica .default_template .lateralbar-ludifica  > div span i {
+    font-size: 50px;
+    margin-top: 9px;
+    margin-left: -23px;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica  > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.block_ludifica .default_template .lateralbar-ludifica  > div a {
+    color: #4c4c4c;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .avatar-box,
+.drawer .block_ludifica .default_template .avatar-box {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 0 0 0;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .userbadges-ludifica,
+.drawer .block_ludifica .default_template .userbadges-ludifica {
+    justify-content: space-around;
+    padding: 0;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .lateralbar-ludifica,
+.drawer .block_ludifica .default_template .lateralbar-ludifica {
+    position: inherit;
+    margin-top: 0;
+    background-color: #fff;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .lateralbar-ludifica > div,
+.drawer .block_ludifica .default_template .lateralbar-ludifica > div {
+    display: flex;
+    width: 258px;
+    justify-content: space-between;
+
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .lateralbar-ludifica > div,
+.drawer .block_ludifica .default_template .lateralbar-ludifica > button {
+    margin-bottom: 10px;
+    margin-top: 23px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .notice-ludifica,
+.drawer .block_ludifica .default_template .notice-ludifica {
+    margin-right: -15px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .player_info,
+.drawer .block_ludifica .default_template .player_info {
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+    .block_ludifica .default_template .avatar-box {
+        width: 100%;
+        background-color: #fff;
+    }
+
+    .block_ludifica .default_template .userbadges-ludifica {
+        justify-content: space-around;
+        padding: 0 50px;
+    }
+
+    .block_ludifica .default_template .lateralbar-ludifica {
+        margin-top: 67px;
+    }
+
+    .block_ludifica .default_template .notice-ludifica {
+        margin-right: -15px;
+    }
 }

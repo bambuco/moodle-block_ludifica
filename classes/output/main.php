@@ -199,6 +199,10 @@ class main implements renderable, templatable {
             $myprofile = false;
         }
 
+        $ticketicon = $OUTPUT->image_url('ticket', 'block_ludifica')->out();
+        $avataricon = $OUTPUT->image_url('avatar', 'block_ludifica')->out();
+        $badgeicon = $OUTPUT->image_url('award', 'block_ludifica')->out();
+
         $defaultvariables = [
             'uniqueid' => $uniqueid,
             'hastabs' => count($this->tabs) > 1,
@@ -215,7 +219,10 @@ class main implements renderable, templatable {
             'hasranking' => $hasranking,
             'hasduration' => !empty($globalconfig->duration),
             'pointsbycomplete' => $pointsbycomplete,
-            'myprofile' => $myprofile
+            'myprofile' => $myprofile,
+            'ticketicon' => $ticketicon,
+            'avataricon' => $avataricon,
+            'badgeicon' => $badgeicon
         ];
 
         if (in_array('profile', $this->tabs)) {
