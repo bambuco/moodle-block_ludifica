@@ -499,13 +499,13 @@
 .block_ludifica .default_template .avatar-box {
     width: 40%;
     margin: 0;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255,255,255,0) 100%);
     padding: 20px 50px 0 0;
 }
 
 .block_ludifica .default_template .avatar-box > div:first-child {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .block_ludifica .default_template .notice-ludifica {
@@ -587,7 +587,7 @@
     text-align: center;
 }
 
-.block_ludifica .default_template .lateralbar-ludifica  > div span {
+.block_ludifica .default_template .lateralbar-ludifica > div span {
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     display: block;
     border-radius: 50%;
@@ -602,24 +602,24 @@
     margin-bottom: 7px;
 }
 
-.block_ludifica .default_template .lateralbar-ludifica  > div a:hover > span {
+.block_ludifica .default_template .lateralbar-ludifica > div a:hover > span {
     transform: scale(1.1) rotate(5deg);
 }
 
-.block_ludifica .default_template .lateralbar-ludifica  > div span i {
+.block_ludifica .default_template .lateralbar-ludifica > div span i {
     font-size: 50px;
     margin-top: 9px;
     margin-left: -23px;
 }
 
-.block_ludifica .default_template .lateralbar-ludifica  > div > div {
+.block_ludifica .default_template .lateralbar-ludifica > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px 0;
 }
 
-.block_ludifica .default_template .lateralbar-ludifica  > div a {
+.block_ludifica .default_template .lateralbar-ludifica > div a {
     color: #4c4c4c;
 }
 
