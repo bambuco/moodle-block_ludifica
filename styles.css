@@ -499,7 +499,7 @@
 .block_ludifica .default_template .avatar-box {
     width: 40%;
     margin: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255 ,255 ,0) 100%);
     padding: 20px 50px 0 0;
 }
 
