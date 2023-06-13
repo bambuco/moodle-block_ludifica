@@ -201,7 +201,11 @@
                         {{>block_ludifica/playerstats}}
 
                     </div>
-                    <button class="btn btn-secondary notice-ludifica">{{#pix}} i/notifications, core {{/pix}}</button>
+
+                    {{#myprofile}}
+                        <button class="btn btn-secondary notice-ludifica">{{#pix}} i/notifications, core {{/pix}}</button>
+                    {{/myprofile}}
+
                 </div>
                 <div class="avatarbust">
                     <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
@@ -236,7 +240,7 @@
             </div>
             <div class="lateralbar-ludifica">
                 {{#myprofile}}
-                    <button class="btn btn-secondary">Ver ranking</button>
+                    <button class="btn btn-secondary">{{#str}} showranking, block_ludifica {{/str}}</button>
                     <div>
                         <div>
                             <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
@@ -257,6 +261,10 @@
 
     {{#hastopbycourse}}
     <div class="tab-topbycourse block_ludifica-tabcontent {{topbycoursestate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
+            <button class="btn btn-secondary">{{#str}} showtopbycourse, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+        </div>
         {{#hasrowstopbycourse}}
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right"
         data-content="{{#str}}course-ranking_help, block_ludifica{{/str}}"></button>
@@ -272,7 +280,7 @@
             {{#topbycourse}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" />{{nickname}}</a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbycourse}}
@@ -289,6 +297,10 @@
 
     {{#hastopbysite}}
     <div class="tab-topbysite block_ludifica-tabcontent {{topbysitestate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
+            <button class="btn btn-secondary">{{#str}} showtopbysite, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+        </div>
         {{#hasrowstopbysite}}
         <table class="generaltable">
             <thead>
@@ -302,7 +314,7 @@
             {{#topbysite}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" />{{nickname}}</a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbysite}}
@@ -321,6 +333,12 @@
 
     {{#haslastmonth}}
     <div class="tab-lastmonth block_ludifica-tabcontent {{lastmonthstate}}">
+
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
+            <button class="btn btn-secondary">{{#str}} showlastmonth, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+        </div>
+
         {{#hasrowslastmonth}}
         <table class="generaltable">
             <thead>
@@ -334,7 +352,7 @@
             {{#lastmonth}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" />{{nickname}}</a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/lastmonth}}{{thumbnail}}

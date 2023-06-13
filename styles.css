@@ -293,7 +293,7 @@
 }
 
 .block_ludifica-tabcontent .numeric-cel {
-    text-align: right;
+    text-align: left;
 }
 
 .block_ludifica-tabcontent .current-user {
@@ -525,7 +525,7 @@
 }
 
 .block_ludifica .default_template .tab-profile {
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
 }
@@ -536,9 +536,10 @@
 
 .block_ludifica .default_template .avatarbust {
     overflow: hidden;
+    display: flex;
+    align-items: center;
     width: 200px;
     height: 200px;
-    padding-top: 14px;
     border-radius: 50%;
     margin-top: -15px;
     margin-bottom: 15px;
@@ -619,8 +620,51 @@
     margin: 15px 0;
 }
 
-.block_ludifica .default_template .lateralbar-ludifica > div a {
+.block_ludifica .default_template .lateralbar-ludifica > div a,
+.block_ludifica .default_template .rankingprofile {
     color: #4c4c4c;
+}
+
+.block_ludifica .default_template .rankingprofile img {
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #4c4c4c;
+    margin-right: 10px;
+}
+
+.block_ludifica .default_template .tab-topbycourse > h3,
+.block_ludifica .default_template .tab-topbysite > h3,
+.block_ludifica .default_template .tab-lastmoth > h3 {
+    color: #4c4c4c;
+    margin: 15px 0;
+}
+
+.block_ludifica .default_template .generaltable tr {
+    background: #fff;
+}
+
+.block_ludifica .default_template .generaltable td {
+    border: none;
+}
+
+.block_ludifica .default_template .avatarbust img {
+    margin: 0;
+}
+
+.block_ludifica .default_template .rankingheader {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.block_ludifica .default_template .rankingheader button,
+.block_ludifica .default_template .generaltable thead th {
+    color: #646464;
+
+}
+
+.block_ludifica .default_template .generaltable thead th {
+    font-size: 20px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .avatar-box,

@@ -591,6 +591,35 @@ class controller {
     }
 
     /**
+     * Get avatar id for a user.
+     *
+     * @param int $userid
+     * @return void
+     */
+    public static function get_avatar_id($userid) {
+        global $DB;
+
+        $records = $DB->get_records('block_ludifica_useravatars', array('userid' => $userid));
+        if (!empty($records)) {
+            return end($records)->avatarid;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Get user profile URL.
+     *
+     * @param int $userid User ID.
+     * @return \moodle_url User profile URL.
+     */
+    public static function user_profile_url($userid) {
+        global $CFG;
+
+        return new \moodle_url($CFG->wwwroot . '/user/view.php', array('id' => $userid));
+    }
+
+    /**
      * Process a list of users for general display.
      *
      * @param array $records Users list.
@@ -608,6 +637,17 @@ class controller {
             $k++;
 
             $record->position = $k;
+            $record->profileurl = self::user_profile_url($record->id)->out();
+            $avatarid = self::get_avatar_id($record->id);
+
+            if (!empty($avatarid)) {
+                $avatar = new \block_ludifica\avatar($avatarid);
+                $record->avatarprofile = $avatar->get_busturi();
+            } else {
+                $record->avatarprofile = avatar::default_avatar();
+            }
+
+
             $list[] = $record;
 
             if ($record->id == $USER->id) {

@@ -199,6 +199,7 @@ class main implements renderable, templatable {
             $myprofile = false;
         }
 
+        // Load icons.
         $ticketicon = $OUTPUT->image_url('ticket', 'block_ludifica')->out();
         $avataricon = $OUTPUT->image_url('avatar', 'block_ludifica')->out();
         $badgeicon = $OUTPUT->image_url('award', 'block_ludifica')->out();
