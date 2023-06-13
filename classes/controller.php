@@ -610,7 +610,7 @@ class controller {
     /**
      * Get user profile URL.
      *
-     * @param int $userid User ID.
+     * @param int $userid Get user id.
      * @return \moodle_url User profile URL.
      */
     public static function user_profile_url($userid) {
@@ -646,7 +646,6 @@ class controller {
             } else {
                 $record->avatarprofile = avatar::default_avatar();
             }
-
 
             $list[] = $record;
 
