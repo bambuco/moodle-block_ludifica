@@ -599,9 +599,9 @@ class controller {
     public static function get_avatar_id($userid) {
         global $DB;
 
-        $records = $DB->get_records('block_ludifica_useravatars', array('userid' => $userid));
+        $records = $DB->get_record('block_ludifica_general', array('userid' => $userid));
         if (!empty($records)) {
-            return end($records)->avatarid;
+            return $records->avatarid;
         } else {
             return null;
         }

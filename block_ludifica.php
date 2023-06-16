@@ -100,33 +100,61 @@ class block_ludifica extends block_base {
         $this->content->text = '';
         $this->content->footer = '';
 
-        $tabs = array();
+        $tabs = [];
 
         if (isset($this->config) && is_object($this->config)) {
             // Profile tab is printed by default if not exists the configuration parameter.
-            if (property_exists($this->config, 'tabprofile') && $this->config->tabprofile) {
+            if (property_exists($this->config, 'tabprofile') &&
+                $this->config->tabprofile) {
+
                 $tabs[] = 'profile';
+                $tabs[] = 'lastmonth';
+                $tabs[] = 'dynamichelps';
+                $tabs[] = 'topbysite';
+
+                if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
+                    $tabs[] = 'topbycourse';
+                }
             }
 
-            if ($this->page->course->id != SITEID
-                    && property_exists($this->config, 'tabtopbycourse')
-                    && $this->config->tabtopbycourse) {
+            if ($this->page->course->id != SITEID &&
+                property_exists($this->config, 'tabtopbycourse') &&
+                $this->config->tabtopbycourse && !in_array('topbycourse', $tabs)) {
+
                 $tabs[] = 'topbycourse';
             }
 
-            if (property_exists($this->config, 'tabtopbysite') && $this->config->tabtopbysite) {
+            if (property_exists($this->config, 'tabtopbysite') &&
+                $this->config->tabtopbysite &&
+                !in_array('topbysite', $tabs)) {
+
                 $tabs[] = 'topbysite';
             }
 
-            if (property_exists($this->config, 'tablastmonth') && $this->config->tablastmonth) {
+            if (property_exists($this->config, 'tablastmonth') &&
+                $this->config->tablastmonth &&
+                !in_array('lastmonth', $tabs)) {
+
                 $tabs[] = 'lastmonth';
             }
 
-            if (property_exists($this->config, 'dynamichelps') && $this->config->dynamichelps) {
+            if (property_exists($this->config, 'dynamichelps') &&
+                $this->config->dynamichelps &&
+                !in_array('dynamichelps', $tabs)) {
+
                 $tabs[] = 'dynamichelps';
             }
         } else {
+
             $tabs[] = 'profile';
+            $tabs[] = 'lastmonth';
+            $tabs[] = 'dynamichelps';
+            $tabs[] = 'topbysite';
+
+            if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
+                $tabs[] = 'topbycourse';
+            }
+
         }
 
         $html = '';

@@ -45,6 +45,7 @@
         {{/hastabs}}
     {{/myprofile}}
 
+    <div class="dynamichelpscontent">
     {{#hasdynamichelps}}
     <div class="tab-dynamichelps block_ludifica-tabcontent {{dynamichelpsstate}}">
         <div class="pointsinfo">
@@ -189,6 +190,7 @@
         </div>
     </div>
     {{/hasdynamichelps}}
+    </div>
 
     {{#player}}
     <div class="tab-profile block_ludifica-tabcontent {{profilestate}}" style="background-image: url('{{avatarurl}}');">
@@ -203,12 +205,17 @@
                     </div>
 
                     {{#myprofile}}
-                        <button class="btn btn-secondary notice-ludifica">{{#pix}} i/notifications, core {{/pix}}</button>
+                    <button class="btn btn-secondary showhelpsbutton">
+                        <span class="pix-initial">{{#pix}} i/info, core {{/pix}}</span>
+                        <span class="pix-toggle" style="display: none;">{{#pix}} failed, mod_scorm {{/pix}}</span>
+                    </button>
                     {{/myprofile}}
 
                 </div>
                 <div class="avatarbust">
-                    <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
+                <a href="{{baseurl}}/blocks/ludifica/avatars.php">
+                        <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
+                    </a>
                 </div>
                 <div>
                     <h2>
@@ -216,7 +223,7 @@
                         {{{nickcontent}}}
 
                         {{#myprofile}}
-                            <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
+                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
                         {{/myprofile}}
 
                     </h2>
@@ -236,11 +243,15 @@
                             {{#str}} notuserbadges, block_ludifica {{/str}}
                         </p>
                     {{/badges}}
+
+                    {{#morebadges}}
+                        <a class="btn btn-secondary" href="{{baseurl}}/blocks/ludifica/badges.php">{{#str}} allbadges, block_ludifica {{/str}}</a>
+                    {{/morebadges}}
+
                 </div>
             </div>
             <div class="lateralbar-ludifica">
-                {{#myprofile}}
-                    <button class="btn btn-secondary">{{#str}} showranking, block_ludifica {{/str}}</button>
+                    <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
                     <div>
                         <div>
                             <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
@@ -253,17 +264,17 @@
                             <a href="{{baseurl}}/blocks/ludifica/badges.php"><span style = "background-image: url('{{badgeicon}}');" class="badge-ico"></span> {{#str}} badges, block_ludifica {{/str}}</a>
                         </div>
                     </div>
-                {{/myprofile}}
             </div>
         </div>
     </div>
     {{/player}}
 
+    <div class="rankingcontent">
     {{#hastopbycourse}}
-    <div class="tab-topbycourse block_ludifica-tabcontent {{topbycoursestate}}">
+    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{topbycoursestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
-            <button class="btn btn-secondary">{{#str}} showtopbycourse, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+            <button class="btn btn-secondary">{{#str}} showtopbycourse, block_ludifica {{/str}}</button>
         </div>
         {{#hasrowstopbycourse}}
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right"
@@ -294,12 +305,14 @@
         {{/hasrowstopbycourse}}
     </div>
     {{/hastopbycourse}}
+    </div>
 
+    <div class="rankingcontent">
     {{#hastopbysite}}
-    <div class="tab-topbysite block_ludifica-tabcontent {{topbysitestate}}">
+    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{topbysitestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
-            <button class="btn btn-secondary">{{#str}} showtopbysite, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+            <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
         </div>
         {{#hasrowstopbysite}}
         <table class="generaltable">
@@ -330,13 +343,15 @@
         data-content="{{#str}}site-ranking_help, block_ludifica{{/str}}"></button>
     </div>
     {{/hastopbysite}}
+    </div>
 
+    <div class="rankingcontent">
     {{#haslastmonth}}
-    <div class="tab-lastmonth block_ludifica-tabcontent {{lastmonthstate}}">
+    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{lastmonthstate}}">
 
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
-            <button class="btn btn-secondary">{{#str}} showlastmonth, block_ludifica {{/str}} {{#pix}} i/down, core {{/pix}}</button>
+            <button class="btn btn-secondary showtopbysite">{{#str}} showtopbysite, block_ludifica {{/str}}</button>
         </div>
 
         {{#hasrowslastmonth}}
@@ -368,4 +383,5 @@
         data-content="{{#str}}lastmonth-ranking_help, block_ludifica{{/str}}"></button>
     </div>
     {{/haslastmonth}}
+    </div>
 </div>

@@ -244,7 +244,16 @@ class main implements renderable, templatable {
                 }
             }
 
-            $defaultvariables['badges'] = $badges;
+            // Only show the first 4 badges.
+            $showbadges = array_slice($badges, 0, 4);
+            $morebadges = false;
+
+            if (count($badges) > 4) {
+                $morebadges = true;
+            }
+
+            $defaultvariables['badges'] = $showbadges;
+            $defaultvariables['morebadges'] = $morebadges;
             // End Get user badges.
 
             $nickname = $this->player->get_nickname();

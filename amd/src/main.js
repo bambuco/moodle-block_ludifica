@@ -27,6 +27,8 @@ function($, str, ModalFactory, Alertc, Log) {
     // Load strings.
     var strings = [];
     strings.push({key: 'badgelinkcopiedtoclipboard', component: 'block_ludifica'});
+    strings.push({key: 'showranking', component: 'block_ludifica'});
+    strings.push({key: 'hideranking', component: 'block_ludifica'});
 
     var s = [];
 
@@ -137,7 +139,7 @@ function($, str, ModalFactory, Alertc, Log) {
 
                     $tab.on('click', function() {
                         tabslist.forEach(one => {
-                            $(one.data('ref')).removeClass('active');
+                            $(one.data('ref')).removeClass('active showranking');
                         });
 
                         $tabs.find('.active[data-ref]').removeClass('active');
@@ -161,11 +163,88 @@ function($, str, ModalFactory, Alertc, Log) {
                         });
                     });
                 });
-
             });
+
+            // Show helps
+            var isHelpShown = false;
+
+            $('.showhelpsbutton').on('click', function (e) {
+                e.stopPropagation();
+
+                if (!isHelpShown) {
+                    $('.tab-dynamichelps').addClass('showhelps');
+                    $(this).addClass('activebtn');
+                    $(this).find('.pix-initial').hide();
+                    $(this).find('.pix-toggle').show();
+                } else {
+                    $('.tab-dynamichelps').removeClass('showhelps');
+                    $(this).removeClass('activebtn');
+                    $(this).find('.pix-initial').show();
+                    $(this).find('.pix-toggle').hide();
+                }
+
+                isHelpShown = !isHelpShown;
+            });
+
+            $(document).on('click', function (e) {
+                var container = $('.tab-dynamichelps');
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    if (isHelpShown) {
+                        $('.showhelps').removeClass('showhelps');
+                        $('.showhelpsbutton').removeClass('activebtn');
+                        $('.showhelpsbutton').find('.pix-initial').show();
+                        $('.showhelpsbutton').find('.pix-toggle').hide();
+                    }
+                    isHelpShown = false;
+                }
+            });
+
+            // Show ranking.
+            var isRankingShown = false;
+
+            $('.showrankingbutton').on('click', function (e) {
+                e.stopPropagation();
+
+                if (!isRankingShown) {
+                    $('.tab-topbysite').addClass('showranking');
+                    $(this).addClass('activebtn');
+                    $(this).text(s['hideranking']);
+                } else {
+                    $('.tabranking').removeClass('showranking');
+                    $(this).removeClass('activebtn');
+                    $(this).text(s['showranking']);
+                }
+
+                isRankingShown = !isRankingShown;
+            });
+
+            $(document).on('click', function (e) {
+                var container = $('.tabranking');
+
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    if (isRankingShown) {
+                        $('.showranking').removeClass('showranking');
+                        $('.showrankingbutton').removeClass('activebtn');
+                        $('.showrankingbutton').text(s['showranking']);
+                    }
+                    isRankingShown = false;
+                }
+            });
+
+            $('.showlastmonth').on('click', function () {
+                $('.tabranking').removeClass('showranking');
+                $('.tab-lastmonth').addClass('showranking');
+            });
+
+            $('.showtopbysite').on('click', function () {
+                $('.tabranking').removeClass('showranking');
+                $('.tab-topbysite').addClass('showranking');
+            });
+
         });
 
-        $('body').on('updatefailed', '[data-inplaceeditable]', function(e) {
+        $('body').on('updatefailed', '[data-inplaceeditable]', function (e) {
             var exception = e.exception; // The exception object returned by the callback.
             e.preventDefault(); // This will prevent default error dialogue.
 

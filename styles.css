@@ -474,7 +474,7 @@
 
 .block_ludifica .default_template .player_info {
     flex-wrap: nowrap;
-    min-height: 530px;
+    min-height: 680px;
 }
 
 .block_ludifica .default_template .ludifica_stats > div {
@@ -496,6 +496,18 @@
     margin-top: 20px;
 }
 
+.block_ludifica .default_template .userbadges-ludifica .btn {
+    background-color: #4c4c4c;
+    width: 100%;
+    color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.block_ludifica .default_template .userbadges-ludifica .btn:hover {
+    background-color: #fff;
+    color: #4c4c4c;
+}
+
 .block_ludifica .default_template .avatar-box {
     width: 40%;
     margin: 0;
@@ -508,7 +520,7 @@
     justify-content: space-between;
 }
 
-.block_ludifica .default_template .notice-ludifica {
+.block_ludifica .default_template .showhelpsbutton {
     background-color: #4c4c4c;
     color: #fff;
     width: 35px;
@@ -518,7 +530,7 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
 }
 
-.block_ludifica .default_template .notice-ludifica:hover,
+.block_ludifica .default_template .showhelpsbutton:hover,
 .block_ludifica .default_template .lateralbar-ludifica > button:hover {
     background-color: #fff;
     color: #4c4c4c;
@@ -551,12 +563,19 @@
 
 .block_ludifica .default_template .avatarbust img,
 .block_ludifica .default_template .onebadge img {
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
     transition: transform 0.1s ease;
 }
 
-.block_ludifica .default_template .onebadge img:hover {
+.block_ludifica .default_template .avatarbust a {
+    display: block;
+    width: 100%;
+}
+
+.block_ludifica .default_template .onebadge img:hover,
+.block_ludifica .default_template .avatarbust img:hover {
     transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
 }
 
 .block_ludifica .default_template .avatarbust + div + span {
@@ -570,12 +589,13 @@
     position: absolute;
     right: 15px;
     margin-top: 15px;
+    width: 108px;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > button {
     background-color: #4c4c4c;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
-    margin-bottom: 50px;
+    position: absolute;
     color: #fff;
     font-weight: bolder;
 }
@@ -586,6 +606,7 @@
     padding: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     text-align: center;
+    margin-top: 100px;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > div span {
@@ -605,6 +626,7 @@
 
 .block_ludifica .default_template .lateralbar-ludifica > div a:hover > span {
     transform: scale(1.1) rotate(5deg);
+    box-shadow: rgba(50, 50, 93, 0.2) 0 6px 18px -2px, rgba(0, 0, 0, 0.2) 0 3px 15px -3px;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > div span i {
@@ -643,8 +665,13 @@
     background: #fff;
 }
 
+.block_ludifica .default_template .generaltable tr:hover {
+    background-color: #ced4da;
+}
+
 .block_ludifica .default_template .generaltable td {
     border: none;
+    font-size: 14px;
 }
 
 .block_ludifica .default_template .avatarbust img {
@@ -658,13 +685,22 @@
 }
 
 .block_ludifica .default_template .rankingheader button,
-.block_ludifica .default_template .generaltable thead th {
+.block_ludifica .default_template .generaltable {
     color: #646464;
+}
 
+.block_ludifica .default_template .rankingheader button {
+    font-size: 12px;
+    padding: 0 9px;
+    height: 30px;
+    min-width: 128px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
 }
 
 .block_ludifica .default_template .generaltable thead th {
     font-size: 20px;
+    border-top: 1px solid #6c6c6c;
+    border-bottom: 1px solid #6c6c6c;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .avatar-box,
@@ -701,14 +737,89 @@
     margin-top: 23px;
 }
 
-[data-region="blocks-column"] .block_ludifica .default_template .notice-ludifica,
-.drawer .block_ludifica .default_template .notice-ludifica {
+[data-region="blocks-column"] .block_ludifica .default_template .showhelpsbutton,
+.drawer .block_ludifica .default_template .showhelpsbutton {
     margin-right: -15px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .player_info,
 .drawer .block_ludifica .default_template .player_info {
     flex-wrap: wrap;
+}
+
+.block_ludifica .default_template .tabranking.showranking {
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 16px;
+    animation: appearleft 0.2s ease-in-out;
+    opacity: 1;
+    background-color: #fff;
+    padding: 20px 20px 20px 40px;
+    width: 61%;
+    border-radius: 0 10px 10px 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    z-index: 1;
+}
+
+@keyframes appearleft {
+    0% {
+        opacity: 0;
+        left: -50px;
+    }
+    100% {
+        opacity: 1;
+        left: 16px;
+    }
+}
+
+.block_ludifica .default_template .tabranking .showtopbysite,
+.block_ludifica .default_template .tabranking .showtopbycourse,
+.block_ludifica .default_template .tabranking .showlastmonth {
+    display: none;
+}
+
+.block_ludifica .default_template .tabranking.showranking .showtopbysite,
+.block_ludifica .default_template .tabranking.showranking .showtopbycourse,
+.block_ludifica .default_template .tabranking.showranking .showlastmonth {
+    display: block;
+}
+
+.block_ludifica .default_template .tab-dynamichelps.showhelps {
+    display: block;
+    position: absolute;
+    top: 100px;
+    right: 16px;
+    animation: appearright 0.2s ease-in-out;
+    opacity: 1;
+    background-color: #fff;
+    padding: 15px 40px 15px 15px;
+    width: 61%;
+    border-radius: 10px 0 0 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    z-index: 1;
+}
+
+@keyframes appearright {
+    0% {
+        opacity: 0;
+        right: -50px;
+    }
+    100% {
+        opacity: 1;
+        right: 16px;
+    }
+}
+
+
+.block_ludifica .default_template .showrankingbutton {
+    position: absolute;
+}
+
+.block_ludifica .default_template .showhelpsbutton.activebtn,
+.block_ludifica .default_template .showrankingbutton.activebtn,
+.block_ludifica .default_template .showrankingbutton.activebtn:hover {
+    background-color: #ff2e00;
 }
 
 @media screen and (max-width: 700px) {
@@ -726,7 +837,7 @@
         margin-top: 67px;
     }
 
-    .block_ludifica .default_template .notice-ludifica {
+    .block_ludifica .default_template .showhelpsbutton {
         margin-right: -15px;
     }
 }
