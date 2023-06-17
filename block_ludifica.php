@@ -108,9 +108,9 @@ class block_ludifica extends block_base {
                 $this->config->tabprofile) {
 
                 $tabs[] = 'profile';
+                $tabs[] = 'topbysite';
                 $tabs[] = 'lastmonth';
                 $tabs[] = 'dynamichelps';
-                $tabs[] = 'topbysite';
 
                 if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
                     $tabs[] = 'topbycourse';
@@ -147,9 +147,9 @@ class block_ludifica extends block_base {
         } else {
 
             $tabs[] = 'profile';
+            $tabs[] = 'topbysite';
             $tabs[] = 'lastmonth';
             $tabs[] = 'dynamichelps';
-            $tabs[] = 'topbysite';
 
             if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
                 $tabs[] = 'topbycourse';

@@ -165,83 +165,99 @@ function($, str, ModalFactory, Alertc, Log) {
                 });
             });
 
-            // Show helps
-            var isHelpShown = false;
-
-            $('.showhelpsbutton').on('click', function (e) {
-                e.stopPropagation();
-
-                if (!isHelpShown) {
-                    $('.tab-dynamichelps').addClass('showhelps');
-                    $(this).addClass('activebtn');
-                    $(this).find('.pix-initial').hide();
-                    $(this).find('.pix-toggle').show();
-                } else {
-                    $('.tab-dynamichelps').removeClass('showhelps');
-                    $(this).removeClass('activebtn');
-                    $(this).find('.pix-initial').show();
-                    $(this).find('.pix-toggle').hide();
-                }
-
-                isHelpShown = !isHelpShown;
-            });
-
-            $(document).on('click', function (e) {
-                var container = $('.tab-dynamichelps');
-
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    if (isHelpShown) {
-                        $('.showhelps').removeClass('showhelps');
-                        $('.showhelpsbutton').removeClass('activebtn');
-                        $('.showhelpsbutton').find('.pix-initial').show();
-                        $('.showhelpsbutton').find('.pix-toggle').hide();
-                    }
-                    isHelpShown = false;
-                }
-            });
-
             // Show ranking.
-            var isRankingShown = false;
+            $blockcontent.find('.showrankingbutton').each(function () {
 
-            $('.showrankingbutton').on('click', function (e) {
-                e.stopPropagation();
+                var isRankingShown = false;
+                var $rankingbutton = $(this);
 
-                if (!isRankingShown) {
-                    $('.tab-topbysite').addClass('showranking');
-                    $(this).addClass('activebtn');
-                    $(this).text(s['hideranking']);
-                } else {
-                    $('.tabranking').removeClass('showranking');
-                    $(this).removeClass('activebtn');
-                    $(this).text(s['showranking']);
-                }
+                $rankingbutton.on('click', function (e) {
+                    e.stopPropagation();
 
-                isRankingShown = !isRankingShown;
-            });
+                    if (!isRankingShown) {
 
-            $(document).on('click', function (e) {
-                var container = $('.tabranking');
+                        $blockcontent.find('.tab-topbysite').addClass('showranking');
+                        $rankingbutton.addClass('activebtn');
+                        $rankingbutton.text(s['hideranking']);
 
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    if (isRankingShown) {
-                        $('.showranking').removeClass('showranking');
-                        $('.showrankingbutton').removeClass('activebtn');
-                        $('.showrankingbutton').text(s['showranking']);
+                    } else {
+                        $blockcontent.find('.tabranking').removeClass('showranking');
+                        $rankingbutton.removeClass('activebtn');
+                        $rankingbutton.text(s['showranking']);
                     }
-                    isRankingShown = false;
-                }
+
+                    isRankingShown = !isRankingShown;
+                });
+
+                $(document).on('click', function (e) {
+                    var container = $blockcontent.find('.tabranking');
+
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        if (isRankingShown) {
+                            $('.showranking').removeClass('showranking');
+                            $('.showrankingbutton').removeClass('activebtn');
+                            $('.showrankingbutton').text(s['showranking']);
+                        }
+                        isRankingShown = false;
+                    }
+                });
+
+                $blockcontent.find('.showtopbysite').on('click', function () {
+                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-topbysite').addClass('showranking');
+                });
+
+                $blockcontent.find('.showtopbycourse').on('click', function () {
+                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-topbycourse').addClass('showranking');
+                });
+
+                $blockcontent.find('.showlastmonth').on('click', function () {
+                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-lastmonth').addClass('showranking');
+                });
+
             });
 
-            $('.showlastmonth').on('click', function () {
-                $('.tabranking').removeClass('showranking');
-                $('.tab-lastmonth').addClass('showranking');
-            });
+            // Show helps
+            $blockcontent.find('.showhelpsbutton').each(function () {
 
-            $('.showtopbysite').on('click', function () {
-                $('.tabranking').removeClass('showranking');
-                $('.tab-topbysite').addClass('showranking');
-            });
+                var isHelpShown = false;
+                var $helpbutton = $(this);
 
+                $helpbutton.on('click', function (e) {
+                    e.stopPropagation();
+
+                    if (!isHelpShown) {
+                        $blockcontent.find('.tab-dynamichelps').addClass('showhelps');
+                        $(this).addClass('activebtn');
+                        $(this).find('.pix-initial').hide();
+                        $(this).find('.pix-toggle').show();
+                    } else {
+                        $('.tab-dynamichelps').removeClass('showhelps');
+                        $(this).removeClass('activebtn');
+                        $(this).find('.pix-initial').show();
+                        $(this).find('.pix-toggle').hide();
+                    }
+
+                    isHelpShown = !isHelpShown;
+                });
+
+                $(document).on('click', function (e) {
+                    var container = $('.tab-dynamichelps');
+
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        if (isHelpShown) {
+                            $('.showhelps').removeClass('showhelps');
+                            $('.showhelpsbutton').removeClass('activebtn');
+                            $('.showhelpsbutton').find('.pix-initial').show();
+                            $('.showhelpsbutton').find('.pix-toggle').hide();
+                        }
+
+                        isHelpShown = false;
+                    }
+                });
+            });
         });
 
         $('body').on('updatefailed', '[data-inplaceeditable]', function (e) {

@@ -193,7 +193,7 @@ class main implements renderable, templatable {
         // Hide buttons when it's not the current public user profile.
         $pubicprofileid = optional_param('id', null, PARAM_INT);
 
-        if ($pubicprofileid === null || $pubicprofileid == $USER->id) {
+        if ($pubicprofileid === null || $pubicprofileid == $USER->id || $COURSE->id !== SITEID) {
             $myprofile = true;
         } else {
             $myprofile = false;

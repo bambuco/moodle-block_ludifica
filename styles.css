@@ -474,7 +474,7 @@
 
 .block_ludifica .default_template .player_info {
     flex-wrap: nowrap;
-    min-height: 680px;
+    min-height: 654px;
 }
 
 .block_ludifica .default_template .ludifica_stats > div {
@@ -501,6 +501,7 @@
     width: 100%;
     color: #fff;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    position: relative;
 }
 
 .block_ludifica .default_template .userbadges-ludifica .btn:hover {
@@ -518,6 +519,7 @@
 .block_ludifica .default_template .avatar-box > div:first-child {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .block_ludifica .default_template .showhelpsbutton {
@@ -553,7 +555,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-top: -15px;
+    margin-top: -30px;
     margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
@@ -590,6 +592,7 @@
     right: 15px;
     margin-top: 15px;
     width: 108px;
+    align-items: center;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > button {
@@ -607,6 +610,7 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     text-align: center;
     margin-top: 100px;
+    width: 108px;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > div span {
@@ -645,6 +649,15 @@
 .block_ludifica .default_template .lateralbar-ludifica > div a,
 .block_ludifica .default_template .rankingprofile {
     color: #4c4c4c;
+}
+
+.block_ludifica .default_template .rankingprofile {
+    display: flex;
+    align-items: flex-start;
+}
+
+.block_ludifica .default_template .rankingprofile p {
+    margin: 0;
 }
 
 .block_ludifica .default_template .rankingprofile img {
@@ -728,23 +741,59 @@
     display: flex;
     width: 258px;
     justify-content: space-between;
-
+    margin-top: 10px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .lateralbar-ludifica > div,
 .drawer .block_ludifica .default_template .lateralbar-ludifica > button {
     margin-bottom: 10px;
     margin-top: 23px;
+    position: absolute;
+    top: 100px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .showhelpsbutton,
 .drawer .block_ludifica .default_template .showhelpsbutton {
-    margin-right: -15px;
+    position: relative;
+    z-index: 1;
+    right: 10px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps {
+    left: 13px;
+    width: 90%;
+    padding: 10px;
+    margin-top: 80px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body,
+.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body,
+[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body .list-group-item,
+.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body .list-group-item {
+    padding: 10px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .player_info,
 .drawer .block_ludifica .default_template .player_info {
     flex-wrap: wrap;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .player_info .lateralbar-ludifica,
+.drawer .block_ludifica .default_template .player_info .lateralbar-ludifica {
+    width: 100%;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .tabranking.showranking,
+.drawer .block_ludifica .default_template .tabranking.showranking {
+    padding: 10px;
+    width: 90%;
+    top: 180px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .avatarbust,
+.drawer .block_ludifica .default_template .avatarbust {
+    margin-top: 15px;
 }
 
 .block_ludifica .default_template .tabranking.showranking {
@@ -781,7 +830,9 @@
 
 .block_ludifica .default_template .tabranking.showranking .showtopbysite,
 .block_ludifica .default_template .tabranking.showranking .showtopbycourse,
-.block_ludifica .default_template .tabranking.showranking .showlastmonth {
+.block_ludifica .default_template .tabranking.showranking .showlastmonth,
+[data-region="blocks-column"] .block_ludifica .default_template .rankingheader,
+.drawer .block_ludifica .default_template .rankingheader {
     display: block;
 }
 
