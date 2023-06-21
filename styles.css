@@ -533,7 +533,7 @@
 }
 
 .block_ludifica .default_template .showhelpsbutton:hover,
-.block_ludifica .default_template .lateralbar-ludifica > button:hover {
+.block_ludifica .default_template .showrankingbutton:hover {
     background-color: #fff;
     color: #4c4c4c;
 }
@@ -593,14 +593,6 @@
     margin-top: 15px;
     width: 108px;
     align-items: center;
-}
-
-.block_ludifica .default_template .lateralbar-ludifica > button {
-    background-color: #4c4c4c;
-    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
-    position: absolute;
-    color: #fff;
-    font-weight: bolder;
 }
 
 .block_ludifica .default_template .lateralbar-ludifica > div {
@@ -744,12 +736,12 @@
     margin-top: 10px;
 }
 
-[data-region="blocks-column"] .block_ludifica .default_template .lateralbar-ludifica > div,
-.drawer .block_ludifica .default_template .lateralbar-ludifica > button {
+[data-region="blocks-column"] .block_ludifica .default_template .showrankingbutton,
+.drawer .block_ludifica .default_template .showrankingbutton {
     margin-bottom: 10px;
-    margin-top: 23px;
+    margin-top: 10px;
     position: absolute;
-    top: 100px;
+    right: 90px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .showhelpsbutton,
@@ -765,6 +757,11 @@
     width: 90%;
     padding: 10px;
     margin-top: 80px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps.hastext,
+.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps.hastext {
+    top: 180px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body,
@@ -788,7 +785,12 @@
 .drawer .block_ludifica .default_template .tabranking.showranking {
     padding: 10px;
     width: 90%;
-    top: 180px;
+    top: 160px;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .tabranking.showranking.hastext,
+.drawer .block_ludifica .default_template .tabranking.showranking.hastext {
+    top: 260px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .avatarbust,
@@ -832,14 +834,16 @@
 .block_ludifica .default_template .tabranking.showranking .showtopbycourse,
 .block_ludifica .default_template .tabranking.showranking .showlastmonth,
 [data-region="blocks-column"] .block_ludifica .default_template .rankingheader,
-.drawer .block_ludifica .default_template .rankingheader {
+[data-region="blocks-column"] .block_ludifica .default_template .block_ludifica-tabs.hastext,
+.drawer .block_ludifica .default_template .rankingheader,
+.drawer .block_ludifica .default_template .block_ludifica-tabs.hastext {
     display: block;
 }
 
 .block_ludifica .default_template .tab-dynamichelps.showhelps {
     display: block;
     position: absolute;
-    top: 100px;
+    top: 80px;
     right: 16px;
     animation: appearright 0.2s ease-in-out;
     opacity: 1;
@@ -848,7 +852,7 @@
     width: 61%;
     border-radius: 10px 0 0 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
-    z-index: 1;
+    z-index: 2;
 }
 
 @keyframes appearright {
@@ -862,9 +866,14 @@
     }
 }
 
-
 .block_ludifica .default_template .showrankingbutton {
+    background-color: #4c4c4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     position: absolute;
+    color: #fff;
+    font-weight: bolder;
+    right: 16px;
+    z-index: 1;
 }
 
 .block_ludifica .default_template .showhelpsbutton.activebtn,

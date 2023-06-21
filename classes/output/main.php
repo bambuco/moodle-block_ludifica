@@ -72,19 +72,14 @@ class main implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG, $COURSE, $USER, $OUTPUT, $DB;
 
-        $icons = array('profile' => 'address-card',
-                        'topbycourse' => 'sort-amount-desc',
-                        'topbysite' => 'trophy',
-                        'lastmonth' => 'calendar-check-o',
-                        'dynamichelps' => 'question-circle'
-                    );
+        $icons = \block_ludifica\controller::get_views_icons();
 
-        $showtabs = array();
+        $showtabs = [];
         foreach ($this->tabs as $k => $tab) {
             $one = new \stdClass();
             $one->title = get_string('tabtitle_' . $tab, 'block_ludifica');
             $one->key = $tab;
-            $one->icon = $icons[$tab];
+            $one->icon = $output->image_icon($icons[$tab], $one->title);
             $one->state = $k == 0 ? 'active' : '';
             $showtabs[] = $one;
         }
@@ -223,7 +218,9 @@ class main implements renderable, templatable {
             'myprofile' => $myprofile,
             'ticketicon' => $ticketicon,
             'avataricon' => $avataricon,
-            'badgeicon' => $badgeicon
+            'badgeicon' => $badgeicon,
+            'showicon' => \block_ludifica\controller::show_tabicon(),
+            'showtext' => \block_ludifica\controller::show_tabtext()
         ];
 
         if (in_array('profile', $this->tabs)) {

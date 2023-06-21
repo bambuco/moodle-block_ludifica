@@ -35,10 +35,16 @@
 
     {{#myprofile}}
         {{#hastabs}}
-            <div class="block_ludifica-tabs">
+            <div class="block_ludifica-tabs {{#showtext}}hastext{{/showtext}}">
             {{#tabs}}
                 <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
-                    <i class="fa fa-{{icon}}"></i>
+                    {{#showicon}}
+                        {{{icon}}}
+                    {{/showicon}}
+
+                    {{#showtext}}
+                        <span>{{title}}</span>
+                    {{/showtext}}
                 </div>
             {{/tabs}}
             </div>
@@ -47,7 +53,7 @@
 
     <div class="dynamichelpscontent">
     {{#hasdynamichelps}}
-    <div class="tab-dynamichelps block_ludifica-tabcontent {{dynamichelpsstate}}">
+    <div class="tab-dynamichelps block_ludifica-tabcontent {{#showtext}}hastext{{/showtext}} {{dynamichelpsstate}}">
         <div class="pointsinfo">
             {{#insitecontext}}
             <div class="card">
@@ -209,6 +215,8 @@
                         <span class="pix-initial">{{#pix}} i/info, core {{/pix}}</span>
                         <span class="pix-toggle" style="display: none;">{{#pix}} failed, mod_scorm {{/pix}}</span>
                     </button>
+
+                    <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
                     {{/myprofile}}
 
                 </div>
@@ -251,7 +259,6 @@
                 </div>
             </div>
             <div class="lateralbar-ludifica">
-                    <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
                     <div>
                         <div>
                             <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
@@ -270,7 +277,7 @@
     {{/player}}
 
     {{#hastopbycourse}}
-    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{topbycoursestate}}">
+    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{#showtext}}hastext{{/showtext}} {{topbycoursestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbycourse, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
@@ -308,7 +315,7 @@
     {{/hastopbycourse}}
 
     {{#hastopbysite}}
-    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{topbysitestate}}">
+    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{#showtext}}hastext{{/showtext}} {{topbysitestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
 
@@ -352,7 +359,7 @@
     {{/hastopbysite}}
 
     {{#haslastmonth}}
-    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{lastmonthstate}}">
+    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{#showtext}}hastext{{/showtext}} {{lastmonthstate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showtopbysite">{{#str}} showtopbysite, block_ludifica {{/str}}</button>

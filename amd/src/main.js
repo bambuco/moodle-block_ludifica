@@ -194,26 +194,26 @@ function($, str, ModalFactory, Alertc, Log) {
 
                     if (!container.is(e.target) && container.has(e.target).length === 0) {
                         if (isRankingShown) {
-                            $('.showranking').removeClass('showranking');
-                            $('.showrankingbutton').removeClass('activebtn');
-                            $('.showrankingbutton').text(s['showranking']);
+                            $blockcontent.find('.showranking').removeClass('showranking');
+                            $blockcontent.find('.showrankingbutton').removeClass('activebtn');
+                            $blockcontent.find('.showrankingbutton').text(s['showranking']);
                         }
                         isRankingShown = false;
                     }
                 });
 
                 $blockcontent.find('.showtopbysite').on('click', function () {
-                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-topbysite').addClass('showranking');
                 });
 
                 $blockcontent.find('.showtopbycourse').on('click', function () {
-                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-topbycourse').addClass('showranking');
                 });
 
                 $blockcontent.find('.showlastmonth').on('click', function () {
-                    $('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-lastmonth').addClass('showranking');
                 });
 
@@ -234,7 +234,7 @@ function($, str, ModalFactory, Alertc, Log) {
                         $(this).find('.pix-initial').hide();
                         $(this).find('.pix-toggle').show();
                     } else {
-                        $('.tab-dynamichelps').removeClass('showhelps');
+                        $blockcontent.find('.tab-dynamichelps').removeClass('showhelps');
                         $(this).removeClass('activebtn');
                         $(this).find('.pix-initial').show();
                         $(this).find('.pix-toggle').hide();

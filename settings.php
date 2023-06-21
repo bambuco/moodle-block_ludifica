@@ -213,6 +213,19 @@ if ($ADMIN->fulltree) {
     $help = get_string('templatetype_help', 'block_ludifica');
     $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
     $generalsettings->add($setting);
+
+    // Tabs view.
+    $options = [
+        'default' => get_string('textandicon', 'block_ludifica'),
+        'showtext' => get_string('showtext', 'block_ludifica'),
+        'showicon' => get_string('showicon', 'block_ludifica')
+    ];
+
+    $name = 'block_ludifica/tabview';
+    $title = get_string('tabview', 'block_ludifica');
+    $help = get_string('tabview_help', 'block_ludifica');
+    $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
+    $generalsettings->add($setting);
 }
 
 $settings->add('block_ludifica_settings', $generalsettings);
