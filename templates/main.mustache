@@ -239,7 +239,11 @@
                     {{#player}}
                         <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
                     {{/player}}
-                    <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button><br />
+
+                    {{#myprofile}}
+                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button>
+                    {{/myprofile}}
+                    <br />
                 <div class="userbadges-ludifica">
                     {{#badges}}
                         <div class="onebadge">

@@ -882,6 +882,25 @@
     background-color: #ff2e00;
 }
 
+.block_ludifica .default_template .block_ludifica-tabs .icon {
+    margin-right: 0;
+}
+
+.block_ludifica .default_template .block_ludifica-tabs > .active,
+.block_ludifica-tabs > :hover[data-ref] {
+    border: none;
+    border-radius: 37px;
+    min-width: 37px;
+    min-height: 37px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    background-color: #fff;
+}
+
+.block_ludifica .default_template .block_ludifica-tabs {
+    border-bottom: none;
+}
+
 @media screen and (max-width: 700px) {
     .block_ludifica .default_template .avatar-box {
         width: 100%;

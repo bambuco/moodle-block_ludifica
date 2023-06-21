@@ -228,6 +228,7 @@ $string['site-ranking_help'] = 'Earn points and climb the site\'s ranking!';
 $string['benefits'] = 'Benefits';
 $string['tablastmonth'] = 'Tab Top on the last month';
 $string['tabprofile'] = 'Tab Profile';
+$string['tabprofile_help'] = 'All tabs are enabled with this option';
 $string['tabtitle_lastmonth'] = 'Last month top';
 $string['tabtitle_profile'] = 'Profile';
 $string['tabtitle_topbycourse'] = 'Top by course';

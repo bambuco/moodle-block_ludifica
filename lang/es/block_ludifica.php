@@ -229,6 +229,7 @@ $string['site-ranking_help'] = '¡Gana puntos y posiciónate en el ranking del s
 $string['benefits'] = 'Beneficios';
 $string['tablastmonth'] = 'Pestaña Posiciones en el último mes';
 $string['tabprofile'] = 'Pestaña Perfil';
+$string['tabprofile_help'] = 'Todas las pestañas se habilitan si eliges esta opción.';
 $string['tabtitle_lastmonth'] = 'Posiciones en el último mes';
 $string['tabtitle_profile'] = 'Perfil';
 $string['tabtitle_topbycourse'] = 'Posiciones en el curso';
