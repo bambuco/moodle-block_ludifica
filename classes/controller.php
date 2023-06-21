@@ -947,6 +947,7 @@ class controller {
                 $criteria->{$method}($event);
             }
         }
+    }
 
     }
 }
