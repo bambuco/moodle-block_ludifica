@@ -287,6 +287,9 @@
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbycourse, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
+            <div class="closeranking">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
         </div>
         {{#hasrowstopbycourse}}
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right"
@@ -324,15 +327,17 @@
     <div class="tab-topbysite block_ludifica-tabcontent tabranking {{#showtext}}hastext{{/showtext}} {{topbysitestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
+            {{#hastopbycourse}}
+                <button class="btn btn-secondary showtopbycourse">{{#str}} showtopbycourse, block_ludifica {{/str}}</button>
+            {{/hastopbycourse}}
 
-                {{#hastopbycourse}}
-                    <button class="btn btn-secondary showtopbycourse">{{#str}} showtopbycourse, block_ludifica {{/str}}</button>
-                {{/hastopbycourse}}
+            {{^hastopbycourse}}
+                <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
+            {{/hastopbycourse}}
 
-                {{^hastopbycourse}}
-                    <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
-                {{/hastopbycourse}}
-
+            <div class="closeranking">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
         </div>
         {{#hasrowstopbysite}}
         <table class="generaltable">
@@ -369,6 +374,9 @@
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showtopbysite">{{#str}} showtopbysite, block_ludifica {{/str}}</button>
+            <div class="closeranking">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
         </div>
         {{#hasrowslastmonth}}
         <table class="generaltable">

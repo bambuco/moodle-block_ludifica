@@ -530,6 +530,8 @@
     border-radius: 35px;
     padding-left: 0.5rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    position: relative;
+    z-index: 1;
 }
 
 .block_ludifica .default_template .showhelpsbutton:hover,
@@ -834,10 +836,16 @@
 .block_ludifica .default_template .tabranking.showranking .showtopbycourse,
 .block_ludifica .default_template .tabranking.showranking .showlastmonth,
 [data-region="blocks-column"] .block_ludifica .default_template .rankingheader,
-[data-region="blocks-column"] .block_ludifica .default_template .block_ludifica-tabs.hastext,
-.drawer .block_ludifica .default_template .rankingheader,
-.drawer .block_ludifica .default_template .block_ludifica-tabs.hastext {
+.drawer .block_ludifica .default_template .rankingheader {
     display: block;
+}
+
+[data-region="blocks-column"] .block_ludifica .default_template .block_ludifica-tabs.hastext,
+.drawer .block_ludifica .default_template .block_ludifica-tabs.hastext {
+    display: flex;
+    align-items: self-start;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .block_ludifica .default_template .tab-dynamichelps.showhelps {
@@ -853,6 +861,19 @@
     border-radius: 10px 0 0 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     z-index: 2;
+}
+
+.block_ludifica .default_template .closeranking {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    color: #4c4c4c;
+    cursor: pointer;
+}
+
+.block_ludifica .default_template .closeranking:hover {
+    color: #ff2e00;
 }
 
 @keyframes appearright {
@@ -888,13 +909,13 @@
 
 .block_ludifica .default_template .block_ludifica-tabs > .active,
 .block_ludifica-tabs > :hover[data-ref] {
-    border: none;
     border-radius: 37px;
     min-width: 37px;
     min-height: 37px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     position: relative;
     background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .block_ludifica .default_template .block_ludifica-tabs {

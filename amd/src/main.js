@@ -186,6 +186,13 @@ function($, str, ModalFactory, Alertc, Log) {
                         $rankingbutton.text(s['showranking']);
                     }
 
+                    $blockcontent.find('.closeranking').on('click', function () {
+                        $blockcontent.find('.showranking').removeClass('showranking');
+                        $blockcontent.find('.showrankingbutton').removeClass('activebtn');
+                        $blockcontent.find('.showrankingbutton').text(s['showranking']);
+                        isRankingShown = false;
+                    });
+
                     isRankingShown = !isRankingShown;
                 });
 
