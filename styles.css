@@ -838,7 +838,8 @@
 .block_ludifica .default_template .tabranking.showranking .showtopbycourse,
 .block_ludifica .default_template .tabranking.showranking .showlastmonth,
 [data-region="blocks-column"] .block_ludifica .default_template .rankingheader,
-.drawer .block_ludifica .default_template .rankingheader {
+.drawer .block_ludifica .default_template .rankingheader,
+.block_ludifica .default_template .tabranking .rankingheader .closeranking {
     display: block;
 }
 
