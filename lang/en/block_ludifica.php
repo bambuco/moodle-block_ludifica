@@ -125,6 +125,7 @@ $string['home'] = 'Home';
 $string['hideranking'] = 'Hide ranking';
 $string['improvecriteria'] = 'Improve badge criteria';
 $string['improvecriteria_ncourses'] = 'N finished courses';
+$string['improvecriteria_ncourses_label'] = '{$a} finished courses';
 $string['improvecriteria_ncourses_n'] = 'N value';
 $string['improvecriteria_ncourses_n_help'] = 'Number of finished courses required to apply the badge criteria.';
 $string['improvecriterianot'] = 'The badge has no improve criteria';

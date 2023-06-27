@@ -50,6 +50,28 @@ class manager extends \block_ludifica\improvecriteria\base {
     }
 
     /**
+     * Get the improve criteria label.
+     *
+     * @param object|string $settings Setting data.
+     * @return string
+     */
+    public function label($settings = null) : string {
+
+        if ($settings) {
+
+            if (is_string($settings)) {
+                $settings = @json_decode($settings);
+            }
+
+            if ($settings && is_object($settings) && property_exists($settings, 'ncourses')) {
+                return get_string('improvecriteria_ncourses_label', 'block_ludifica', $settings->ncourses);
+            }
+        }
+
+        return get_string('improvecriteria_ncourses', 'block_ludifica');
+    }
+
+    /**
      * Set the improve criteria setting parameters.
      *
      * @param \MoodleQuickForm $mform Edit form.
@@ -96,7 +118,12 @@ class manager extends \block_ludifica\improvecriteria\base {
 
         foreach ($improvecriteria as $criterion) {
 
-            $badge = new \core_badges\badge($criterion->badgeid);
+            try {
+                $badge = new \core_badges\badge($criterion->badgeid);
+            } catch (\Exception $e) {
+                // Maybe the badge was deleted and the delete event not clean the criteria.
+                continue;
+            }
 
             if (!isset($badge->criteria[BADGE_CRITERIA_TYPE_COHORT])
                     || !in_array($badge->status, [BADGE_STATUS_ACTIVE, BADGE_STATUS_ACTIVE_LOCKED])) {

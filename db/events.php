@@ -45,5 +45,9 @@ $observers = [
     [
         'eventname' => '\core\event\user_updated',
         'callback' => 'block_ludifica\observer::user_updated'
+    ],
+    [
+        'eventname' => '\core\event\badge_deleted',
+        'callback' => 'block_ludifica\observer::badge_deleted'
     ]
 ];

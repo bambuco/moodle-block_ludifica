@@ -248,7 +248,7 @@ class player extends entity {
 
         $factorpoints = $newpoints + ($this->data->general->points % $pointstocoins);
 
-        $newcoins = floor($factorpoints / $pointstocoins);
+        $newcoins = floor($factorpoints / $pointstocoins) * $coinsbypoints;
 
         // Not new coins by points yet.
         if ($newcoins == 0) {

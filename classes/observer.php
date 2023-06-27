@@ -106,4 +106,16 @@ class observer {
 
         controller::trigger('user_updated', $event);
     }
+
+    /**
+     * Delete the badge criteria when a badge is deleted.
+     *
+     * @param \core\event\badge_deleted $event
+     * @return void
+     */
+    public static function badge_deleted(\core\event\badge_deleted $event) {
+        global $DB;
+
+        $DB->delete_records('block_ludifica_criteria', ['badgeid' => $event->objectid]);
+    }
 }

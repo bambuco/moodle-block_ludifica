@@ -48,6 +48,16 @@ abstract class base {
     }
 
     /**
+     * Get the improve criteria label.
+     *
+     * @param object|string $settings Setting data.
+     * @return string
+     */
+    public function label($settings = null) : string {
+        return $this->title();
+    }
+
+    /**
      * Set the improve criteria setting parameters.
      *
      * @param \MoodleQuickForm $mform Edit form.

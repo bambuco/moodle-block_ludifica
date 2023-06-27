@@ -125,7 +125,8 @@ class badges implements renderable, templatable {
                     $badge->hascriteria = true;
 
                     foreach ($badge->currentcriteria as $criteria) {
-                        $criteria->label = get_string('improvecriteria_' . $criteria->type, 'block_ludifica');
+                        $criteriacontroller = \block_ludifica\controller::get_badges_improvecriteria($criteria->type);
+                        $criteria->label = $criteriacontroller->label($criteria->settings);
                     }
                 }
             }
