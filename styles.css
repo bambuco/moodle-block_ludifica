@@ -741,17 +741,14 @@
 
 [data-region="blocks-column"] .block_ludifica .default_template .showrankingbutton,
 .drawer .block_ludifica .default_template .showrankingbutton {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    position: absolute;
-    right: 90px;
+    position: inherit;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .showhelpsbutton,
 .drawer .block_ludifica .default_template .showhelpsbutton {
     position: relative;
     z-index: 1;
-    right: 10px;
+    right: -7%;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps,
