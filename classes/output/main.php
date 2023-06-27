@@ -220,7 +220,8 @@ class main implements renderable, templatable {
             'avataricon' => $avataricon,
             'badgeicon' => $badgeicon,
             'showicon' => \block_ludifica\controller::show_tabicon(),
-            'showtext' => \block_ludifica\controller::show_tabtext()
+            'showtext' => \block_ludifica\controller::show_tabtext(),
+            'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext()
         ];
 
         if (in_array('profile', $this->tabs)) {

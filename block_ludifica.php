@@ -109,12 +109,13 @@ class block_ludifica extends block_base {
 
                 $tabs[] = 'profile';
                 $tabs[] = 'topbysite';
-                $tabs[] = 'lastmonth';
-                $tabs[] = 'dynamichelps';
 
                 if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
                     $tabs[] = 'topbycourse';
                 }
+
+                $tabs[] = 'lastmonth';
+                $tabs[] = 'dynamichelps';
             }
 
             if ($this->page->course->id != SITEID &&
@@ -148,13 +149,13 @@ class block_ludifica extends block_base {
 
             $tabs[] = 'profile';
             $tabs[] = 'topbysite';
-            $tabs[] = 'lastmonth';
-            $tabs[] = 'dynamichelps';
 
             if ($this->page->course->id != SITEID && !in_array('topbycourse', $tabs)) {
                 $tabs[] = 'topbycourse';
             }
 
+            $tabs[] = 'lastmonth';
+            $tabs[] = 'dynamichelps';
         }
 
         $html = '';

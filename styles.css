@@ -315,6 +315,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 15px;
 }
 
 .pointsinfo .icon {
@@ -761,9 +762,9 @@
     margin-top: 80px;
 }
 
-[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps.hastext,
-.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps.hastext {
-    top: 180px;
+[data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps.iconsonly,
+.drawer .block_ludifica .default_template .tab-dynamichelps.showhelps.iconsonly {
+    top: 88px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .tab-dynamichelps.showhelps .card-body,
@@ -787,12 +788,12 @@
 .drawer .block_ludifica .default_template .tabranking.showranking {
     padding: 10px;
     width: 90%;
-    top: 160px;
+    top: 230px;
 }
 
-[data-region="blocks-column"] .block_ludifica .default_template .tabranking.showranking.hastext,
-.drawer .block_ludifica .default_template .tabranking.showranking.hastext {
-    top: 260px;
+[data-region="blocks-column"] .block_ludifica .default_template .tabranking.showranking.iconsonly,
+.drawer .block_ludifica .default_template .tabranking.showranking.iconsonly {
+    top: 180px;
 }
 
 [data-region="blocks-column"] .block_ludifica .default_template .avatarbust,
@@ -828,7 +829,8 @@
 
 .block_ludifica .default_template .tabranking .showtopbysite,
 .block_ludifica .default_template .tabranking .showtopbycourse,
-.block_ludifica .default_template .tabranking .showlastmonth {
+.block_ludifica .default_template .tabranking .showlastmonth,
+.block_ludifica .default_template .tabranking .closeranking {
     display: none;
 }
 
@@ -840,18 +842,10 @@
     display: block;
 }
 
-[data-region="blocks-column"] .block_ludifica .default_template .block_ludifica-tabs.hastext,
-.drawer .block_ludifica .default_template .block_ludifica-tabs.hastext {
-    display: flex;
-    align-items: self-start;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .block_ludifica .default_template .tab-dynamichelps.showhelps {
     display: block;
     position: absolute;
-    top: 80px;
+    top: 154px;
     right: 16px;
     animation: appearright 0.2s ease-in-out;
     opacity: 1;
@@ -860,7 +854,7 @@
     width: 61%;
     border-radius: 10px 0 0 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
-    z-index: 2;
+    z-index: 1;
 }
 
 .block_ludifica .default_template .closeranking {
@@ -907,11 +901,18 @@
     margin-right: 0;
 }
 
-.block_ludifica .default_template .block_ludifica-tabs > .active,
-.block_ludifica-tabs > :hover[data-ref] {
-    border-radius: 37px;
+.block_ludifica .default_template .block_ludifica-tabs > [data-ref] {
+    padding: 6px 10px 0 10px;
     min-width: 37px;
     min-height: 37px;
+    margin: 3px 5px;
+    border-radius: 1px;
+    box-shadow: rgba(100, 100, 111, 0) 0 7px 29px 0;
+}
+
+.block_ludifica .default_template .block_ludifica-tabs > .active,
+.block_ludifica .default_template .block_ludifica-tabs > [data-ref]:hover {
+    border-radius: 37px;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     position: relative;
     background-color: #fff;
@@ -919,7 +920,7 @@
 }
 
 .block_ludifica .default_template .block_ludifica-tabs {
-    border-bottom: none;
+    padding-bottom: 10px;
 }
 
 @media screen and (max-width: 700px) {
