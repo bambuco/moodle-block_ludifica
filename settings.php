@@ -213,6 +213,13 @@ if ($ADMIN->fulltree) {
     $help = get_string('templatetype_help', 'block_ludifica');
     $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
     $generalsettings->add($setting);
+
+    // Can we delete an used avatar?
+    $name = 'block_ludifica/deleteavatars';
+    $title = get_string('deleteavatars', 'block_ludifica');
+    $help = get_string('deleteavatars_help', 'block_ludifica');
+    $setting = new admin_setting_configcheckbox($name, $title, $help, 1);
+    $generalsettings->add($setting);
 }
 
 $settings->add('block_ludifica_settings', $generalsettings);

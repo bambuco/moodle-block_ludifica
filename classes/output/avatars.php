@@ -77,11 +77,26 @@ class avatars implements renderable, templatable {
 
             $avatarcore = new \block_ludifica\avatar($avatar);
 
+            $allowdelete = get_config('block_ludifica', 'deleteavatars');
+            $anyuserhasthisavatar = $DB->count_records('block_ludifica_useravatars', ['avatarid' => $avatar->id]);
+            $canbedeleted = false;
+            if ($allowdelete) {
+                $canbedeleted = true;
+            } else {
+                // If 'deleteavatars' is set to 'No', we can't delete avatars, unless it has not been used by any user yet.
+                if ($anyuserhasthisavatar == 0) {
+                    $canbedeleted = true;
+                }
+            }
+
             // If the user has the avatar.
             $avatar->userhas = isset($useravatars[$avatar->id]);
 
             // If the user use the avatar.
             $avatar->inuse = $player->general->avatarid == $avatar->id;
+
+            // If the avatar can be deleted.
+            $avatar->canbedeleted = $canbedeleted;
 
             if ($player->general->coins < $avatar->cost && !$avatar->userhas) {
                 $avatar->notenabledtext = get_string('notcostcompliance', 'block_ludifica');

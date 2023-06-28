@@ -67,7 +67,9 @@
                 {{/notenabledtext}}
                 {{#canedit}}
                     <a href="{{baseurl}}/blocks/ludifica/avatar_edit.php?id={{id}}" class="btn btn-primary">{{#str}} edit {{/str}}</a>
+                    {{#canbedeleted}}
                     <a href="{{baseurl}}/blocks/ludifica/avatars.php?delete={{id}}&sesskey={{sesskey}}" class="btn btn-danger">{{#str}} delete {{/str}}</a>
+                    {{/canbedeleted}}
                 {{/canedit}}
             </div>
         </div>
