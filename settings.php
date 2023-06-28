@@ -213,6 +213,13 @@ if ($ADMIN->fulltree) {
     $help = get_string('templatetype_help', 'block_ludifica');
     $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
     $generalsettings->add($setting);
+
+    // Show user's fullname when there is not an alias?
+    $name = 'block_ludifica/showfullname';
+    $title = get_string('showfullname', 'block_ludifica');
+    $help = get_string('showfullname_help', 'block_ludifica');
+    $setting = new admin_setting_configselect($name, $title, $help, 0, $choices);
+    $generalsettings->add($setting);
 }
 
 $settings->add('block_ludifica_settings', $generalsettings);

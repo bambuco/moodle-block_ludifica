@@ -199,6 +199,8 @@ $string['recurrentlogindays'] = 'Días de autenticación recurrente';
 $string['recurrentlogindays_help'] = 'Días de autenticación continua para iniciar la asignación de puntos. 0 para no usar esta característica.';
 $string['requiretext'] = 'Prerequisitos';
 $string['searchticket'] = 'Buscar';
+$string['showfullname'] = '¿Mostrar el nombre completo del usuario en los listados?';
+$string['showfullname_help'] = 'Cuando el usuario no tiene un alias, ¿Mostrar su nombre completo?';
 $string['socialnetworks'] = 'Redes sociales para compartir logros';
 $string['socialnetworks_help'] = '<em>Una red social por línea con la siguiente estructura:</em><br /><br />
 twitter|https://twitter.com/intent/tweet?text={name}&url={url}<br /><br />

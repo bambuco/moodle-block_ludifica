@@ -620,7 +620,13 @@ class controller {
                 if ($record->id == $USER->id) {
                     $record->nickname = fullname($USER);
                 } else {
-                    $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
+                    $showfullname = get_config('block_ludifica', 'showfullname');
+                    if ($showfullname) {
+                        $usertoshow = $DB->get_record('user', ['id' => $record->id]);
+                        $record->nickname = fullname($usertoshow);
+                    } else {
+                        $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
+                    }
                 }
             }
 

@@ -198,6 +198,8 @@ $string['recurrentlogindays'] = 'Recurrent login days';
 $string['recurrentlogindays_help'] = 'Days to start to assign points. 0 to don\'t use this.';
 $string['requiretext'] = 'Prerequisites';
 $string['searchticket'] = 'Search';
+$string['showfullname'] = "Show user's fullname in lists?";
+$string['showfullname_help'] = "When user has not a nickname, show user's fullname?";
 $string['socialnetworks'] = 'Social networks to share badge';
 $string['socialnetworks_help'] = '<em>One network by line, with the next structure:</em><br /><br />
 twitter|https://twitter.com/intent/tweet?text={name}&url={url}<br /><br />
