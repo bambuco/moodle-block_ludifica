@@ -293,7 +293,7 @@
 }
 
 .block_ludifica-tabcontent .numeric-cel {
-    text-align: left;
+    text-align: right;
 }
 
 .block_ludifica-tabcontent .current-user {
@@ -315,7 +315,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 15px;
 }
 
 .pointsinfo .icon {
@@ -472,6 +471,14 @@
 /* End of Local badges admin */
 
 /* Default template v2 */
+
+.block_ludifica .defaulttemplatev2 .block_ludifica-tabcontent .numeric-cel {
+    text-align: left;
+}
+
+.block_ludifica .defaulttemplatev2 .pointsinfo {
+    padding: 15px;
+}
 
 .block_ludifica .defaulttemplatev2 .player_info {
     flex-wrap: nowrap;
