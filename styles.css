@@ -471,7 +471,7 @@
 }
 /* End of Local badges admin */
 
-/* Default template */
+/* Default template v2 */
 
 .block_ludifica .defaulttemplatev2 .player_info {
     flex-wrap: nowrap;
@@ -940,3 +940,5 @@
         margin-right: -15px;
     }
 }
+
+/* End of default template v2 */
