@@ -38,7 +38,13 @@
             <div class="block_ludifica-tabs">
             {{#tabs}}
                 <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
-                    <i class="fa fa-{{icon}}"></i>
+                    {{#showicon}}
+                        {{{icon}}}
+                    {{/showicon}}
+
+                    {{#showtext}}
+                        <span>{{title}}</span>
+                    {{/showtext}}
                 </div>
             {{/tabs}}
             </div>
@@ -206,7 +212,30 @@
                 <img src="{{avatarurl}}" alt="{{nickname}}" /><br />
             </div>
         </div>
+
         {{>block_ludifica/eliza/buttonsbar}}
+
+        <div class="userbadges-ludifica">
+            <div>
+
+                {{#badges}}
+                <div class="onebadge">
+                    <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}" /></a>
+                </div>
+                {{/badges}}
+                {{^badges}}
+                <p class="notavailableyet">
+                    {{#str}} notuserbadges, block_ludifica {{/str}}
+                </p>
+                {{/badges}}
+                
+            </div>
+
+            {{#morebadges}}
+                <a class="btn btn-secondary" href="{{baseurl}}/blocks/ludifica/badges.php">{{#str}} allbadges, block_ludifica {{/str}}</a>
+            {{/morebadges}}
+        </div>
+
     </div>
     {{/player}}
 

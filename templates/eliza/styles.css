@@ -3,7 +3,6 @@
     background-color: #383a70;
     min-height: 650px;
     background-size: cover;
-    padding: 15px;
 }
 
 .block_ludifica .eliza-btn {
@@ -19,7 +18,7 @@
     text-align: center;
     font-weight: bolder;
     box-sizing: border-box;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     transition: 0.1s ease;
     transform: scale(1, 1);
 }
@@ -92,49 +91,103 @@
     color: #fff;
     position: absolute;
     transform: rotate(-90deg);
-    margin-left: -100px;
+    margin-left: -91px;
     top: 297px;
     left: 0;
     padding: 15px;
     border-radius: 17px;
     font-size: 20px;
-    font-weight: normal;
+    font-weight: bold;
     letter-spacing: 3px;
     width: 279px;
     text-align: center;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
 }
 
 .block_ludifica .playerstats h2 {
     background-color: #2d3351;
-    color: #fff;
+    color: #3db1d1;
     padding: 10px;
-    border-radius: 30px;
-    margin-bottom: 17px;
+    border-radius: 10px;
+    margin: 0 10px 17px 0;
     transition: 0.1s ease;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     font-weight: bold;
-    max-width: 267px;
+    max-width: 226px;
     text-align: center;
 }
 
 .block_ludifica .playerstats h2:hover {
-    background-color: #e59428;
+    background-color: #3db1d1;
+    color: #2d3351;
+}
+
+.block_ludifica .playerstats h2 > span .icon {
+    color: #fff;
+}
+
+.block_ludifica .playerstats h2 + div {
+    position: absolute;
+    top: -6px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.block_ludifica .playerstats h2 + div button {
+    background-color: #3db1d1;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.block_ludifica .playerstats h2 + div .activebtn,
+.block_ludifica .playerstats h2 + div button:hover {
+    background-color: #ff82a9;
+}
+
+.block_ludifica .playerstats h2 + div button:first-child {
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+}
+
+.block_ludifica .playerstats h2 + div button:first-child span {
+    margin: auto;
+}
+
+.block_ludifica .playerstats h2 + div button:first-child .icon {
+    font-size: 24px;
+    border-radius: 30px;
+    margin-right: 0;
+}
+
+.block_ludifica .playerstats h2 + div button:first-child .pix-toggle .icon {
+    margin-right: 3px;
 }
 
 .block_ludifica .playerstats .playerinfo div:last-child {
     position: absolute;
     margin-top: 7px;
     right: 5px;
-}
-
-.block_ludifica .playerstats .playerinfo div:last-child > span {
-    background-color: #3db1d1;
+    background-color: #2d3351;
     padding: 15px;
-    border-radius: 15px;
+    color: #3db1d1;
+    border-radius: 42px;
     margin-right: 8px;
     font-size: 17px;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     font-weight: bold;
+}
+
+.block_ludifica .playerstats .playerinfo div:last-child span .icon {
+    margin: 0 0 0 10px;
 }
 
 .block_ludifica .eliza-btns [data-ludifica-tab="dynamichelps"] {
@@ -145,7 +198,7 @@
     height: 50px;
     border-radius: 30px;
     border: none;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     transition: 0.1s ease;
     font-size: 25px;
     transform: scale(1, 1);
@@ -167,61 +220,9 @@
 }
 
 .block_ludifica .top-btn {
-    position: relative;
-    z-index: 1;
+    background-color: #3db1d1;
 }
 
-.block_ludifica .top-btn:hover {
-    height: auto;
-}
-
-.block_ludifica .top-btn a {
-    margin: auto;
-}
-
-.block_ludifica .top-btn div {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 49px;
-    width: 123px;
-    left: 0;
-    box-shadow: 0 10px 10px 0 rgb(45, 51, 81);
-    border-radius: 10px 0 10px 10px;
-    overflow: hidden;
-}
-
-.block_ludifica .top-btn:hover div,
-.block_ludifica .top-btn:hover div:hover {
-    display: flex;
-}
-
-.block_ludifica .top-btn div button {
-    background-color: #eaaf0a;
-    border: 0 solid #fff;
-    border-bottom: 1px solid #fff;
-    transition: 0.1s ease;
-    font-size: 14px;
-    font-weight: bolder;
-    padding: 5px;
-    color: #2d3351;
-}
-
-.block_ludifica .top-btn div button:hover {
-    background-color: #2d3351;
-    color: #fff;
-}
-
-.block_ludifica .top-btn div button:last-child {
-    border: none;
-}
-
-.block_ludifica .top-btn div button span {
-    display: block;
-    text-align: right;
-}
-
-.block_ludifica .block_ludifica-tabs .fa,
 .block_ludifica .block-control-actions .fa,
 .block_ludifica .block-control-actions .dropdown-toggle::after {
     color: #fff;
@@ -235,10 +236,9 @@
 .block_ludifica-tabs > .active .fa,
 .block_ludifica-tabs > :hover[data-ref],
 .ludifica-page .store-tabs > .active {
-    background-color: #3db1d1;
-    border-color: #3db1d1;
+    background-color: #e9ecef;
+    border-color: #e9ecef;
     border-radius: 10px;
-    color: #2d3351;
 }
 
 .block_ludifica .avatar-box {
@@ -256,6 +256,12 @@
 
 .block_with_controls .block_ludifica-tabs {
     display: flex;
+    background-color: #fff;
+    border-bottom: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
+    margin-bottom: 10px;
 }
 
 .block_ludifica .eliza-btns {
@@ -292,6 +298,8 @@
     text-decoration: none;
     border: 2px solid #eaaf0a;
     pointer-events: none;
+    position: relative;
+    left: -12px;
 }
 
 .block_ludifica .tab-topbysite .eliza-btns .top-btn,
@@ -378,8 +386,9 @@
 }
 
 .block_ludifica .ludifica_help {
-    color: #3db1d1;
+    color: #fff;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+    margin-right: 0;
 }
 
 .block_ludifica .ludifica_help:hover {
@@ -562,7 +571,7 @@
 .block_ludifica .btncanedit {
     background-color: #3db1d1;
     font-weight: bolder;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     margin: 20px 0;
 }
 
@@ -867,6 +876,53 @@
     text-align: center;
     color: #fff;
     font-weight: bold;
+}
+
+.block_ludifica .userbadges-ludifica {
+    background: linear-gradient(0deg, rgba(45, 51, 81, 1) 24%, rgba(45, 51, 81, 0) 100%);
+    position: absolute;
+    bottom: 0;
+    padding: 35px 0 15px 0;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin-left: -15px;
+}
+
+.block_ludifica .userbadges-ludifica > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.block_ludifica .userbadges-ludifica .onebadge img {
+    width: 90px;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+    transition: transform 0.1s ease;
+}
+
+.block_ludifica .userbadges-ludifica .onebadge {
+    margin: 10px;
+}
+
+.block_ludifica .userbadges-ludifica .onebadge img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}
+
+.block_ludifica .userbadges-ludifica .btn {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: #f6d052;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
+    border: none;
+    font-weight: bold;
+}
+
+.block_ludifica .userbadges-ludifica .btn:hover {
+    background-color: #eaaf0a;
 }
 
 @media (max-width: 600px) {

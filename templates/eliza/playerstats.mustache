@@ -30,20 +30,32 @@ along with Moodle. If not, see
 }}
 
 {{#player}}
-<div class="playerinfo">
-    <div>
-        <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
-    </div>
-    <div>
-        {{#myprofile}}
-            <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="left" data-content="{{#str}}points_help, block_ludifica{{/str}}"></button>
-        {{/myprofile}}
 
-        <span>{{#str}} numpoints, block_ludifica, {{points}} {{/str}}</span>
+    {{#myprofile}}
+    <div>
+        <button class="btn btn-secondary showhelpsbutton">
+            <span class="pix-initial">{{#pix}} i/info, core {{/pix}}</span>
+            <span class="pix-toggle" style="display: none;">{{#pix}} failed, mod_scorm {{/pix}}</span>
+        </button>
 
-        {{#myprofile}}
-            <span>{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}</span>
-        {{/myprofile}}
+        <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
     </div>
-</div>
+    {{/myprofile}}
+
+    <div class="playerinfo">
+        <div>
+            <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
+        </div>
+        <div>
+            {{#myprofile}}
+                <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="left" data-content="{{#str}}points_help, block_ludifica{{/str}}"></button>
+            {{/myprofile}}
+
+            <span title="{{#str}} numpoints, block_ludifica, {{points}} {{/str}}">{{#pix}} i/star, core {{/pix}} {{points}}</span>
+
+            {{#myprofile}}
+                <span title="{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}">{{#pix}} i/db, core {{/pix}} {{coins}}</span>
+            {{/myprofile}}
+        </div>
+    </div>
 {{/player}}

@@ -29,44 +29,11 @@
     }
 }}
 
-<div class="eliza-btns">
-
-    {{#myprofile}}
-
-        {{#hasranking}}
-            <div class="top-btn eliza-btn">
-                <a><span>{{#str}} ranking_button, block_ludifica {{/str}}</span></a>
-                <div>
-
-                    {{#haslastmonth}}
-                        <button data-ludifica-tab="lastmonth"><span>{{#str}} ranking_last, block_ludifica {{/str}}</span></button>
-                    {{/haslastmonth}}
-
-                    {{#hastopbycourse}}
-                        <button data-ludifica-tab="topbycourse"><span>{{#str}} ranking_course, block_ludifica {{/str}}</span></button>
-                    {{/hastopbycourse}}
-
-                    {{#hastopbysite}}
-                        <button data-ludifica-tab="topbysite"><span>{{#str}} ranking_site, block_ludifica {{/str}}</span></button>
-                    {{/hastopbysite}}
-
-                </div>
-            </div>
-        {{/hasranking}}
-
-    {{/myprofile}}
-
-    {{#myprofile}}
-
+{{#myprofile}}
+    <div class="eliza-btns">
         <a href="{{baseurl}}/blocks/ludifica/badges.php" class="badges-btn eliza-btn"><span>{{#str}} badges, block_ludifica {{/str}}</span></a>
         <a href="{{baseurl}}/blocks/ludifica/avatars.php" class="avatars-btn eliza-btn {{#current}}current-user{{/current}}"><span>{{#str}} avatars, block_ludifica {{/str}}</span></a>
         <a href="{{baseurl}}/blocks/ludifica/tickets.php" class="store-btn eliza-btn {{#current}}current-user{{/current}}"><span>{{#str}} benefits, block_ludifica {{/str}}</span></a>
         <a href="{{baseurl}}" class="eliza-btn" data-ludifica-tab="profile"><span>{{#str}} home, block_ludifica {{/str}}</span></a>
-
-        {{#hasdynamichelps}}
-            <button title="{{#str}} tabtitle_dynamichelps, block_ludifica {{/str}}" data-ludifica-tab="dynamichelps"><span>{{#pix}} e/row_props, core {{/pix}}</span></button>
-        {{/hasdynamichelps}}
-
-    {{/myprofile}}
-
-</div>
+    </div>
+{{/myprofile}}
