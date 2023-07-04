@@ -1169,6 +1169,12 @@
     background-color: #eaaf0a;
 }
 
+.ludifica-page .row,
+.ludifica-page .btncanedit,
+.ludifica-page .ludifica_help {
+    margin: 15px;
+}
+
 @media (max-width: 600px) {
 
     .block_ludifica .avatar-box {
