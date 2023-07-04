@@ -1037,12 +1037,15 @@
     display: none;
 }
 
+.block_ludifica .tabranking.showranking .closeranking {
+    display: block;
+}
+
 .block_ludifica .tabranking.showranking .showtopbysite,
 .block_ludifica .tabranking.showranking .showtopbycourse,
 .block_ludifica .tabranking.showranking .showlastmonth,
 [data-region="blocks-column"] .block_ludifica .rankingheader,
-.drawer .block_ludifica .rankingheader,
-.block_ludifica .tabranking .rankingheader .closeranking {
+.drawer .block_ludifica .rankingheader {
     display: block;
 }
 
