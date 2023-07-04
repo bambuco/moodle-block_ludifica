@@ -35,7 +35,7 @@
 
     {{#myprofile}}
         {{#hastabs}}
-            <div class="block_ludifica-tabs {{#iconsonly}}iconsonly{{/iconsonly}}">
+            <div class="block_ludifica-tabs {{#iconsonly}}iconsonly{{/iconsonly}} {{^player}}showtabs{{/player}}">
             {{#tabs}}
                 <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
                     {{#showicon}}

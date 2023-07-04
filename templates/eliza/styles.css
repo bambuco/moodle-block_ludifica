@@ -272,7 +272,8 @@
     color: #2d3351;
 }
 
-.block_with_controls .block_ludifica-tabs {
+.block_with_controls .block_ludifica-tabs,
+.block_ludifica-tabs.showtabs {
     display: flex;
     background-color: #fff;
     border-bottom: none;
