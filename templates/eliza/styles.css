@@ -1055,12 +1055,12 @@
     left: 13px;
     width: 90%;
     padding: 10px;
-    margin-top: -40px;
+    margin-top: 37px;
 }
 
 [data-region="blocks-column"] .block_ludifica.block_with_controls .tab-dynamichelps.showhelps,
 .drawer .block_ludifica.block_with_controls .tab-dynamichelps.showhelps {
-    margin-top: 160px;
+    margin-top: 240px;
 }
 
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
