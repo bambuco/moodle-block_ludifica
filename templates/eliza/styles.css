@@ -1085,7 +1085,7 @@
     flex-direction: column;
     align-items: flex-end;
     position: absolute;
-    top: 154px;
+    top: 80px;
     right: 16px;
     animation: appearright_eliza 0.2s ease-in-out;
     opacity: 1;
