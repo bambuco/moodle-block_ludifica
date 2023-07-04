@@ -135,6 +135,23 @@
     align-items: flex-start;
 }
 
+[data-region="blocks-column"] .block_ludifica .playerstats h2 + div,
+.drawer .block_ludifica .playerstats h2 + div {
+    flex-direction: row;
+    top: 0;
+    align-items: center;
+}
+
+[data-region="blocks-column"] .block_ludifica .playerstats h2,
+.drawer .block_ludifica .playerstats h2 {
+    margin-top: 60px;
+}
+
+[data-region="blocks-column"] .block_ludifica .playerstats h2 + div button,
+.drawer .block_ludifica .playerstats h2 + div button {
+    margin-left: 30px;
+}
+
 .block_ludifica .playerstats h2 + div button {
     background-color: #3db1d1;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
@@ -252,6 +269,7 @@
 
 .block_ludifica .block_ludifica-tabs {
     display: none;
+    color: #2d3351;
 }
 
 .block_with_controls .block_ludifica-tabs {
@@ -261,7 +279,24 @@
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
-    margin-bottom: 10px;
+    margin: 0 0 20px 10px;
+    max-width: 65%;
+}
+
+[data-region="blocks-column"] .block_with_controls .block_ludifica-tabs,
+.drawer .block_with_controls .block_ludifica-tabs {
+    min-height: 154px;
+    display: flex;
+    align-items: center;
+}
+
+[data-region="blocks-column"] .block_with_controls .block_ludifica-tabs.iconsonly,
+.drawer .block_with_controls .block_ludifica-tabs.iconsonly {
+    max-width: 100%;
+}
+
+.block_ludifica .block_ludifica-tabs.iconsonly {
+    min-height: auto;
 }
 
 .block_ludifica .eliza-btns {
@@ -270,18 +305,18 @@
     position: absolute;
     top: 0;
     right: 5px;
-    margin-top: 126px;
+    margin-top: 195px;
     margin-right: 13px;
     align-items: flex-end;
-}
-
-.block_ludifica .tab-profile .eliza-btns {
-    margin-top: 252px;
 }
 
 .ludifica-page .eliza-btns {
     right: 62px;
     margin-top: 200px;
+}
+
+.block_with_controls.block_ludifica .eliza-btns {
+    margin-top: 261px;
 }
 
 .block_ludifica .tab-topbysite .eliza-btns .top-btn,
@@ -333,6 +368,10 @@
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.531);
 }
 
+.block_ludifica-tabcontent {
+    padding: 15px;
+}
+
 .block_ludifica .generaltable {
     width: 60%;
     color: #fff;
@@ -352,11 +391,11 @@
 }
 
 .block_ludifica .generaltable th:first-child {
-    border-radius: 10px 0 0 0;
+    border-radius: 10px 0 0 10px;
 }
 
 .block_ludifica .generaltable th:last-child {
-    border-radius: 0 10px 0 0;
+    border-radius: 0 10px 10px 0;
 }
 
 .block_ludifica .generaltable .current-user {
@@ -366,6 +405,11 @@
 
 .block_ludifica .generaltable .current-user td {
     background-color: #f6d052;
+    /* stylelint-disable-next-line declaration-no-important */
+    color: #2d3351;
+}
+
+.block_ludifica .generaltable .current-user p {
     color: #2d3351;
 }
 
@@ -379,10 +423,6 @@
 
 .block_ludifica .generaltable tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.1);
-}
-
-.block_ludifica .generaltable tr:hover td {
-    color: #3db1d1;
 }
 
 .block_ludifica .ludifica_help {
@@ -410,6 +450,14 @@
     color: #3db1d1;
 }
 
+.block_ludifica .tab-dynamichelps.showhelps .card strong {
+    color: #2d3351;
+}
+
+.block_ludifica .tab-dynamichelps.showhelps .card-body {
+    padding: 0;
+}
+
 .block_ludifica .tab-dynamichelps .card .icon {
     color: #f6d052;
 }
@@ -418,6 +466,12 @@
     font-weight: bolder;
     background: none;
     border: none;
+}
+
+.block_ludifica .tab-dynamichelps.showhelps .card .card-header {
+    text-align: right;
+    padding: 20px 0;
+    color: #2d3351;
 }
 
 .block_ludifica .tab-dynamichelps .card .list-group-item {
@@ -695,8 +749,10 @@
     border: none;
 }
 
-#badges-list .onebadge .badgecontent {
-    display: block;
+#badges-list .onebadge .badgecontent,
+.block_ludifica .card-title.d-inline {
+    /* stylelint-disable-next-line declaration-no-important */
+    display: block !important;
 }
 
 .block_ludifica #badges-list {
@@ -825,7 +881,7 @@
 
 [data-region="blocks-column"] .block_ludifica .tab-profile .avatar-box,
 .drawer .block_ludifica .tab-profile .avatar-box {
-    margin-top: 315px;
+    margin-top: 405px;
 }
 
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps .pointsinfo,
@@ -841,8 +897,8 @@
 [data-region="blocks-column"] .block_ludifica .playerstats .playerinfo div:first-child,
 .drawer .block_ludifica .playerstats .playerinfo div:first-child {
     transform: rotate(0deg);
-    left: 42%;
-    top: 168px;
+    left: 39%;
+    top: 248px;
 }
 
 [data-region="blocks-column"] .block_ludifica .playerstats,
@@ -870,6 +926,7 @@
 .block_ludifica h5 {
     color: #3db1d1;
     font-weight: bold;
+    margin: 15px;
 }
 
 .block_ludifica .notavailableyet {
@@ -885,7 +942,13 @@
     padding: 35px 0 15px 0;
     border-radius: 0.5rem;
     width: 100%;
-    margin-left: -15px;
+    margin-top: -200px;
+}
+
+[data-region="blocks-column"] .block_ludifica .userbadges-ludifica,
+.drawer .block_ludifica .userbadges-ludifica {
+    margin-top: 0;
+    position: relative;
 }
 
 .block_ludifica .userbadges-ludifica > div {
@@ -919,6 +982,187 @@
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     border: none;
     font-weight: bold;
+}
+
+.block_ludifica .card-body.p-3,
+.block_ludifica .tab-profile {
+    /* stylelint-disable-next-line declaration-no-important */
+    padding: 0 !important;
+}
+
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
+.drawer .block_ludifica .tabranking.showranking {
+    padding: 10px;
+    width: 90%;
+    top: 115px;
+}
+
+[data-region="blocks-column"] .block_ludifica.block_with_controls .tabranking.showranking,
+.drawer .block_ludifica.block_with_controls .tabranking.showranking {
+    top: 315px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly,
+.drawer .block_ludifica .tabranking.showranking.iconsonly {
+    top: 186px;
+}
+
+[data-region="blocks-column"] .block_ludifica .avatarbust,
+.drawer .block_ludifica .avatarbust {
+    margin-top: 15px;
+}
+
+.block_ludifica .tabranking.showranking .generaltable,
+.block_ludifica .tab-dynamichelps.showhelps .pointsinfo {
+    width: 100%;
+}
+
+.block_ludifica .closeranking {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    color: #2d3351;
+    cursor: pointer;
+}
+
+.block_ludifica .closeranking:hover {
+    color: #fff;
+}
+
+.block_ludifica .tabranking .showtopbysite,
+.block_ludifica .tabranking .showtopbycourse,
+.block_ludifica .tabranking .showlastmonth,
+.block_ludifica .tabranking .closeranking {
+    display: none;
+}
+
+.block_ludifica .tabranking.showranking .showtopbysite,
+.block_ludifica .tabranking.showranking .showtopbycourse,
+.block_ludifica .tabranking.showranking .showlastmonth,
+[data-region="blocks-column"] .block_ludifica .rankingheader,
+.drawer .block_ludifica .rankingheader,
+.block_ludifica .tabranking .rankingheader .closeranking {
+    display: block;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .tab-dynamichelps.showhelps {
+    left: 13px;
+    width: 90%;
+    padding: 10px;
+    margin-top: -40px;
+}
+
+[data-region="blocks-column"] .block_ludifica.block_with_controls .tab-dynamichelps.showhelps,
+.drawer .block_ludifica.block_with_controls .tab-dynamichelps.showhelps {
+    margin-top: 160px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly {
+    top: 48px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card .card-header,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card .card-header {
+    text-align: left;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body,
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item {
+    padding: 10px;
+}
+
+.block_ludifica .tab-dynamichelps.showhelps,
+.block_ludifica .tabranking.showranking {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 154px;
+    right: 16px;
+    animation: appearright_eliza 0.2s ease-in-out;
+    opacity: 1;
+    background: linear-gradient(90deg, rgba(61, 177, 209, 0) 0%, rgba(61, 177, 209, 1) 46%);
+    padding: 15px 40px 15px 15px;
+    width: 75%;
+    padding-left: 21%;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 16px 0 17px 0 rgb(0 0 0 / 50%);
+    z-index: 1;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .tab-dynamichelps.showhelps,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
+.drawer .block_ludifica .tabranking.showranking {
+    background-color: #3db1d1;
+    align-items: flex-start;
+    border-radius: 10px;
+}
+
+@keyframes appearright_eliza {
+    0% {
+        opacity: 0;
+        right: 50px;
+    }
+    100% {
+        opacity: 1;
+        right: 16px;
+    }
+}
+
+.block_ludifica .tab-dynamichelps.showhelps h3,
+.block_ludifica .tabranking.showranking  h3 {
+    color: #2d3351;
+    text-shadow: none;
+}
+
+.block_ludifica .tabranking.showranking .eliza-btns,
+.block_ludifica .tab-dynamichelps.showhelps .eliza-btns {
+    display: none;
+}
+
+.block_ludifica .lateralbar-ludifica > div a,
+.block_ludifica .rankingprofile {
+    color: #fff;
+}
+
+.block_ludifica .rankingprofile {
+    display: flex;
+    align-items: flex-start;
+}
+
+.block_ludifica .rankingprofile p {
+    margin: 0;
+}
+
+.block_ludifica .rankingprofile img {
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #4c4c4c;
+    margin-right: 10px;
+}
+
+.block_ludifica .rankingheader {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.block_ludifica .rankingheader button {
+    background-color: #2d3351;
+    box-shadow: 0 0 16px 0 #2d335170;
+    color: #3db1d1;
+    border: none;
+}
+
+.block_ludifica .rankingheader button:hover {
+    background-color: #3db1d1;
+    color: #2d3351;
 }
 
 .block_ludifica .userbadges-ludifica .btn:hover {
