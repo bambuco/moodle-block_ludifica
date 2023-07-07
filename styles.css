@@ -188,7 +188,7 @@
     max-width: 100%;
 }
 
-.block_ludifica .block_ludifica-tabs i {
+.block_ludifica-tabs i {
     font-size: 20px;
 }
 
@@ -267,7 +267,7 @@
     text-align: left;
 }
 
-.block_ludifica .block_ludifica-tabcontent.tabranking .generaltable .current-user {
+.block_ludifica-tabcontent.tabranking .generaltable .current-user {
     background-color: #e9ecef;
 }
 /* End Ranking tables */
@@ -442,7 +442,7 @@
 }
 /* End of Local badges admin */
 
-.block_ludifica .ludifica_stats > div {
+.ludifica_stats > div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -454,14 +454,14 @@
     width: 100px;
 }
 
-.block_ludifica .userbadges-ludifica {
+.userbadges-ludifica {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 20px;
 }
 
-.block_ludifica .userbadges-ludifica .btn {
+.userbadges-ludifica .btn {
     background-color: #4c4c4c;
     width: 100%;
     color: #fff;
@@ -469,7 +469,7 @@
     position: relative;
 }
 
-.block_ludifica .userbadges-ludifica .btn:hover,
+.userbadges-ludifica .btn:hover,
 .block_ludifica .showhelpsbutton:hover,
 .block_ludifica .showrankingbutton:hover {
     background-color: #fff;
@@ -537,7 +537,7 @@
     color: #808080;
 }
 
-.block_ludifica .lateralbar-ludifica {
+.lateralbar-ludifica {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -547,7 +547,7 @@
     align-items: center;
 }
 
-.block_ludifica .lateralbar-ludifica > div {
+.lateralbar-ludifica > div {
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -557,7 +557,7 @@
     width: 108px;
 }
 
-.block_ludifica .lateralbar-ludifica > div span {
+.lateralbar-ludifica > div span {
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     display: block;
     border-radius: 50%;
@@ -572,18 +572,18 @@
     margin-bottom: 7px;
 }
 
-.block_ludifica .lateralbar-ludifica > div a:hover > span {
+.lateralbar-ludifica > div a:hover > span {
     transform: scale(1.1) rotate(5deg);
     box-shadow: rgba(50, 50, 93, 0.2) 0 6px 18px -2px, rgba(0, 0, 0, 0.2) 0 3px 15px -3px;
 }
 
-.block_ludifica .lateralbar-ludifica > div span i {
+.lateralbar-ludifica > div span i {
     font-size: 50px;
     margin-top: 9px;
     margin-left: -23px;
 }
 
-.block_ludifica .lateralbar-ludifica > div > div {
+.lateralbar-ludifica > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -606,7 +606,7 @@
     margin-right: 10px;
 }
 
-.block_ludifica .lateralbar-ludifica > div > div,
+.lateralbar-ludifica > div > div,
 .block_ludifica .tabranking > h3 {
     margin: 15px 0;
 }
@@ -648,21 +648,21 @@
     padding: 20px 0 0 0;
 }
 
-[data-region="blocks-column"] .block_ludifica .userbadges-ludifica,
-.drawer .block_ludifica .userbadges-ludifica {
+[data-region="blocks-column"] .userbadges-ludifica,
+.drawer .userbadges-ludifica {
     justify-content: space-around;
     padding: 0;
 }
 
-[data-region="blocks-column"] .block_ludifica .lateralbar-ludifica,
-.drawer .block_ludifica .lateralbar-ludifica {
+[data-region="blocks-column"] .lateralbar-ludifica,
+.drawer .lateralbar-ludifica {
     position: inherit;
     margin-top: 0;
     background-color: #fff;
 }
 
-[data-region="blocks-column"] .block_ludifica .lateralbar-ludifica > div,
-.drawer .block_ludifica .lateralbar-ludifica > div {
+[data-region="blocks-column"] .lateralbar-ludifica > div,
+.drawer .lateralbar-ludifica > div {
     display: flex;
     width: 258px;
     justify-content: space-between;
@@ -721,8 +721,8 @@
     flex-wrap: wrap;
 }
 
-[data-region="blocks-column"] .block_ludifica .player_info .lateralbar-ludifica,
-.drawer .block_ludifica .player_info .lateralbar-ludifica {
+[data-region="blocks-column"] .lateralbar-ludifica,
+.drawer .lateralbar-ludifica {
     width: 100%;
 }
 
@@ -764,14 +764,13 @@
     }
 }
 
-.block_ludifica .tabranking .rankingheader .btn,
-.block_ludifica .closeludifica {
+.block_ludifica .tabranking .rankingheader .btn {
     display: none;
 }
 
 .block_ludifica .tabranking.showranking .rankingheader .btn,
-.block_ludifica .showranking .closeludifica,
-.block_ludifica .showhelps .closeludifica {
+.showranking .closeludifica,
+.showhelps .closeludifica {
     display: block;
 }
 
@@ -790,16 +789,17 @@
     z-index: 2;
 }
 
-.block_ludifica .closeludifica {
+.closeludifica {
     position: absolute;
     top: 0;
     right: 0;
     font-size: 20px;
     color: #4c4c4c;
     cursor: pointer;
+    display: none;
 }
 
-.block_ludifica .closeludifica:hover {
+.closeludifica:hover {
     color: #ff2e00;
 }
 
@@ -830,11 +830,11 @@
     background-color: #ff2e00;
 }
 
-.block_ludifica .block_ludifica-tabs .icon {
+.block_ludifica-tabs .icon {
     margin-right: 0;
 }
 
-.block_ludifica .block_ludifica-tabs > [data-ref] {
+.block_ludifica-tabs > [data-ref] {
     padding: 6px 10px 0 10px;
     min-width: 37px;
     min-height: 37px;
@@ -843,8 +843,8 @@
     box-shadow: rgba(100, 100, 111, 0) 0 7px 29px 0;
 }
 
-.block_ludifica .block_ludifica-tabs > .active,
-.block_ludifica .block_ludifica-tabs > [data-ref]:hover {
+.block_ludifica-tabs > .active,
+.block_ludifica-tabs > [data-ref]:hover {
     border-radius: 37px;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     position: relative;
@@ -852,7 +852,7 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.block_ludifica .block_ludifica-tabs {
+.block_ludifica-tabs {
     padding-bottom: 10px;
     min-width: 200px;
 }
@@ -863,12 +863,12 @@
         background-color: #fff;
     }
 
-    .block_ludifica .userbadges-ludifica {
+    .userbadges-ludifica {
         justify-content: space-around;
         padding: 0 50px;
     }
 
-    .block_ludifica .lateralbar-ludifica {
+    .lateralbar-ludifica {
         margin-top: 67px;
     }
 
