@@ -186,7 +186,7 @@ function($, str, ModalFactory, Alertc, Log) {
                         $rankingbutton.text(s['showranking']);
                     }
 
-                    $blockcontent.find('.closeranking').on('click', function () {
+                    $blockcontent.find('.closeludifica').on('click', function () {
                         $blockcontent.find('.showranking').removeClass('showranking');
                         $blockcontent.find('.showrankingbutton').removeClass('activebtn');
                         $blockcontent.find('.showrankingbutton').text(s['showranking']);
@@ -246,6 +246,14 @@ function($, str, ModalFactory, Alertc, Log) {
                         $(this).find('.pix-initial').show();
                         $(this).find('.pix-toggle').hide();
                     }
+
+                    $blockcontent.find('.closeludifica').on('click', function () {
+                        $('.showhelps').removeClass('showhelps');
+                        $('.showhelpsbutton').removeClass('activebtn');
+                        $('.showhelpsbutton').find('.pix-initial').show();
+                        $('.showhelpsbutton').find('.pix-toggle').hide();
+                        isHelpShown = false;
+                    });
 
                     isHelpShown = !isHelpShown;
                 });

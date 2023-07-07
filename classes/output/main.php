@@ -221,7 +221,8 @@ class main implements renderable, templatable {
             'badgeicon' => $badgeicon,
             'showicon' => \block_ludifica\controller::show_tabicon(),
             'showtext' => \block_ludifica\controller::show_tabtext(),
-            'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext()
+            'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext(),
+            'incourse' => $COURSE->id !== SITEID ? 'incourse' : ''
         ];
 
         if (in_array('profile', $this->tabs)) {

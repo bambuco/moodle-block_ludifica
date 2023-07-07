@@ -31,11 +31,11 @@
     }
 }}
 
-<div id="{{uniqueid}}" class="block_ludifica-content defaulttemplatev2" data-observe-resizes>
+<div id="{{uniqueid}}" class="block_ludifica-content" data-observe-resizes>
 
     {{#myprofile}}
         {{#hastabs}}
-            <div class="block_ludifica-tabs">
+            <div class="block_ludifica-tabs {{incourse}} ">
             {{#tabs}}
                 <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
                     {{#showicon}}
@@ -53,7 +53,10 @@
 
     <div class="dynamichelpscontent">
     {{#hasdynamichelps}}
-    <div class="tab-dynamichelps block_ludifica-tabcontent {{#iconsonly}}iconsonly{{/iconsonly}} {{dynamichelpsstate}}">
+    <div class="tab-dynamichelps block_ludifica-tabcontent {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{dynamichelpsstate}}">
+        <div class="closeludifica">
+            {{#pix}} failed, mod_scorm {{/pix}}
+        </div>
         <div class="pointsinfo">
             {{#insitecontext}}
             <div class="card">
@@ -283,11 +286,11 @@
     {{/player}}
 
     {{#hastopbycourse}}
-    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{#showtext}}hastext{{/showtext}} {{topbycoursestate}}">
+    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{topbycoursestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbycourse, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
-            <div class="closeranking">
+            <div class="closeludifica">
                 {{#pix}} failed, mod_scorm {{/pix}}
             </div>
         </div>
@@ -324,7 +327,7 @@
     {{/hastopbycourse}}
 
     {{#hastopbysite}}
-    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{topbysitestate}}">
+    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{topbysitestate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
             {{#hastopbycourse}}
@@ -335,7 +338,7 @@
                 <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
             {{/hastopbycourse}}
 
-            <div class="closeranking">
+            <div class="closeludifica">
                 {{#pix}} failed, mod_scorm {{/pix}}
             </div>
         </div>
@@ -370,11 +373,11 @@
     {{/hastopbysite}}
 
     {{#haslastmonth}}
-    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{lastmonthstate}}">
+    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{lastmonthstate}}">
         <div class="rankingheader">
             <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
             <button class="btn btn-secondary showtopbysite">{{#str}} showtopbysite, block_ludifica {{/str}}</button>
-            <div class="closeranking">
+            <div class="closeludifica">
                 {{#pix}} failed, mod_scorm {{/pix}}
             </div>
         </div>

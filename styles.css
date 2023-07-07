@@ -1,6 +1,13 @@
+.block_ludifica .block_ludifica-content,
+.block_ludifica .block_ludifica-content a,
+.block_ludifica .block_ludifica-content a:hover {
+    color: #4c4c4c;
+}
+
 .block_ludifica .player_info {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-height: 654px;
 }
 
 .block_ludifica .player_info h3 {
@@ -166,9 +173,10 @@
 
 .block_ludifica .avatar-box {
     text-align: center;
-    min-width: 40%;
-    width: 100%;
-    margin-top: 50px;
+    width: 40%;
+    margin: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 100%);
+    padding: 20px 50px 0 0;
 }
 
 .block_ludifica .avatar-box.MD {
@@ -178,44 +186,6 @@
 .block_ludifica .avatar-box img {
     margin-bottom: 10px;
     max-width: 100%;
-}
-
-.block_ludifica .tickets-box > div,
-.block_ludifica .badges-box > div {
-    display: flex;
-}
-
-.block_ludifica .tickets-box .oneticket {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid;
-    margin: 5px;
-}
-
-.block_ludifica .badges-box .onebadge {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    position: relative;
-    margin: 5px;
-}
-
-.block_ludifica .tickets-box .oneticket img,
-.block_ludifica .badges-box .onebadge img {
-    width: 100%;
-}
-
-.block_ludifica .tickets-box .oneticket .count {
-    position: absolute;
-    bottom: 3px;
-    right: 3px;
-    background-color: rgba(8, 8, 8, 0.7);
-    border-radius: 10px;
-    padding: 0 7px;
-    font-size: 12px;
-    color: #fff;
 }
 
 .block_ludifica .block_ludifica-tabs i {
@@ -247,7 +217,7 @@
 }
 
 .block_ludifica-tabcontent {
-    padding: 10px 0;
+    padding: 0;
     display: none;
 }
 
@@ -288,16 +258,17 @@
 /* End Store */
 
 /* Ranking tables */
-.block_ludifica-tabcontent .generaltable {
-    font-size: 12px;
+.block_ludifica-tabcontent .generaltable td {
+    border: none;
+    font-size: 14px;
 }
 
 .block_ludifica-tabcontent .numeric-cel {
-    text-align: right;
+    text-align: left;
 }
 
-.block_ludifica-tabcontent .current-user {
-    background-color: bisque;
+.block_ludifica .block_ludifica-tabcontent.tabranking .generaltable .current-user {
+    background-color: #e9ecef;
 }
 /* End Ranking tables */
 
@@ -311,21 +282,22 @@
 
 /* Dynamic help */
 
-.pointsinfo {
+.block_ludifica .pointsinfo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 15px;
 }
 
-.pointsinfo .icon {
+.block_ludifica .pointsinfo .icon {
     font-size: 2em;
 }
 
-.pointsinfo .card-text > ul > li > img {
+.block_ludifica .pointsinfo .card-text > ul > li > img {
     margin-right: 9px;
 }
 
-.pointsinfo .fa {
+.block_ludifica .pointsinfo .fa {
     margin-right: 26px;
 }
 
@@ -470,22 +442,7 @@
 }
 /* End of Local badges admin */
 
-/* Default template v2 */
-
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabcontent .numeric-cel {
-    text-align: left;
-}
-
-.block_ludifica .defaulttemplatev2 .pointsinfo {
-    padding: 15px;
-}
-
-.block_ludifica .defaulttemplatev2 .player_info {
-    flex-wrap: nowrap;
-    min-height: 654px;
-}
-
-.block_ludifica .defaulttemplatev2 .ludifica_stats > div {
+.block_ludifica .ludifica_stats > div {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -493,18 +450,18 @@
     color: #4c4c4c;
 }
 
-.block_ludifica .defaulttemplatev2 .onebadge {
+.block_ludifica .onebadge {
     width: 100px;
 }
 
-.block_ludifica .defaulttemplatev2 .userbadges-ludifica {
+.block_ludifica .userbadges-ludifica {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 20px;
 }
 
-.block_ludifica .defaulttemplatev2 .userbadges-ludifica .btn {
+.block_ludifica .userbadges-ludifica .btn {
     background-color: #4c4c4c;
     width: 100%;
     color: #fff;
@@ -512,25 +469,20 @@
     position: relative;
 }
 
-.block_ludifica .defaulttemplatev2 .userbadges-ludifica .btn:hover {
+.block_ludifica .userbadges-ludifica .btn:hover,
+.block_ludifica .showhelpsbutton:hover,
+.block_ludifica .showrankingbutton:hover {
     background-color: #fff;
     color: #4c4c4c;
 }
 
-.block_ludifica .defaulttemplatev2 .avatar-box {
-    width: 40%;
-    margin: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 100%);
-    padding: 20px 50px 0 0;
-}
-
-.block_ludifica .defaulttemplatev2 .avatar-box > div:first-child {
+.block_ludifica .avatar-box > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.block_ludifica .defaulttemplatev2 .showhelpsbutton {
+.block_ludifica .showhelpsbutton {
     background-color: #4c4c4c;
     color: #fff;
     width: 35px;
@@ -542,23 +494,13 @@
     z-index: 1;
 }
 
-.block_ludifica .defaulttemplatev2 .showhelpsbutton:hover,
-.block_ludifica .defaulttemplatev2 .showrankingbutton:hover {
-    background-color: #fff;
-    color: #4c4c4c;
-}
-
-.block_ludifica .defaulttemplatev2 .tab-profile {
+.block_ludifica .tab-profile {
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: right;
 }
 
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabcontent {
-    padding: 0;
-}
-
-.block_ludifica .defaulttemplatev2 .avatarbust {
+.block_ludifica .avatarbust {
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -573,29 +515,29 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
 }
 
-.block_ludifica .defaulttemplatev2 .avatarbust img,
-.block_ludifica .defaulttemplatev2 .onebadge img {
+.block_ludifica .avatarbust img,
+.block_ludifica .onebadge img {
     filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
     transition: transform 0.1s ease;
 }
 
-.block_ludifica .defaulttemplatev2 .avatarbust a {
+.block_ludifica .avatarbust a {
     display: block;
     width: 100%;
 }
 
-.block_ludifica .defaulttemplatev2 .onebadge img:hover,
-.block_ludifica .defaulttemplatev2 .avatarbust img:hover {
-    transform: scale(1.1);
+.block_ludifica .onebadge img:hover,
+.block_ludifica .avatarbust img:hover {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    transform: scale(1.1);
 }
 
-.block_ludifica .defaulttemplatev2 .avatarbust + div + span {
+.block_ludifica .avatarbust + div + span {
     font-size: 20px;
     color: #808080;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica {
+.block_ludifica .lateralbar-ludifica {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -605,7 +547,7 @@
     align-items: center;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div {
+.block_ludifica .lateralbar-ludifica > div {
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -615,7 +557,7 @@
     width: 108px;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div span {
+.block_ludifica .lateralbar-ludifica > div span {
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     display: block;
     border-radius: 50%;
@@ -630,81 +572,60 @@
     margin-bottom: 7px;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div a:hover > span {
+.block_ludifica .lateralbar-ludifica > div a:hover > span {
     transform: scale(1.1) rotate(5deg);
     box-shadow: rgba(50, 50, 93, 0.2) 0 6px 18px -2px, rgba(0, 0, 0, 0.2) 0 3px 15px -3px;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div span i {
+.block_ludifica .lateralbar-ludifica > div span i {
     font-size: 50px;
     margin-top: 9px;
     margin-left: -23px;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div > div {
+.block_ludifica .lateralbar-ludifica > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 15px 0;
 }
 
-.block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div a,
-.block_ludifica .defaulttemplatev2 .rankingprofile {
-    color: #4c4c4c;
-}
-
-.block_ludifica .defaulttemplatev2 .rankingprofile {
+.block_ludifica .rankingprofile {
     display: flex;
     align-items: flex-start;
 }
 
-.block_ludifica .defaulttemplatev2 .rankingprofile p {
+.block_ludifica .rankingprofile p,
+.block_ludifica .avatarbust img {
     margin: 0;
 }
 
-.block_ludifica .defaulttemplatev2 .rankingprofile img {
+.block_ludifica .rankingprofile img {
     width: 32px;
     border-radius: 50%;
     border: 1px solid #4c4c4c;
     margin-right: 10px;
 }
 
-.block_ludifica .defaulttemplatev2 .tab-topbycourse > h3,
-.block_ludifica .defaulttemplatev2 .tab-topbysite > h3,
-.block_ludifica .defaulttemplatev2 .tab-lastmoth > h3 {
-    color: #4c4c4c;
+.block_ludifica .lateralbar-ludifica > div > div,
+.block_ludifica .tabranking > h3 {
     margin: 15px 0;
 }
 
-.block_ludifica .defaulttemplatev2 .generaltable tr {
-    background: #fff;
+.block_ludifica .tabranking .generaltable tr {
+    background-color: #fff;
 }
 
-.block_ludifica .defaulttemplatev2 .generaltable tr:hover {
+.block_ludifica .generaltable tr:hover {
     background-color: #ced4da;
 }
 
-.block_ludifica .defaulttemplatev2 .generaltable td {
-    border: none;
-    font-size: 14px;
-}
-
-.block_ludifica .defaulttemplatev2 .avatarbust img {
-    margin: 0;
-}
-
-.block_ludifica .defaulttemplatev2 .rankingheader {
+.block_ludifica .rankingheader {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
 }
 
-.block_ludifica .defaulttemplatev2 .rankingheader button,
-.block_ludifica .defaulttemplatev2 .generaltable {
-    color: #646464;
-}
-
-.block_ludifica .defaulttemplatev2 .rankingheader button {
+.block_ludifica .rankingheader button {
     font-size: 12px;
     padding: 0 9px;
     height: 30px;
@@ -712,100 +633,112 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
 }
 
-.block_ludifica .defaulttemplatev2 .generaltable thead th {
+.block_ludifica .generaltable thead th {
     font-size: 20px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .avatar-box,
-.drawer .block_ludifica .defaulttemplatev2 .avatar-box {
+/* Default template v2 */
+
+[data-region="blocks-column"] .block_ludifica .avatar-box,
+.drawer .block_ludifica .avatar-box {
     width: 100%;
     background-color: #fff;
     padding: 20px 0 0 0;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .userbadges-ludifica,
-.drawer .block_ludifica .defaulttemplatev2 .userbadges-ludifica {
+[data-region="blocks-column"] .block_ludifica .userbadges-ludifica,
+.drawer .block_ludifica .userbadges-ludifica {
     justify-content: space-around;
     padding: 0;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .lateralbar-ludifica,
-.drawer .block_ludifica .defaulttemplatev2 .lateralbar-ludifica {
+[data-region="blocks-column"] .block_ludifica .lateralbar-ludifica,
+.drawer .block_ludifica .lateralbar-ludifica {
     position: inherit;
     margin-top: 0;
     background-color: #fff;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div,
-.drawer .block_ludifica .defaulttemplatev2 .lateralbar-ludifica > div {
+[data-region="blocks-column"] .block_ludifica .lateralbar-ludifica > div,
+.drawer .block_ludifica .lateralbar-ludifica > div {
     display: flex;
     width: 258px;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .showrankingbutton,
-.drawer .block_ludifica .defaulttemplatev2 .showrankingbutton {
+[data-region="blocks-column"] .block_ludifica .showrankingbutton,
+.drawer .block_ludifica .showrankingbutton {
     position: inherit;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .showhelpsbutton,
-.drawer .block_ludifica .defaulttemplatev2 .showhelpsbutton {
+[data-region="blocks-column"] .block_ludifica .showhelpsbutton,
+.drawer .block_ludifica .showhelpsbutton {
     position: relative;
     z-index: 1;
     right: -7%;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps,
-.drawer .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps {
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .tab-dynamichelps.showhelps {
     left: 13px;
     width: 90%;
     padding: 10px;
-    margin-top: 80px;
+    top: 217px;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps.iconsonly,
-.drawer .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps.iconsonly {
-    top: 88px;
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly,
+.drawer .block_ludifica .tabranking.showranking.iconsonly {
+    /* stylelint-disable-next-line declaration-no-important */
+    top: 184px !important;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps .card-body,
-.drawer .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps .card-body,
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps .card-body .list-group-item,
-.drawer .block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps .card-body .list-group-item {
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.incourse,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.incourse,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.incourse,
+.drawer .block_ludifica .tabranking.showranking.incourse {
+    top: 279px;
+}
+
+[data-region="blocks-column"] .block_ludifica-tabs.incourse,
+.drawer .block_ludifica-tabs.incourse {
+    max-width: 250px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body,
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item {
     padding: 10px;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .player_info,
-.drawer .block_ludifica .defaulttemplatev2 .player_info {
+[data-region="blocks-column"] .block_ludifica .player_info,
+.drawer .block_ludifica .player_info {
     flex-wrap: wrap;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .player_info .lateralbar-ludifica,
-.drawer .block_ludifica .defaulttemplatev2 .player_info .lateralbar-ludifica {
+[data-region="blocks-column"] .block_ludifica .player_info .lateralbar-ludifica,
+.drawer .block_ludifica .player_info .lateralbar-ludifica {
     width: 100%;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tabranking.showranking,
-.drawer .block_ludifica .defaulttemplatev2 .tabranking.showranking {
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
+.drawer .block_ludifica .tabranking.showranking {
     padding: 10px;
     width: 90%;
-    top: 230px;
+    top: 216px;
 }
 
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .tabranking.showranking.iconsonly,
-.drawer .block_ludifica .defaulttemplatev2 .tabranking.showranking.iconsonly {
-    top: 180px;
-}
-
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .avatarbust,
-.drawer .block_ludifica .defaulttemplatev2 .avatarbust {
+[data-region="blocks-column"] .block_ludifica .avatarbust,
+.drawer .block_ludifica .avatarbust {
     margin-top: 15px;
 }
 
-.block_ludifica .defaulttemplatev2 .tabranking.showranking {
+.block_ludifica .tabranking.showranking {
     display: block;
     position: absolute;
     top: 100px;
@@ -831,26 +764,21 @@
     }
 }
 
-.block_ludifica .defaulttemplatev2 .tabranking .showtopbysite,
-.block_ludifica .defaulttemplatev2 .tabranking .showtopbycourse,
-.block_ludifica .defaulttemplatev2 .tabranking .showlastmonth,
-.block_ludifica .defaulttemplatev2 .tabranking .closeranking {
+.block_ludifica .tabranking .rankingheader .btn,
+.block_ludifica .closeludifica {
     display: none;
 }
 
-.block_ludifica .defaulttemplatev2 .tabranking.showranking .showtopbysite,
-.block_ludifica .defaulttemplatev2 .tabranking.showranking .showtopbycourse,
-.block_ludifica .defaulttemplatev2 .tabranking.showranking .showlastmonth,
-[data-region="blocks-column"] .block_ludifica .defaulttemplatev2 .rankingheader,
-.drawer .block_ludifica .defaulttemplatev2 .rankingheader,
-.block_ludifica .defaulttemplatev2 .tabranking .rankingheader .closeranking {
+.block_ludifica .tabranking.showranking .rankingheader .btn,
+.block_ludifica .showranking .closeludifica,
+.block_ludifica .showhelps .closeludifica {
     display: block;
 }
 
-.block_ludifica .defaulttemplatev2 .tab-dynamichelps.showhelps {
+.block_ludifica .tab-dynamichelps.showhelps {
     display: block;
     position: absolute;
-    top: 154px;
+    top: 115px;
     right: 16px;
     animation: appearright 0.2s ease-in-out;
     opacity: 1;
@@ -859,10 +787,10 @@
     width: 61%;
     border-radius: 10px 0 0 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
-    z-index: 1;
+    z-index: 2;
 }
 
-.block_ludifica .defaulttemplatev2 .closeranking {
+.block_ludifica .closeludifica {
     position: absolute;
     top: 0;
     right: 0;
@@ -871,7 +799,7 @@
     cursor: pointer;
 }
 
-.block_ludifica .defaulttemplatev2 .closeranking:hover {
+.block_ludifica .closeludifica:hover {
     color: #ff2e00;
 }
 
@@ -886,7 +814,7 @@
     }
 }
 
-.block_ludifica .defaulttemplatev2 .showrankingbutton {
+.block_ludifica .showrankingbutton {
     background-color: #4c4c4c;
     box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
     position: absolute;
@@ -896,27 +824,27 @@
     z-index: 1;
 }
 
-.block_ludifica .defaulttemplatev2 .showhelpsbutton.activebtn,
-.block_ludifica .defaulttemplatev2 .showrankingbutton.activebtn,
-.block_ludifica .defaulttemplatev2 .showrankingbutton.activebtn:hover {
+.block_ludifica .showhelpsbutton.activebtn,
+.block_ludifica .showrankingbutton.activebtn,
+.block_ludifica .showrankingbutton.activebtn:hover {
     background-color: #ff2e00;
 }
 
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabs .icon {
+.block_ludifica .block_ludifica-tabs .icon {
     margin-right: 0;
 }
 
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabs > [data-ref] {
+.block_ludifica .block_ludifica-tabs > [data-ref] {
     padding: 6px 10px 0 10px;
     min-width: 37px;
     min-height: 37px;
-    margin: 3px 5px;
+    margin: 2px 5px;
     border-radius: 1px;
     box-shadow: rgba(100, 100, 111, 0) 0 7px 29px 0;
 }
 
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabs > .active,
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabs > [data-ref]:hover {
+.block_ludifica .block_ludifica-tabs > .active,
+.block_ludifica .block_ludifica-tabs > [data-ref]:hover {
     border-radius: 37px;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     position: relative;
@@ -924,28 +852,27 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.block_ludifica .defaulttemplatev2 .block_ludifica-tabs {
+.block_ludifica .block_ludifica-tabs {
     padding-bottom: 10px;
+    min-width: 200px;
 }
 
 @media screen and (max-width: 700px) {
-    .block_ludifica .defaulttemplatev2 .avatar-box {
+    .block_ludifica .avatar-box {
         width: 100%;
         background-color: #fff;
     }
 
-    .block_ludifica .defaulttemplatev2 .userbadges-ludifica {
+    .block_ludifica .userbadges-ludifica {
         justify-content: space-around;
         padding: 0 50px;
     }
 
-    .block_ludifica .defaulttemplatev2 .lateralbar-ludifica {
+    .block_ludifica .lateralbar-ludifica {
         margin-top: 67px;
     }
 
-    .block_ludifica .defaulttemplatev2 .showhelpsbutton {
+    .block_ludifica .showhelpsbutton {
         margin-right: -15px;
     }
 }
-
-/* End of default template v2 */
