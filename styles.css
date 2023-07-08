@@ -461,7 +461,7 @@
     margin-top: 20px;
 }
 
-.userbadges-ludifica .btn {
+.userbadges-ludifica .onebadge + .btn {
     background-color: #4c4c4c;
     width: 100%;
     color: #fff;
