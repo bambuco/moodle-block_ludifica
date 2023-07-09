@@ -639,8 +639,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-/* Default template v2 */
-
 [data-region="blocks-column"] .block_ludifica .avatar-box,
 .drawer .block_ludifica .avatar-box {
     width: 100%;
@@ -856,6 +854,63 @@
     padding-bottom: 10px;
     min-width: 200px;
 }
+
+#page-blocks-ludifica-tickets .alertc-control .close,
+#page-blocks-ludifica-avatars .alertc-control .close,
+#page-blocks-ludifica-badges .alertc-control .close {
+    display: none;
+}
+
+#page-blocks-ludifica-tickets .alertc-control,
+#page-blocks-ludifica-avatars .alertc-control,
+#page-blocks-ludifica-badges .alertc-control {
+    position: fixed;
+    border: none;
+    top: 20%;
+}
+
+#page-blocks-ludifica-tickets .alertc-control > div,
+#page-blocks-ludifica-avatars .alertc-control > div,
+#page-blocks-ludifica-badges .alertc-control > div {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 70px 0;
+    box-shadow: 0 0 14px #0f1c37;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+    opacity: 0.95;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-success,
+#page-blocks-ludifica-avatars .alertc-control .alert-success,
+#page-blocks-ludifica-badges .alertc-control .alert-success {
+    background-color: #23ce6b;
+    color: #126936;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-danger,
+#page-blocks-ludifica-avatars .alertc-control .alert-danger,
+#page-blocks-ludifica-badges .alertc-control .alert-danger {
+    background-color: #e84855;
+    color: #7f1019;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-secondary,
+#page-blocks-ludifica-avatars .alertc-control .alert-secondary,
+#page-blocks-ludifica-badges .alertc-control .alert-secondary {
+    background-color: #68b0ab;
+    color: #315e5b;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-warning,
+#page-blocks-ludifica-avatars .alertc-control .alert-warning,
+#page-blocks-ludifica-badges .alertc-control .alert-warning {
+    background-color: #e59428;
+    color: #7e4e0f;
+}
+
 
 @media screen and (max-width: 700px) {
     .block_ludifica .avatar-box {
