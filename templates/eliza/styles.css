@@ -314,9 +314,9 @@
 
 .block_ludifica .tab-dynamichelps.showhelps .card strong,
 .closeludifica,
-.ludifica_stats > h2:hover a{
+.ludifica_stats > h2:hover a {
     /* stylelint-disable-next-line declaration-no-important */
-    color: #2d3351 !important;;
+    color: #2d3351 !important;
 }
 
 .block_ludifica .tab-dynamichelps.showhelps .card-body {
@@ -461,7 +461,7 @@
 
 [data-region="blocks-column"] .block_ludifica .avatar-box,
 .drawer .block_ludifica .avatar-box {
-   background: none;
+    background: none;
 }
 
 [data-region="blocks-column"] .ludificalevel,
@@ -528,6 +528,7 @@
 .drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
 [data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly.incourse,
 .drawer .block_ludifica .tabranking.showranking.iconsonly.incourse {
+    /* stylelint-disable-next-line declaration-no-important */
     top: 242px !important;
 }
 

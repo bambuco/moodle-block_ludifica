@@ -128,7 +128,7 @@ class block_ludifica extends block_base {
         if ($this->page->course->id == SITEID && ($key = array_search('topbycourse', $tabs)) !== false) {
             unset($tabs[$key]);
         }
-        
+
         $html = '';
 
         // Check we are not trying to load guest's player profile.
