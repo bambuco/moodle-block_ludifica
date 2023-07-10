@@ -486,12 +486,12 @@
 
 [data-region="blocks-column"] .ludifica_stats > h2,
 .drawer .ludifica_stats > h2 {
-    top: 215px;
+    top: 255px;
 }
 
 [data-region="blocks-column"] .ludifica_stats > div,
 .drawer .ludifica_stats > div {
-    top: 320px;
+    top: 357px;
 }
 
 [data-region="blocks-column"] .ludifica_stats.iconsonly > h2,
@@ -506,12 +506,12 @@
 
 [data-region="blocks-column"] .ludifica_stats.incourse > h2,
 .drawer .ludifica_stats.incourse > h2 {
-    top: 275px;
+    top: 321px;
 }
 
 [data-region="blocks-column"] .ludifica_stats.incourse > div,
 .drawer .ludifica_stats.incourse > div {
-    top: 380px;
+    top: 425px;
 }
 
 [data-region="blocks-column"] .ludifica_stats.incourse.iconsonly > h2,
@@ -524,12 +524,44 @@
     top: 340px;
 }
 
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
+.drawer .block_ludifica .tabranking.showranking {
+    top: 257px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .tab-dynamichelps.showhelps {
+    top: 258px
+}
+
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
 .drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
 [data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly.incourse,
 .drawer .block_ludifica .tabranking.showranking.iconsonly.incourse {
     /* stylelint-disable-next-line declaration-no-important */
     top: 242px !important;
+}
+
+[data-region="blocks-column"] .block_ludifica-tabs,
+.drawer .block_ludifica-tabs {
+    min-height: 143px;
+    align-items: center;
+}
+
+[data-region="blocks-column"] .block_ludifica-tabs.iconsonly,
+[data-region="blocks-column"] .block_ludifica-tabs.iconsonly.incourse,
+.drawer .block_ludifica-tabs.iconsonly,
+.drawer .block_ludifica-tabs.iconsonly.incourse {
+    min-height: auto;
+}
+
+[data-region="blocks-column"] .block_ludifica-tabs.incourse,
+.drawer .block_ludifica-tabs.incourse {
+    min-height: 184px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.incourse, .drawer .block_ludifica .tab-dynamichelps.showhelps.incourse, [data-region="blocks-column"] .block_ludifica .tabranking.showranking.incourse, .drawer .block_ludifica .tabranking.showranking.incourse {
+    top: 324px;
 }
 
 [data-region="blocks-column"] .block_ludifica .eliza-btns,
