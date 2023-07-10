@@ -531,7 +531,7 @@
 
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
 .drawer .block_ludifica .tab-dynamichelps.showhelps {
-    top: 258px
+    top: 258px;
 }
 
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
