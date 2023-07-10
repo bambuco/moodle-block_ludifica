@@ -560,7 +560,10 @@
     min-height: 184px;
 }
 
-[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.incourse, .drawer .block_ludifica .tab-dynamichelps.showhelps.incourse, [data-region="blocks-column"] .block_ludifica .tabranking.showranking.incourse, .drawer .block_ludifica .tabranking.showranking.incourse {
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.incourse,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.incourse,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.incourse,
+.drawer .block_ludifica .tabranking.showranking.incourse {
     top: 324px;
 }
 
