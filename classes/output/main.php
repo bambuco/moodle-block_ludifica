@@ -94,11 +94,11 @@ class main implements renderable, templatable {
         $helpvars = new \stdClass();
 
         // Fields not used in help.
-        $notusedpropeties = ['levels'];
+        $notusedproperties = ['emailvalidpattern', 'emailinvalidpattern', 'levels', 'networks', 'templatetype', 'tabview'];
 
         foreach ($globalconfig as $key => $val) {
 
-            if (in_array($key, $notusedpropeties)) {
+            if (in_array($key, $notusedproperties)) {
                 continue;
             }
 
@@ -199,6 +199,8 @@ class main implements renderable, templatable {
         $avataricon = $OUTPUT->image_url('avatar', 'block_ludifica')->out();
         $badgeicon = $OUTPUT->image_url('award', 'block_ludifica')->out();
 
+        $homeurl = $globalconfig->homeurl;
+
         $defaultvariables = [
             'uniqueid' => $uniqueid,
             'hastabs' => count($this->tabs) > 1,
@@ -223,7 +225,9 @@ class main implements renderable, templatable {
             'showicon' => \block_ludifica\controller::show_tabicon(),
             'showtext' => \block_ludifica\controller::show_tabtext(),
             'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext(),
-            'incourse' => $COURSE->id !== SITEID ? 'incourse' : ''
+            'incourse' => $COURSE->id !== SITEID ? 'incourse' : '',
+            'hashomeurl' => !empty($homeurl),
+            'homeurl' => $homeurl,
         ];
 
         if (in_array('profile', $this->tabs)) {

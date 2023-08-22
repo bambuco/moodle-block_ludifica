@@ -126,6 +126,8 @@ class tickets implements renderable, templatable {
 
         $uniqueid = \block_ludifica\controller::get_uniqueid();
 
+        $homeurl = get_config('block_ludifica', 'homeurl');
+
         $defaultvariables = [
             'uniqueid' => $uniqueid,
             'tickets' => array_values($this->tickets),
@@ -135,7 +137,9 @@ class tickets implements renderable, templatable {
             'sesskey' => sesskey(),
             'player' => $player->get_profile(),
             'layouttickets' => true,
-            'myprofile' => true
+            'myprofile' => true,
+            'hashomeurl' => !empty($homeurl),
+            'homeurl' => $homeurl,
         ];
 
         return $defaultvariables;

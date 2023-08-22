@@ -36,11 +36,15 @@ to complete the installation from the command line.
 - **Powered by:** BambuCo
 
 ## IN VERSION ##
+2021031213:
+- New home URL setting
+
 2021031212:
 - Multitenan support
 
 2021031211:
 - New default and eliza template
+- New setting: hide tabs
 
 2021031208:
 Improve criteria to assign badges:

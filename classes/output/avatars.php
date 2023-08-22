@@ -95,6 +95,8 @@ class avatars implements renderable, templatable {
 
         $uniqueid = \block_ludifica\controller::get_uniqueid();
 
+        $homeurl = get_config('block_ludifica', 'homeurl');
+
         $defaultvariables = [
             'uniqueid' => $uniqueid,
             'avatars' => array_values($this->avatars),
@@ -104,7 +106,9 @@ class avatars implements renderable, templatable {
             'sesskey' => sesskey(),
             'player' => $player->get_profile(),
             'layoutavatars' => true,
-            'myprofile' => true
+            'myprofile' => true,
+            'hashomeurl' => !empty($homeurl),
+            'homeurl' => $homeurl,
         ];
 
         return $defaultvariables;

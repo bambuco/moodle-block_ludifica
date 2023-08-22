@@ -132,6 +132,8 @@ class badges implements renderable, templatable {
             }
         }
 
+        $homeurl = get_config('block_ludifica', 'homeurl');
+
         $defaultvariables = [
             'uniqueid' => $uniqueid,
             'baseurl' => $CFG->wwwroot,
@@ -141,7 +143,9 @@ class badges implements renderable, templatable {
             'player' => $player->get_profile(),
             'layoutbadges' => true,
             'badges' => $badges,
-            'myprofile' => true
+            'myprofile' => true,
+            'hashomeurl' => !empty($homeurl),
+            'homeurl' => $homeurl,
         ];
 
         return $defaultvariables;

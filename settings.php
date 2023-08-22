@@ -227,6 +227,12 @@ if ($ADMIN->fulltree) {
     $help = get_string('tabview_help', 'block_ludifica');
     $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
     $generalsettings->add($setting);
+
+    $name = 'block_ludifica/homeurl';
+    $title = get_string('homeurl', 'block_ludifica');
+    $help = get_string('homeurl_help', 'block_ludifica');
+    $setting = new admin_setting_configtext($name, $title, $help, $CFG->wwwroot, PARAM_URL);
+    $generalsettings->add($setting);
 }
 
 $settings->add('block_ludifica_settings', $generalsettings);
