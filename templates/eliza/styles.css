@@ -90,7 +90,6 @@
 }
 
 .block_ludifica .showrankingbutton {
-    position: inherit;
     font-size: 20px;
     background-color: #3db1d1;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
@@ -107,12 +106,17 @@
     position: absolute;
     top: 70px;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    max-width: 300px;
 }
 
 .ludifica_stats > h2,
 .ludifica_stats > div {
     margin-top: 7px;
-    background-color: #2d3351;
+    background-color: #2d3351aa;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
@@ -121,7 +125,6 @@
 
 .ludifica_stats > h2 {
     top: 90px;
-    max-width: 196px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -184,7 +187,7 @@
 }
 
 .ludificalevel {
-    background-color: #2d3351;
+    background-color: #2d3351cc;
     color: #3db1d1;
     position: absolute;
     transform: rotate(-90deg);
@@ -218,14 +221,11 @@
     animation: appearright_eliza 0.2s ease-in-out;
     right: 16px;
     left: inherit;
+    top: 80px;
     width: 75%;
     padding-left: 21%;
     border-radius: 0 10px 10px 0;
     box-shadow: 16px 0 17px 0 rgb(0 0 0 / 50%);
-}
-
-.block_ludifica .tabranking.showranking {
-    top: 115px;
 }
 
 .block_ludifica .tabranking.showranking .rankingheader {
@@ -454,34 +454,18 @@
     top: -2px;
 }
 
-@media (max-width: 600px) {
-
-    .ludifica_stats > h2 {
-        top: 126px;
-    }
-
-    .ludifica_stats > div {
-        top: 229px;
-    }
-
-    .block_ludifica .eliza-btns {
-        top: 293px;
-    }
-
-    .ludifica-page.block_ludifica .eliza-btns {
-        /* stylelint-disable-next-line declaration-no-important */
-        right: 15px !important;
-    }
-}
-
 [data-region="blocks-column"] .block_ludifica .avatar-box,
 .drawer .block_ludifica .avatar-box {
     background: none;
+    padding: 0;
 }
 
 [data-region="blocks-column"] .ludificalevel,
 .drawer .ludificalevel {
-    margin-right: -33px;
+    top: 130px;
+    padding: 5px;
+    width: auto;
+    left: 5px;
 }
 
 [data-region="blocks-column"] .block_ludifica .avatar-box > div,
@@ -490,62 +474,19 @@
     flex-direction: row;
 }
 
-[data-region="blocks-column"] .ludifica_stats > h2,
-.drawer .ludifica_stats > h2 {
-    top: 70px;
+[data-region="blocks-column"] .ludifica_stats,
+.drawer .ludifica_stats {
+    position: unset;
+    max-width: unset;
+    align-items: center;
 }
 
+[data-region="blocks-column"] .ludifica_stats > h2,
+.drawer .ludifica_stats > h2,
 [data-region="blocks-column"] .ludifica_stats > div,
 .drawer .ludifica_stats > div {
-    top: 170px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.iconsonly > h2,
-.drawer .ludifica_stats.iconsonly > h2 {
-    top: 175px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.iconsonly > div,
-.drawer .ludifica_stats.iconsonly > div {
-    top: 280px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.incourse > h2,
-.drawer .ludifica_stats.incourse > h2 {
-    top: 321px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.incourse > div,
-.drawer .ludifica_stats.incourse > div {
-    top: 425px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.incourse.iconsonly > h2,
-.drawer .ludifica_stats.incourse.iconsonly > h2 {
-    top: 235px;
-}
-
-[data-region="blocks-column"] .ludifica_stats.incourse.iconsonly > div,
-.drawer .ludifica_stats.incourse.iconsonly > div {
-    top: 340px;
-}
-
-[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
-.drawer .block_ludifica .tabranking.showranking {
-    top: 257px;
-}
-
-[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
-.drawer .block_ludifica .tab-dynamichelps.showhelps {
-    top: 258px;
-}
-
-[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
-.drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly.incourse,
-[data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly.incourse,
-.drawer .block_ludifica .tabranking.showranking.iconsonly.incourse {
-    /* stylelint-disable-next-line declaration-no-important */
-    top: 242px !important;
+    max-width: unset;
+    margin-bottom: 10px;
 }
 
 [data-region="blocks-column"] .block_ludifica-tabs,
@@ -583,20 +524,21 @@
 
 [data-region="blocks-column"] .block_ludifica .eliza-btns,
 .drawer .block_ludifica .eliza-btns {
+    position: unset;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    margin-top: 45px;
+    justify-content: space-around;
 }
 
 [data-region="blocks-column"] .block_ludifica .player_info,
 .drawer .block_ludifica .player_info {
-    min-height: 575px;
+    min-height: 250px;
 }
 
 [data-region="blocks-column"] .block_ludifica .tab-profile,
 .drawer .block_ludifica .tab-profile {
-    background-position-y: calc(50% - 110px);
+    background-position: center top;
     position: relative;
 }
 
@@ -933,4 +875,59 @@
 
 .ludifica-page.block_ludifica .eliza-btns {
     right: 85px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .block_ludifica .ludifica_stats {
+        position: unset;
+        max-width: unset;
+        align-items: center;
+    }
+
+    .block_ludifica .ludifica_stats > div,
+    .block_ludifica .ludifica_stats > h2 {
+        max-width: unset;
+    }
+
+    .block_ludifica .userbadges-ludifica {
+        position: unset;
+    }
+
+    .block_ludifica .eliza-btns {
+        position: unset;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .block_ludifica .player_info {
+        min-height: 250px;
+    }
+
+    .ludifica-page.block_ludifica .eliza-btns {
+        /* stylelint-disable-next-line declaration-no-important */
+        right: 15px !important;
+    }
+
+    .block_ludifica .ludificalevel {
+        /*transform: rotate(0);
+        margin-left: 0;
+        top: 208px;
+        right: 0;
+        left: 0;
+        width: unset;*/
+        top: 130px;
+        padding: 5px;
+        width: auto;
+        left: 5px;
+    }
+
+    .block_ludifica .tab-dynamichelps.showhelps,
+    .block_ludifica .tabranking.showranking {
+        width: 100%;
+        background: linear-gradient(90deg, rgba(61, 177, 209, 0.8) 0%, rgba(61, 177, 209, 1) 40%);
+        padding-left: 20px;
+    }
 }

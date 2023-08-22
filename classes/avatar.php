@@ -94,7 +94,7 @@ class avatar extends entity {
             $uri = str_replace('{levelname}', $level < count($levels) ? $levels[$level]->name : '', $uri);
         }
 
-        return $uri;
+        return trim($uri);
     }
 
     /**

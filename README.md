@@ -1,4 +1,4 @@
-# BLOCK Ludifica #
+# Moodle block Ludifica #
 
 A block to implement a gamification strategy in site level.
 
@@ -29,13 +29,28 @@ Alternatively, you can run
 
 to complete the installation from the command line.
 
-## ABOUT ##
+## Example avatars ##
+
+An avatar package for three levels is delivered by default. To use it you can configure the avatar URLs as follows:
+
+    https://ludifica.bambuco.co/avatars/idea/1.png
+    https://ludifica.bambuco.co/avatars/idea/2.png
+    https://ludifica.bambuco.co/avatars/idea/3.png
+
+Additionally, you can download the bust from the following URL:
+
+    https://ludifica.bambuco.co/avatars/idea/bust.png
+
+These images are delivered under a [Creative commins - Attribution license](https://creativecommons.org/licenses/by/4.0/)
+and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalus/)
+
+## About ##
 - **Developed by:** David Herney - david dot bernal at bambuco dot co
 - **GIT:** https://github.com/bambuco/moodle-block_ludifica
 - **Documentation:** https://bambuco.co/ludifica/
-- **Powered by:** BambuCo
+- **Powered by:** [BambuCo](https://bambuco.co/)
 
-## IN VERSION ##
+## In version ##
 2021031213:
 - New home URL setting
 
