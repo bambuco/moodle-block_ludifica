@@ -140,8 +140,10 @@ class player extends entity {
         if ($this->data->avatar) {
             $avatar = new avatar($this->data->avatar);
             $info->avatarurl = $avatar->get_uri($info->level->index);
+            $info->avatarbust = $avatar->get_busturi();
         } else {
             $info->avatarurl = avatar::default_avatar();
+            $info->avatarbust = $info->avatarurl;
         }
 
         return $info;

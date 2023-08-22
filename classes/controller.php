@@ -47,6 +47,16 @@ class controller {
     private static $levels = null;
 
     /**
+     * @var bool True if show icons in tabs views.
+     */
+    private static $showicons = null;
+
+    /**
+     * @var bool True if show text in tabs views.
+     */
+    private static $showtext = null;
+
+    /**
      * Add points to player profile when complete a course.
      *
      * @param int $userid
@@ -591,6 +601,35 @@ class controller {
     }
 
     /**
+     * Get avatar id for a user.
+     *
+     * @param int $userid
+     * @return void
+     */
+    public static function get_avatar_id($userid) {
+        global $DB;
+
+        $records = $DB->get_record('block_ludifica_general', array('userid' => $userid));
+        if (!empty($records)) {
+            return $records->avatarid;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Get user profile URL.
+     *
+     * @param int $userid Get user id.
+     * @return \moodle_url User profile URL.
+     */
+    public static function user_profile_url($userid) {
+        global $CFG;
+
+        return new \moodle_url($CFG->wwwroot . '/user/view.php', array('id' => $userid));
+    }
+
+    /**
      * Process a list of users for general display.
      *
      * @param array $records Users list.
@@ -608,6 +647,16 @@ class controller {
             $k++;
 
             $record->position = $k;
+            $record->profileurl = self::user_profile_url($record->id)->out();
+            $avatarid = self::get_avatar_id($record->id);
+
+            if (!empty($avatarid)) {
+                $avatar = new \block_ludifica\avatar($avatarid);
+                $record->avatarprofile = $avatar->get_busturi();
+            } else {
+                $record->avatarprofile = avatar::default_avatar();
+            }
+
             $list[] = $record;
 
             if ($record->id == $USER->id) {
@@ -908,6 +957,61 @@ class controller {
                 $criteria->{$method}($event);
             }
         }
+    }
 
+    /**
+     * Get the icont list for views tabs.
+     *
+     * @return array The icons list.
+     */
+    public static function get_views_icons() : array {
+
+        $icons = [
+            'profile' => 'i/completion_self',
+            'topbycourse' => 't/sort_by',
+            'topbysite' => 't/award',
+            'lastmonth' => 'e/insert_date',
+            'dynamichelps' => 'docs'
+        ];
+
+        return $icons;
+    }
+
+    /**
+     * Define if show icons in tabs views.
+     *
+     * @return bool If show icons.
+     */
+    public static function show_tabicon() : bool {
+
+        if (self::$showicons !== null) {
+            return self::$showicons;
+        }
+
+        // Tabs config view.
+        $tabview = get_config('block_ludifica', 'tabview');
+
+        self::$showicons = !empty($tabview) ? $tabview !== 'showtext' : false;
+
+        return self::$showicons;
+    }
+
+    /**
+     * Define if show the text in tabs views.
+     *
+     * @return bool If show the text.
+     */
+    public static function show_tabtext() : bool {
+
+        if (self::$showtext !== null) {
+            return self::$showtext;
+        }
+
+        // Tabs config view.
+        $tabview = get_config('block_ludifica', 'tabview');
+
+        self::$showtext = !empty($tabview) ? $tabview !== 'showicon' : false;
+
+        return self::$showtext;
     }
 }

@@ -197,7 +197,7 @@ if ($ADMIN->fulltree) {
     $generalsettings->add($setting);
 
      // Template type.
-    $options = ['default' => ''];
+    $options = ['default' => get_string('none')];
 
     $path = $CFG->dirroot . '/blocks/ludifica/templates/';
     $files = array_diff(scandir($path), array('..', '.'));
@@ -211,6 +211,19 @@ if ($ADMIN->fulltree) {
     $name = 'block_ludifica/templatetype';
     $title = get_string('templatetype', 'block_ludifica');
     $help = get_string('templatetype_help', 'block_ludifica');
+    $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
+    $generalsettings->add($setting);
+
+    // Tabs view.
+    $options = [
+        'default' => get_string('textandicon', 'block_ludifica'),
+        'showtext' => get_string('showtext', 'block_ludifica'),
+        'showicon' => get_string('showicon', 'block_ludifica')
+    ];
+
+    $name = 'block_ludifica/tabview';
+    $title = get_string('tabview', 'block_ludifica');
+    $help = get_string('tabview_help', 'block_ludifica');
     $setting = new admin_setting_configselect($name, $title, $help, 'default', $options);
     $generalsettings->add($setting);
 }

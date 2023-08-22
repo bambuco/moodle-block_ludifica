@@ -27,6 +27,8 @@ function($, str, ModalFactory, Alertc, Log) {
     // Load strings.
     var strings = [];
     strings.push({key: 'badgelinkcopiedtoclipboard', component: 'block_ludifica'});
+    strings.push({key: 'showranking', component: 'block_ludifica'});
+    strings.push({key: 'hideranking', component: 'block_ludifica'});
 
     var s = [];
 
@@ -137,7 +139,7 @@ function($, str, ModalFactory, Alertc, Log) {
 
                     $tab.on('click', function() {
                         tabslist.forEach(one => {
-                            $(one.data('ref')).removeClass('active');
+                            $(one.data('ref')).removeClass('active showranking');
                         });
 
                         $tabs.find('.active[data-ref]').removeClass('active');
@@ -161,7 +163,115 @@ function($, str, ModalFactory, Alertc, Log) {
                         });
                     });
                 });
+            });
 
+            // Show ranking.
+            $blockcontent.find('.showrankingbutton').each(function() {
+
+                var isRankingShown = false;
+                var $rankingbutton = $(this);
+
+                $rankingbutton.on('click', function(e) {
+                    e.stopPropagation();
+
+                    if (!isRankingShown) {
+
+                        $blockcontent.find('.tab-topbysite').addClass('showranking');
+                        $rankingbutton.addClass('activebtn');
+                        $rankingbutton.text(s['hideranking']);
+
+                    } else {
+                        $blockcontent.find('.tabranking').removeClass('showranking');
+                        $rankingbutton.removeClass('activebtn');
+                        $rankingbutton.text(s['showranking']);
+                    }
+
+                    $blockcontent.find('.closeludifica').on('click', function() {
+                        $blockcontent.find('.showranking').removeClass('showranking');
+                        $blockcontent.find('.showrankingbutton').removeClass('activebtn');
+                        $blockcontent.find('.showrankingbutton').text(s['showranking']);
+                        isRankingShown = false;
+                    });
+
+                    isRankingShown = !isRankingShown;
+                });
+
+                $(document).on('click', function(e) {
+                    var container = $blockcontent.find('.tabranking');
+
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        if (isRankingShown) {
+                            $blockcontent.find('.showranking').removeClass('showranking');
+                            $blockcontent.find('.showrankingbutton').removeClass('activebtn');
+                            $blockcontent.find('.showrankingbutton').text(s['showranking']);
+                        }
+                        isRankingShown = false;
+                    }
+                });
+
+                $blockcontent.find('.showtopbysite').on('click', function() {
+                    $blockcontent.find('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-topbysite').addClass('showranking');
+                });
+
+                $blockcontent.find('.showtopbycourse').on('click', function() {
+                    $blockcontent.find('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-topbycourse').addClass('showranking');
+                });
+
+                $blockcontent.find('.showlastmonth').on('click', function() {
+                    $blockcontent.find('.tabranking').removeClass('showranking');
+                    $blockcontent.find('.tab-lastmonth').addClass('showranking');
+                });
+
+            });
+
+            // Show helps
+            $blockcontent.find('.showhelpsbutton').each(function() {
+
+                var isHelpShown = false;
+                var $helpbutton = $(this);
+
+                $helpbutton.on('click', function(e) {
+                    e.stopPropagation();
+
+                    if (!isHelpShown) {
+                        $blockcontent.find('.tab-dynamichelps').addClass('showhelps');
+                        $(this).addClass('activebtn');
+                        $(this).find('.pix-initial').hide();
+                        $(this).find('.pix-toggle').show();
+                    } else {
+                        $blockcontent.find('.tab-dynamichelps').removeClass('showhelps');
+                        $(this).removeClass('activebtn');
+                        $(this).find('.pix-initial').show();
+                        $(this).find('.pix-toggle').hide();
+                    }
+
+                    $blockcontent.find('.closeludifica').on('click', function() {
+                        $('.showhelps').removeClass('showhelps');
+                        $('.showhelpsbutton').removeClass('activebtn');
+                        $('.showhelpsbutton').find('.pix-initial').show();
+                        $('.showhelpsbutton').find('.pix-toggle').hide();
+                        isHelpShown = false;
+                    });
+
+                    isHelpShown = !isHelpShown;
+                });
+
+                $(document).on('click', function(e) {
+                    var container = $('.tab-dynamichelps');
+
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        if (isHelpShown) {
+                            $('.showhelps').removeClass('showhelps');
+                            $('.showhelpsbutton').removeClass('activebtn');
+                            $('.showhelpsbutton').find('.pix-initial').show();
+                            $('.showhelpsbutton').find('.pix-toggle').hide();
+                        }
+
+                        isHelpShown = false;
+                    }
+                });
             });
         });
 

@@ -44,15 +44,30 @@ class block_ludifica_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_title', get_string('customtitle', 'block_ludifica'));
         $mform->setType('config_title', PARAM_TEXT);
 
-        $mform->addElement('checkbox', 'config_tabprofile', get_string('tabprofile', 'block_ludifica'));
+        // Tabs.
+        $options = [
+            '0' => get_string('no'),
+            '1' => get_string('yes'),
+        ];
 
-        $mform->addElement('checkbox', 'config_tabtopbycourse', get_string('tabtopbycourse', 'block_ludifica'));
+        $mform->addElement('select', 'config_tabprofile', get_string('tabprofile', 'block_ludifica'), $options);
+        $mform->setDefault('config_tabprofile', 1);
+        $mform->addHelpButton('config_tabprofile', 'tabprofile', 'block_ludifica');
 
-        $mform->addElement('checkbox', 'config_tabtopbysite', get_string('tabtopbysite', 'block_ludifica'));
+        $mform->addElement('select', 'config_tabtopbysite', get_string('tabtopbysite', 'block_ludifica'), $options);
+        $mform->setDefault('config_tabtopbysite', 1);
 
-        $mform->addElement('checkbox', 'config_tablastmonth', get_string('tablastmonth', 'block_ludifica'));
+        if ($this->page->course->id != SITEID) {
 
-        $mform->addElement('checkbox', 'config_dynamichelps', get_string('dynamichelps', 'block_ludifica'));
+            $mform->addElement('select', 'config_tabtopbycourse', get_string('tabtopbycourse', 'block_ludifica'), $options);
+            $mform->setDefault('config_tabtopbycourse', 1);
+        }
+
+        $mform->addElement('select', 'config_tablastmonth', get_string('tablastmonth', 'block_ludifica'), $options);
+        $mform->setDefault('config_tablastmonth', 1);
+
+        $mform->addElement('select', 'config_dynamichelps', get_string('dynamichelps', 'block_ludifica'), $options);
+        $mform->setDefault('config_dynamichelps', 1);
 
         $coursemodules = \block_ludifica\controller::get_coursemodules();
 

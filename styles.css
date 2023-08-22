@@ -1,6 +1,13 @@
+.block_ludifica .block_ludifica-content,
+.block_ludifica .block_ludifica-content a,
+.block_ludifica .block_ludifica-content a:hover {
+    color: #4c4c4c;
+}
+
 .block_ludifica .player_info {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-height: 654px;
 }
 
 .block_ludifica .player_info h3 {
@@ -166,9 +173,10 @@
 
 .block_ludifica .avatar-box {
     text-align: center;
-    min-width: 40%;
-    width: 100%;
-    margin-top: 50px;
+    width: 40%;
+    margin: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 100%);
+    padding: 20px 50px 0 0;
 }
 
 .block_ludifica .avatar-box.MD {
@@ -180,45 +188,7 @@
     max-width: 100%;
 }
 
-.block_ludifica .tickets-box > div,
-.block_ludifica .badges-box > div {
-    display: flex;
-}
-
-.block_ludifica .tickets-box .oneticket {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid;
-    margin: 5px;
-}
-
-.block_ludifica .badges-box .onebadge {
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    position: relative;
-    margin: 5px;
-}
-
-.block_ludifica .tickets-box .oneticket img,
-.block_ludifica .badges-box .onebadge img {
-    width: 100%;
-}
-
-.block_ludifica .tickets-box .oneticket .count {
-    position: absolute;
-    bottom: 3px;
-    right: 3px;
-    background-color: rgba(8, 8, 8, 0.7);
-    border-radius: 10px;
-    padding: 0 7px;
-    font-size: 12px;
-    color: #fff;
-}
-
-.block_ludifica .block_ludifica-tabs i {
+.block_ludifica-tabs i {
     font-size: 20px;
 }
 
@@ -247,7 +217,7 @@
 }
 
 .block_ludifica-tabcontent {
-    padding: 10px 0;
+    padding: 0;
     display: none;
 }
 
@@ -288,16 +258,17 @@
 /* End Store */
 
 /* Ranking tables */
-.block_ludifica-tabcontent .generaltable {
-    font-size: 12px;
+.block_ludifica-tabcontent .generaltable td {
+    border: none;
+    font-size: 14px;
 }
 
 .block_ludifica-tabcontent .numeric-cel {
-    text-align: right;
+    text-align: left;
 }
 
-.block_ludifica-tabcontent .current-user {
-    background-color: bisque;
+.block_ludifica-tabcontent.tabranking .generaltable .current-user {
+    background-color: #e9ecef;
 }
 /* End Ranking tables */
 
@@ -311,21 +282,22 @@
 
 /* Dynamic help */
 
-.pointsinfo {
+.block_ludifica .pointsinfo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 15px;
 }
 
-.pointsinfo .icon {
+.block_ludifica .pointsinfo .icon {
     font-size: 2em;
 }
 
-.pointsinfo .card-text > ul > li > img {
+.block_ludifica .pointsinfo .card-text > ul > li > img {
     margin-right: 9px;
 }
 
-.pointsinfo .fa {
+.block_ludifica .pointsinfo .fa {
     margin-right: 26px;
 }
 
@@ -469,3 +441,493 @@
     color: #fff;
 }
 /* End of Local badges admin */
+
+.ludifica_stats > div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    color: #4c4c4c;
+}
+
+.block_ludifica .onebadge {
+    width: 100px;
+}
+
+.userbadges-ludifica {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.userbadges-ludifica .onebadge + .btn {
+    background-color: #4c4c4c;
+    width: 100%;
+    color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    position: relative;
+}
+
+.userbadges-ludifica .btn:hover,
+.block_ludifica .showhelpsbutton:hover,
+.block_ludifica .showrankingbutton:hover {
+    background-color: #fff;
+    color: #4c4c4c;
+}
+
+.block_ludifica .avatar-box > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block_ludifica .showhelpsbutton {
+    background-color: #4c4c4c;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    padding-left: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    position: relative;
+    z-index: 1;
+}
+
+.block_ludifica .tab-profile {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+
+.block_ludifica .avatarbust {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid #4c4c4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.block_ludifica .avatarbust img,
+.block_ludifica .onebadge img {
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+    transition: transform 0.1s ease;
+}
+
+.block_ludifica .avatarbust a {
+    display: block;
+    width: 100%;
+}
+
+.block_ludifica .onebadge img:hover,
+.block_ludifica .avatarbust img:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    transform: scale(1.1);
+}
+
+.block_ludifica .avatarbust + div + span {
+    font-size: 20px;
+    color: #808080;
+}
+
+.lateralbar-ludifica {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 15px;
+    margin-top: 15px;
+    width: 108px;
+    align-items: center;
+}
+
+.lateralbar-ludifica > div {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    text-align: center;
+    margin-top: 100px;
+    width: 108px;
+}
+
+.lateralbar-ludifica > div span {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    display: block;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #4c4c4c;
+    height: 70px;
+    width: 70px;
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.1s ease;
+    margin-bottom: 7px;
+}
+
+.lateralbar-ludifica > div a:hover > span {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: rgba(50, 50, 93, 0.2) 0 6px 18px -2px, rgba(0, 0, 0, 0.2) 0 3px 15px -3px;
+}
+
+.lateralbar-ludifica > div span i {
+    font-size: 50px;
+    margin-top: 9px;
+    margin-left: -23px;
+}
+
+.lateralbar-ludifica > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block_ludifica .rankingprofile {
+    display: flex;
+    align-items: flex-start;
+}
+
+.block_ludifica .rankingprofile p,
+.block_ludifica .avatarbust img {
+    margin: 0;
+}
+
+.block_ludifica .rankingprofile img {
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #4c4c4c;
+    margin-right: 10px;
+}
+
+.lateralbar-ludifica > div > div,
+.block_ludifica .tabranking > h3 {
+    margin: 15px 0;
+}
+
+.block_ludifica .tabranking .generaltable tr {
+    background-color: #fff;
+}
+
+.block_ludifica .generaltable tr:hover {
+    background-color: #ced4da;
+}
+
+.block_ludifica .rankingheader {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.block_ludifica .rankingheader button {
+    font-size: 12px;
+    padding: 0 9px;
+    height: 30px;
+    min-width: 128px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+}
+
+.block_ludifica .generaltable thead th {
+    font-size: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+[data-region="blocks-column"] .block_ludifica .avatar-box,
+.drawer .block_ludifica .avatar-box {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 0 0 0;
+}
+
+[data-region="blocks-column"] .userbadges-ludifica,
+.drawer .userbadges-ludifica {
+    justify-content: space-around;
+    padding: 0;
+}
+
+[data-region="blocks-column"] .lateralbar-ludifica,
+.drawer .lateralbar-ludifica {
+    position: inherit;
+    margin-top: 0;
+    background-color: #fff;
+}
+
+[data-region="blocks-column"] .lateralbar-ludifica > div,
+.drawer .lateralbar-ludifica > div {
+    display: flex;
+    width: 258px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+[data-region="blocks-column"] .block_ludifica .showrankingbutton,
+.drawer .block_ludifica .showrankingbutton {
+    position: inherit;
+}
+
+[data-region="blocks-column"] .block_ludifica .showhelpsbutton,
+.drawer .block_ludifica .showhelpsbutton {
+    position: relative;
+    z-index: 1;
+    right: -7%;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
+.drawer .block_ludifica .tab-dynamichelps.showhelps {
+    left: 13px;
+    width: 90%;
+    padding: 10px;
+    top: 217px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.iconsonly,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.iconsonly,
+.drawer .block_ludifica .tabranking.showranking.iconsonly {
+    /* stylelint-disable-next-line declaration-no-important */
+    top: 184px !important;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps.incourse,
+.drawer .block_ludifica .tab-dynamichelps.showhelps.incourse,
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking.incourse,
+.drawer .block_ludifica .tabranking.showranking.incourse {
+    top: 279px;
+}
+
+[data-region="blocks-column"] .block_ludifica-tabs.incourse,
+.drawer .block_ludifica-tabs.incourse {
+    max-width: 250px;
+}
+
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body,
+[data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item,
+.drawer .block_ludifica .tab-dynamichelps.showhelps .card-body .list-group-item {
+    padding: 10px;
+}
+
+[data-region="blocks-column"] .block_ludifica .player_info,
+.drawer .block_ludifica .player_info {
+    flex-wrap: wrap;
+}
+
+[data-region="blocks-column"] .lateralbar-ludifica,
+.drawer .lateralbar-ludifica {
+    width: 100%;
+}
+
+[data-region="blocks-column"] .block_ludifica .tabranking.showranking,
+.drawer .block_ludifica .tabranking.showranking {
+    padding: 10px;
+    width: 90%;
+    top: 216px;
+}
+
+[data-region="blocks-column"] .block_ludifica .avatarbust,
+.drawer .block_ludifica .avatarbust {
+    margin-top: 15px;
+}
+
+.block_ludifica .tabranking.showranking {
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 16px;
+    animation: appearleft 0.2s ease-in-out;
+    opacity: 1;
+    background-color: #fff;
+    padding: 20px 20px 20px 40px;
+    width: 61%;
+    border-radius: 0 10px 10px 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    z-index: 1;
+}
+
+@keyframes appearleft {
+    0% {
+        opacity: 0;
+        left: -50px;
+    }
+    100% {
+        opacity: 1;
+        left: 16px;
+    }
+}
+
+.block_ludifica .tabranking .rankingheader .btn {
+    display: none;
+}
+
+.block_ludifica .tabranking.showranking .rankingheader .btn,
+.showranking .closeludifica,
+.showhelps .closeludifica {
+    display: block;
+}
+
+.block_ludifica .tab-dynamichelps.showhelps {
+    display: block;
+    position: absolute;
+    top: 115px;
+    right: 16px;
+    animation: appearright 0.2s ease-in-out;
+    opacity: 1;
+    background-color: #fff;
+    padding: 15px 40px 15px 15px;
+    width: 61%;
+    border-radius: 10px 0 0 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    z-index: 2;
+}
+
+.closeludifica {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    color: #4c4c4c;
+    cursor: pointer;
+    display: none;
+}
+
+.closeludifica:hover {
+    color: #ff2e00;
+}
+
+@keyframes appearright {
+    0% {
+        opacity: 0;
+        right: -50px;
+    }
+    100% {
+        opacity: 1;
+        right: 16px;
+    }
+}
+
+.block_ludifica .showrankingbutton {
+    background-color: #4c4c4c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    position: absolute;
+    color: #fff;
+    font-weight: bolder;
+    right: 16px;
+    z-index: 1;
+}
+
+.block_ludifica .showhelpsbutton.activebtn,
+.block_ludifica .showrankingbutton.activebtn,
+.block_ludifica .showrankingbutton.activebtn:hover {
+    background-color: #ff2e00;
+}
+
+.block_ludifica-tabs .icon {
+    margin-right: 0;
+}
+
+.block_ludifica-tabs > [data-ref] {
+    padding: 6px 10px 0 10px;
+    min-width: 37px;
+    min-height: 37px;
+    margin: 2px 5px;
+    border-radius: 1px;
+    box-shadow: rgba(100, 100, 111, 0) 0 7px 29px 0;
+}
+
+.block_ludifica-tabs > .active,
+.block_ludifica-tabs > [data-ref]:hover {
+    border-radius: 37px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.block_ludifica-tabs {
+    padding-bottom: 10px;
+    min-width: 200px;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .close,
+#page-blocks-ludifica-avatars .alertc-control .close,
+#page-blocks-ludifica-badges .alertc-control .close {
+    display: none;
+}
+
+#page-blocks-ludifica-tickets .alertc-control,
+#page-blocks-ludifica-avatars .alertc-control,
+#page-blocks-ludifica-badges .alertc-control {
+    position: fixed;
+    border: none;
+    top: 20%;
+}
+
+#page-blocks-ludifica-tickets .alertc-control > div,
+#page-blocks-ludifica-avatars .alertc-control > div,
+#page-blocks-ludifica-badges .alertc-control > div {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 70px 0;
+    box-shadow: 0 0 14px #0f1c37;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+    opacity: 0.95;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-success,
+#page-blocks-ludifica-avatars .alertc-control .alert-success,
+#page-blocks-ludifica-badges .alertc-control .alert-success {
+    background-color: #23ce6b;
+    color: #126936;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-danger,
+#page-blocks-ludifica-avatars .alertc-control .alert-danger,
+#page-blocks-ludifica-badges .alertc-control .alert-danger {
+    background-color: #e84855;
+    color: #7f1019;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-secondary,
+#page-blocks-ludifica-avatars .alertc-control .alert-secondary,
+#page-blocks-ludifica-badges .alertc-control .alert-secondary {
+    background-color: #68b0ab;
+    color: #315e5b;
+}
+
+#page-blocks-ludifica-tickets .alertc-control .alert-warning,
+#page-blocks-ludifica-avatars .alertc-control .alert-warning,
+#page-blocks-ludifica-badges .alertc-control .alert-warning {
+    background-color: #e59428;
+    color: #7e4e0f;
+}
+
+
+@media screen and (max-width: 700px) {
+    .block_ludifica .avatar-box {
+        width: 100%;
+        background-color: #fff;
+    }
+
+    .userbadges-ludifica {
+        justify-content: space-around;
+        padding: 0 50px;
+    }
+
+    .lateralbar-ludifica {
+        margin-top: 67px;
+    }
+
+    .block_ludifica .showhelpsbutton {
+        margin-right: -15px;
+    }
+}

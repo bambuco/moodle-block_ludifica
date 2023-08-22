@@ -24,7 +24,7 @@
         "uniqueid": "unique_id_string",
         "player": {
             "fullname": "Pepito Perez",
-            "avatarurl": "https://moodle_wwwroot_url/some_image",
+            "avatarbust": "https://moodle_wwwroot_url/some_image",
             "nickcontent": "Some html with edit control"
         },
         "baseurl": "https://moodle_wwwroot_url"
@@ -35,18 +35,28 @@
 
     {{#myprofile}}
         {{#hastabs}}
-            <div class="block_ludifica-tabs">
+            <div class="block_ludifica-tabs {{incourse}} ">
             {{#tabs}}
                 <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
-                    <i class="fa fa-{{icon}}"></i>
+                    {{#showicon}}
+                        {{{icon}}}
+                    {{/showicon}}
+
+                    {{#showtext}}
+                        <span>{{title}}</span>
+                    {{/showtext}}
                 </div>
             {{/tabs}}
             </div>
         {{/hastabs}}
     {{/myprofile}}
 
+    <div class="dynamichelpscontent">
     {{#hasdynamichelps}}
-    <div class="tab-dynamichelps block_ludifica-tabcontent {{dynamichelpsstate}}">
+    <div class="tab-dynamichelps block_ludifica-tabcontent {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{dynamichelpsstate}}">
+        <div class="closeludifica">
+            {{#pix}} failed, mod_scorm {{/pix}}
+        </div>
         <div class="pointsinfo">
             {{#insitecontext}}
             <div class="card">
@@ -189,53 +199,55 @@
         </div>
     </div>
     {{/hasdynamichelps}}
+    </div>
 
     {{#player}}
-    <div class="tab-profile block_ludifica-tabcontent {{profilestate}}">
+    <div class="tab-profile block_ludifica-tabcontent {{profilestate}}" style="background-image: url('{{avatarurl}}');">
+
         <div class="player_info">
             <div class="avatar-box">
-                <img src="{{avatarurl}}" alt="{{nickname}}" /><br />
-                {{#myprofile}}
-                    <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button><br />
-                    <a href="{{baseurl}}/blocks/ludifica/avatars.php" class="btn btn-secondary">{{#str}} avatars, block_ludifica {{/str}}</a>
-                {{/myprofile}}
-            </div>
-            <div>
                 <div>
-                    <h2>
-                        {{{nickcontent}}}
-                        {{#myprofile}}
-                            <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
-                        {{/myprofile}}
-                    </h2>
+                    <div class="ludifica_stats">
 
-                    {{>block_ludifica/playerstats}}
+                        {{>block_ludifica/playerstats}}
+
+                    </div>
+
+                    {{#myprofile}}
+                    <button class="btn btn-secondary showhelpsbutton">
+                        <span class="pix-initial">{{#pix}} i/info, core {{/pix}}</span>
+                        <span class="pix-toggle" style="display: none;">{{#pix}} failed, mod_scorm {{/pix}}</span>
+                    </button>
+
+                    <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                    {{/myprofile}}
 
                 </div>
-                {{#myprofile}}
-                    <div class="tickets-box">
-                        <h2> {{#str}} tickets, block_ludifica {{/str}} </h2>
-                        <div>
-                        {{#tickets}}
-                            <div class="oneticket">
-                                <img src="{{thumbnail}}" title="{{name}}" />
-                                <div class="count">{{count}}</div>
-                            </div>
-                        {{/tickets}}
-                        {{^tickets}}
-                            <p class="notavailableyet">
-                                {{#str}} notusertickets, block_ludifica {{/str}}
-                            </p>
-                        {{/tickets}}
-                        </div>
+                <div class="avatarbust">
+                <a href="{{baseurl}}/blocks/ludifica/avatars.php">
+                        <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
+                    </a>
+                </div>
+                <div>
+                    <h2>
+
+                        {{{nickcontent}}}
+
                         {{#myprofile}}
-                            <a href="{{baseurl}}/blocks/ludifica/tickets.php" class="btn btn-secondary">{{#str}} tickets, block_ludifica {{/str}}</a>
+                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
                         {{/myprofile}}
-                    </div>
-                {{/myprofile}}
-                <div class="badges-box mt-3">
-                    <h2> {{#str}} badges, block_ludifica {{/str}} </h2>
-                    <div>
+
+                    </h2>
+                </div>
+                    {{#player}}
+                        <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
+                    {{/player}}
+
+                    {{#myprofile}}
+                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button>
+                    {{/myprofile}}
+                    <br />
+                <div class="userbadges-ludifica">
                     {{#badges}}
                         <div class="onebadge">
                             <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}" /></a>
@@ -246,18 +258,42 @@
                             {{#str}} notuserbadges, block_ludifica {{/str}}
                         </p>
                     {{/badges}}
-                    </div>
-                    {{#myprofile}}
-                        <a href="{{baseurl}}/blocks/ludifica/badges.php" class="btn btn-secondary">{{#str}} badges, block_ludifica {{/str}}</a>
-                    {{/myprofile}}
+
+                    {{#morebadges}}
+                        <a class="btn btn-secondary" href="{{baseurl}}/blocks/ludifica/badges.php">{{#str}} allbadges, block_ludifica {{/str}}</a>
+                    {{/morebadges}}
+
                 </div>
             </div>
+            {{#myprofile}}
+            <div class="lateralbar-ludifica">
+                <div>
+                    <div>
+                        <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
+                    </div>
+                    <div>
+                        <a href="{{baseurl}}/blocks/ludifica/avatars.php"><span style = "background-image: url('{{avataricon}}');" class="avatar-ico"></span> {{#str}} avatars, block_ludifica {{/str}}</a>
+
+                    </div>
+                    <div>
+                        <a href="{{baseurl}}/blocks/ludifica/badges.php"><span style = "background-image: url('{{badgeicon}}');" class="badge-ico"></span> {{#str}} badges, block_ludifica {{/str}}</a>
+                    </div>
+                </div>
+            </div>
+            {{/myprofile}}
         </div>
     </div>
     {{/player}}
 
     {{#hastopbycourse}}
-    <div class="tab-topbycourse block_ludifica-tabcontent {{topbycoursestate}}">
+    <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{topbycoursestate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_topbycourse, block_ludifica {{/str}}</h3>
+            <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
+            <div class="closeludifica">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
+        </div>
         {{#hasrowstopbycourse}}
         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right"
         data-content="{{#str}}course-ranking_help, block_ludifica{{/str}}"></button>
@@ -273,7 +309,7 @@
             {{#topbycourse}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbycourse}}
@@ -285,11 +321,27 @@
                 {{#str}} nottopyet, block_ludifica {{/str}}
             </p>
         {{/hasrowstopbycourse}}
+        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right"
+        data-content="{{#str}} course-ranking_help, block_ludifica{{/str}}"></button>
     </div>
     {{/hastopbycourse}}
 
     {{#hastopbysite}}
-    <div class="tab-topbysite block_ludifica-tabcontent {{topbysitestate}}">
+    <div class="tab-topbysite block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{topbysitestate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_topbysite, block_ludifica {{/str}}</h3>
+            {{#hastopbycourse}}
+                <button class="btn btn-secondary showtopbycourse">{{#str}} showtopbycourse, block_ludifica {{/str}}</button>
+            {{/hastopbycourse}}
+
+            {{^hastopbycourse}}
+                <button class="btn btn-secondary showlastmonth">{{#str}} showlastmonth, block_ludifica {{/str}}</button>
+            {{/hastopbycourse}}
+
+            <div class="closeludifica">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
+        </div>
         {{#hasrowstopbysite}}
         <table class="generaltable">
             <thead>
@@ -303,7 +355,7 @@
             {{#topbysite}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbysite}}
@@ -321,7 +373,14 @@
     {{/hastopbysite}}
 
     {{#haslastmonth}}
-    <div class="tab-lastmonth block_ludifica-tabcontent {{lastmonthstate}}">
+    <div class="tab-lastmonth block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{lastmonthstate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_lastmonth, block_ludifica {{/str}}</h3>
+            <button class="btn btn-secondary showtopbysite">{{#str}} showtopbysite, block_ludifica {{/str}}</button>
+            <div class="closeludifica">
+                {{#pix}} failed, mod_scorm {{/pix}}
+            </div>
+        </div>
         {{#hasrowslastmonth}}
         <table class="generaltable">
             <thead>
@@ -335,7 +394,7 @@
             {{#lastmonth}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td>{{nickname}}</td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/lastmonth}}{{thumbnail}}

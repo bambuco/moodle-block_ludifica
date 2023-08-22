@@ -72,19 +72,14 @@ class main implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG, $COURSE, $USER, $OUTPUT, $DB;
 
-        $icons = array('profile' => 'address-card',
-                        'topbycourse' => 'sort-amount-desc',
-                        'topbysite' => 'trophy',
-                        'lastmonth' => 'calendar-check-o',
-                        'dynamichelps' => 'question-circle'
-                    );
+        $icons = \block_ludifica\controller::get_views_icons();
 
-        $showtabs = array();
+        $showtabs = [];
         foreach ($this->tabs as $k => $tab) {
             $one = new \stdClass();
             $one->title = get_string('tabtitle_' . $tab, 'block_ludifica');
             $one->key = $tab;
-            $one->icon = $icons[$tab];
+            $one->icon = $output->image_icon($icons[$tab], $one->title);
             $one->state = $k == 0 ? 'active' : '';
             $showtabs[] = $one;
         }
@@ -193,11 +188,16 @@ class main implements renderable, templatable {
         // Hide buttons when it's not the current public user profile.
         $pubicprofileid = optional_param('id', null, PARAM_INT);
 
-        if ($pubicprofileid === null || $pubicprofileid == $USER->id) {
+        if ($pubicprofileid === null || $pubicprofileid == $USER->id || $COURSE->id !== SITEID) {
             $myprofile = true;
         } else {
             $myprofile = false;
         }
+
+        // Load icons.
+        $ticketicon = $OUTPUT->image_url('ticket', 'block_ludifica')->out();
+        $avataricon = $OUTPUT->image_url('avatar', 'block_ludifica')->out();
+        $badgeicon = $OUTPUT->image_url('award', 'block_ludifica')->out();
 
         $defaultvariables = [
             'uniqueid' => $uniqueid,
@@ -215,7 +215,14 @@ class main implements renderable, templatable {
             'hasranking' => $hasranking,
             'hasduration' => !empty($globalconfig->duration),
             'pointsbycomplete' => $pointsbycomplete,
-            'myprofile' => $myprofile
+            'myprofile' => $myprofile,
+            'ticketicon' => $ticketicon,
+            'avataricon' => $avataricon,
+            'badgeicon' => $badgeicon,
+            'showicon' => \block_ludifica\controller::show_tabicon(),
+            'showtext' => \block_ludifica\controller::show_tabtext(),
+            'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext(),
+            'incourse' => $COURSE->id !== SITEID ? 'incourse' : ''
         ];
 
         if (in_array('profile', $this->tabs)) {
@@ -236,7 +243,16 @@ class main implements renderable, templatable {
                 }
             }
 
-            $defaultvariables['badges'] = $badges;
+            // Only show the first 4 badges.
+            $showbadges = array_slice($badges, 0, 4);
+            $morebadges = false;
+
+            if (count($badges) > 4) {
+                $morebadges = true;
+            }
+
+            $defaultvariables['badges'] = $showbadges;
+            $defaultvariables['morebadges'] = $morebadges;
             // End Get user badges.
 
             $nickname = $this->player->get_nickname();

@@ -100,33 +100,33 @@ class block_ludifica extends block_base {
         $this->content->text = '';
         $this->content->footer = '';
 
-        $tabs = array();
+        $tabs = [];
 
         if (isset($this->config) && is_object($this->config)) {
-            // Profile tab is printed by default if not exists the configuration parameter.
-            if (property_exists($this->config, 'tabprofile') && $this->config->tabprofile) {
-                $tabs[] = 'profile';
-            }
 
-            if ($this->page->course->id != SITEID
-                    && property_exists($this->config, 'tabtopbycourse')
-                    && $this->config->tabtopbycourse) {
-                $tabs[] = 'topbycourse';
-            }
+            $tabstoadd = ['tabprofile' => ['profile', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'],
+                          'tabtopbycourse' => ['topbycourse'],
+                          'tabtopbysite' => ['topbysite'],
+                          'tablastmonth' => ['lastmonth'],
+                          'dynamichelps' => ['dynamichelps']];
 
-            if (property_exists($this->config, 'tabtopbysite') && $this->config->tabtopbysite) {
-                $tabs[] = 'topbysite';
-            }
+            foreach ($tabstoadd as $property => $newtabs) {
 
-            if (property_exists($this->config, 'tablastmonth') && $this->config->tablastmonth) {
-                $tabs[] = 'lastmonth';
-            }
+                if (property_exists($this->config, $property) && $this->config->$property) {
 
-            if (property_exists($this->config, 'dynamichelps') && $this->config->dynamichelps) {
-                $tabs[] = 'dynamichelps';
+                    foreach ($newtabs as $newtab) {
+                        if (!in_array($newtab, $tabs)) {
+                            $tabs[] = $newtab;
+                        }
+                    }
+                }
             }
         } else {
-            $tabs[] = 'profile';
+            $tabs = ['profile', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'];
+        }
+
+        if ($this->page->course->id == SITEID && ($key = array_search('topbycourse', $tabs)) !== false) {
+            unset($tabs[$key]);
         }
 
         $html = '';
