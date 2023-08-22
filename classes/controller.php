@@ -535,13 +535,30 @@ class controller {
      */
     public static function get_topbycourse($courseid, $includecurrent = true) {
         global $DB;
+        global $DB, $CFG, $USER;
 
-        $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
-                " FROM {block_ludifica_userpoints} lu " .
-                " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
-                " WHERE lu.courseid = :courseid" .
-                " GROUP BY lu.userid, g.nickname" .
-                " ORDER BY points DESC, g.nickname ASC";
+        $isworkplace = isset($CFG->workplaceproductionstate);
+
+        // If is a Moodle Workplace instance.
+        if ($isworkplace) {
+            $usertenant = \tool_tenant\tenancy::get_tenant_id($USER->id);
+            $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                   " FROM {block_ludifica_userpoints} lu " .
+                   " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                   " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
+                   " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
+                   " WHERE t.id = $usertenant AND lu.courseid = :courseid" .
+                   " GROUP BY lu.userid, g.nickname" .
+                   " ORDER BY points DESC, g.nickname ASC";
+        } else {
+            $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " WHERE lu.courseid = :courseid" .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        }
+
         $records = $DB->get_records_sql($sql, array('courseid' => $courseid));
 
         return self::get_toplist($records, $includecurrent);
@@ -555,15 +572,29 @@ class controller {
      * @return array Users list.
      */
     public static function get_topbysite($includecurrent = true) {
-        global $DB;
+        global $DB, $CFG, $USER;
 
-        $list = array();
+        $isworkplace = isset($CFG->workplaceproductionstate);
 
-        $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
-                " FROM {block_ludifica_userpoints} lu " .
-                " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
-                " GROUP BY lu.userid, g.nickname" .
-                " ORDER BY points DESC, g.nickname ASC";
+        // If is a Moodle Workplace instance.
+        if ($isworkplace) {
+            $usertenant = \tool_tenant\tenancy::get_tenant_id($USER->id);
+            $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
+                    " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
+                    " WHERE t.id = $usertenant" .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        } else {
+            $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        }
+
         $records = $DB->get_records_sql($sql);
 
         return self::get_toplist($records, $includecurrent);
@@ -577,10 +608,9 @@ class controller {
      * @return array Users list.
      */
     public static function get_lastmonth($courseid, $includecurrent = true) {
-        global $DB;
+        global $DB, $CFG, $USER;
 
         $timeinit = strtotime(date('Y-m-01')); // First day of the current month.
-
         $conditions = ['timeinit' => $timeinit];
         $coursecondition = '';
 
@@ -589,12 +619,28 @@ class controller {
             $coursecondition = "lu.courseid = :courseid AND ";
         }
 
-        $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
-                " FROM {block_ludifica_userpoints} lu " .
-                " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
-                " WHERE " . $coursecondition . " lu.timecreated >= :timeinit" .
-                " GROUP BY lu.userid, g.nickname" .
-                " ORDER BY points DESC, g.nickname ASC";
+        $isworkplace = isset($CFG->workplaceproductionstate);
+
+        // If is a Moodle Workplace instance.
+        if ($isworkplace) {
+            $usertenant = \tool_tenant\tenancy::get_tenant_id($USER->id);
+            $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
+                    " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
+                    " WHERE t.id = $usertenant AND " . $coursecondition . " lu.timecreated >= :timeinit" .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        } else {
+            $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " WHERE " . $coursecondition . " lu.timecreated >= :timeinit" .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        }
+
         $records = $DB->get_records_sql($sql, $conditions);
 
         return self::get_toplist($records, $includecurrent);
