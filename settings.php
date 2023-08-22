@@ -197,7 +197,7 @@ if ($ADMIN->fulltree) {
     $generalsettings->add($setting);
 
      // Template type.
-    $options = ['default' => ''];
+    $options = ['default' => get_string('none')];
 
     $path = $CFG->dirroot . '/blocks/ludifica/templates/';
     $files = array_diff(scandir($path), array('..', '.'));

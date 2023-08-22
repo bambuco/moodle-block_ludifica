@@ -391,7 +391,7 @@
 }
 
 .block_ludifica .tab-profile {
-    background-size: 100%;
+    background-size: contain;
     background-position-x: center;
 }
 

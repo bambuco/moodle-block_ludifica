@@ -166,12 +166,12 @@ function($, str, ModalFactory, Alertc, Log) {
             });
 
             // Show ranking.
-            $blockcontent.find('.showrankingbutton').each(function () {
+            $blockcontent.find('.showrankingbutton').each(function() {
 
                 var isRankingShown = false;
                 var $rankingbutton = $(this);
 
-                $rankingbutton.on('click', function (e) {
+                $rankingbutton.on('click', function(e) {
                     e.stopPropagation();
 
                     if (!isRankingShown) {
@@ -186,7 +186,7 @@ function($, str, ModalFactory, Alertc, Log) {
                         $rankingbutton.text(s['showranking']);
                     }
 
-                    $blockcontent.find('.closeludifica').on('click', function () {
+                    $blockcontent.find('.closeludifica').on('click', function() {
                         $blockcontent.find('.showranking').removeClass('showranking');
                         $blockcontent.find('.showrankingbutton').removeClass('activebtn');
                         $blockcontent.find('.showrankingbutton').text(s['showranking']);
@@ -196,7 +196,7 @@ function($, str, ModalFactory, Alertc, Log) {
                     isRankingShown = !isRankingShown;
                 });
 
-                $(document).on('click', function (e) {
+                $(document).on('click', function(e) {
                     var container = $blockcontent.find('.tabranking');
 
                     if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -209,17 +209,17 @@ function($, str, ModalFactory, Alertc, Log) {
                     }
                 });
 
-                $blockcontent.find('.showtopbysite').on('click', function () {
+                $blockcontent.find('.showtopbysite').on('click', function() {
                     $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-topbysite').addClass('showranking');
                 });
 
-                $blockcontent.find('.showtopbycourse').on('click', function () {
+                $blockcontent.find('.showtopbycourse').on('click', function() {
                     $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-topbycourse').addClass('showranking');
                 });
 
-                $blockcontent.find('.showlastmonth').on('click', function () {
+                $blockcontent.find('.showlastmonth').on('click', function() {
                     $blockcontent.find('.tabranking').removeClass('showranking');
                     $blockcontent.find('.tab-lastmonth').addClass('showranking');
                 });
@@ -227,12 +227,12 @@ function($, str, ModalFactory, Alertc, Log) {
             });
 
             // Show helps
-            $blockcontent.find('.showhelpsbutton').each(function () {
+            $blockcontent.find('.showhelpsbutton').each(function() {
 
                 var isHelpShown = false;
                 var $helpbutton = $(this);
 
-                $helpbutton.on('click', function (e) {
+                $helpbutton.on('click', function(e) {
                     e.stopPropagation();
 
                     if (!isHelpShown) {
@@ -247,7 +247,7 @@ function($, str, ModalFactory, Alertc, Log) {
                         $(this).find('.pix-toggle').hide();
                     }
 
-                    $blockcontent.find('.closeludifica').on('click', function () {
+                    $blockcontent.find('.closeludifica').on('click', function() {
                         $('.showhelps').removeClass('showhelps');
                         $('.showhelpsbutton').removeClass('activebtn');
                         $('.showhelpsbutton').find('.pix-initial').show();
@@ -258,7 +258,7 @@ function($, str, ModalFactory, Alertc, Log) {
                     isHelpShown = !isHelpShown;
                 });
 
-                $(document).on('click', function (e) {
+                $(document).on('click', function(e) {
                     var container = $('.tab-dynamichelps');
 
                     if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -275,7 +275,7 @@ function($, str, ModalFactory, Alertc, Log) {
             });
         });
 
-        $('body').on('updatefailed', '[data-inplaceeditable]', function (e) {
+        $('body').on('updatefailed', '[data-inplaceeditable]', function(e) {
             var exception = e.exception; // The exception object returned by the callback.
             e.preventDefault(); // This will prevent default error dialogue.
 
