@@ -57,6 +57,11 @@ class controller {
     private static $showtext = null;
 
     /**
+     * @var bool True if show tabs.
+     */
+    private static $showtabs = null;
+
+    /**
      * Add points to player profile when complete a course.
      *
      * @param int $userid
@@ -819,7 +824,7 @@ class controller {
                 foreach ($sections as $section) {
                     $sectionindex = $section->section;
 
-                    if (isset($course->numsections) && $sectionindex > $course->numsections) {
+                    if (isset($COURSE->numsections) && $sectionindex > $COURSE->numsections) {
                         // Support for legacy formats that still provide numsections (see MDL-57769).
                         break;
                     }
@@ -1060,4 +1065,24 @@ class controller {
 
         return self::$showtext;
     }
+
+    /**
+     * Define if show the text in tabs views.
+     *
+     * @return bool If show the text.
+     */
+    public static function show_tabs() : bool {
+
+        if (self::$showtabs !== null) {
+            return self::$showtabs;
+        }
+
+        // Tabs config view.
+        $tabview = get_config('block_ludifica', 'tabview');
+
+        self::$showtabs = !empty($tabview) ? $tabview !== 'none' : true;
+
+        return self::$showtabs;
+    }
+
 }

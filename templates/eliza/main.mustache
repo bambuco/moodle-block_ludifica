@@ -34,21 +34,23 @@
 <div id="{{uniqueid}}" class="block_ludifica-content" data-observe-resizes>
 
     {{#myprofile}}
-        {{#hastabs}}
-            <div class="block_ludifica-tabs {{incourse}} {{#iconsonly}}iconsonly{{/iconsonly}}">
-            {{#tabs}}
-                <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
-                    {{#showicon}}
-                        {{{icon}}}
-                    {{/showicon}}
+        {{#showtabs}}
+            {{#hastabs}}
+                <div class="block_ludifica-tabs {{incourse}} {{#iconsonly}}iconsonly{{/iconsonly}}">
+                {{#tabs}}
+                    <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
+                        {{#showicon}}
+                            {{{icon}}}
+                        {{/showicon}}
 
-                    {{#showtext}}
-                        <span>{{title}}</span>
-                    {{/showtext}}
+                        {{#showtext}}
+                            <span>{{title}}</span>
+                        {{/showtext}}
+                    </div>
+                {{/tabs}}
                 </div>
-            {{/tabs}}
-            </div>
-        {{/hastabs}}
+            {{/hastabs}}
+        {{/showtabs}}
     {{/myprofile}}
 
     <div class="dynamichelpscontent">

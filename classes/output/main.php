@@ -219,6 +219,7 @@ class main implements renderable, templatable {
             'ticketicon' => $ticketicon,
             'avataricon' => $avataricon,
             'badgeicon' => $badgeicon,
+            'showtabs' => \block_ludifica\controller::show_tabs(),
             'showicon' => \block_ludifica\controller::show_tabicon(),
             'showtext' => \block_ludifica\controller::show_tabtext(),
             'iconsonly' => \block_ludifica\controller::show_tabicon() && !\block_ludifica\controller::show_tabtext(),

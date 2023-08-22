@@ -103,11 +103,15 @@
     flex-direction: column;
 }
 
+.ludifica_stats {
+    position: absolute;
+    top: 70px;
+    right: 0;
+}
+
 .ludifica_stats > h2,
 .ludifica_stats > div {
-    position: absolute;
     margin-top: 7px;
-    right: 15px;
     background-color: #2d3351;
     padding: 15px;
     border-radius: 10px;
@@ -119,6 +123,13 @@
     top: 90px;
     max-width: 196px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ludifica_stats > h2 .quickeditlink {
+    display: flex;
 }
 
 .ludifica_stats > h2:hover {
@@ -178,7 +189,7 @@
     position: absolute;
     transform: rotate(-90deg);
     top: 409px;
-    left: 0;
+    left: -15px;
     margin-left: -103px;
     padding: 15px;
     border-radius: 10px;
@@ -404,6 +415,10 @@
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
 }
 
+.block_ludifica-tabcontent {
+    position: relative;
+}
+
 .block_ludifica-tabcontent h3,
 .block_ludifica-tabcontent h5 {
     color: #f6d052;
@@ -465,15 +480,6 @@
 }
 
 [data-region="blocks-column"] .ludificalevel,
-[data-region="blocks-column"] .ludificalevel .ludifica_help,
-.drawer .ludificalevel,
-.drawer .ludificalevel .ludifica_help {
-    transform: rotate(0deg);
-    position: inherit;
-    margin: 200px 0 0 0;
-}
-
-[data-region="blocks-column"] .ludificalevel,
 .drawer .ludificalevel {
     margin-right: -33px;
 }
@@ -486,12 +492,12 @@
 
 [data-region="blocks-column"] .ludifica_stats > h2,
 .drawer .ludifica_stats > h2 {
-    top: 255px;
+    top: 70px;
 }
 
 [data-region="blocks-column"] .ludifica_stats > div,
 .drawer .ludifica_stats > div {
-    top: 357px;
+    top: 170px;
 }
 
 [data-region="blocks-column"] .ludifica_stats.iconsonly > h2,
@@ -571,7 +577,7 @@
 [data-region="blocks-column"] .block_ludifica .userbadges-ludifica,
 .drawer .block_ludifica .userbadges-ludifica,
 .drawer .block_ludifica .eliza-btns {
-    position: inherit;
+    position: unset;
     background: none;
 }
 
@@ -591,6 +597,7 @@
 [data-region="blocks-column"] .block_ludifica .tab-profile,
 .drawer .block_ludifica .tab-profile {
     background-position-y: calc(50% - 110px);
+    position: relative;
 }
 
 [data-region="blocks-column"] .block_ludifica .tab-dynamichelps.showhelps,
