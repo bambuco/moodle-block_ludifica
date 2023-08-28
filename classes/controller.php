@@ -99,7 +99,7 @@ class controller {
         if (!empty($coursedurationfield)) {
             $courseduration = $DB->get_field('customfield_data', 'value', ['fieldid' => $coursedurationfield,
                                                                             'instanceid' => $courseid]);
-            $courseduration = intval($duration);
+            $courseduration = intval($courseduration);
 
             if (!empty($courseduration)) {
                 $duration = $courseduration;
