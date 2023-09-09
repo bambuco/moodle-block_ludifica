@@ -1,5 +1,3 @@
-# Moodle block Ludifica #
-
 A block to implement a gamification strategy in site level.
 
 Package tested in: 3.11+, 4.0+, 4.1+
@@ -31,15 +29,37 @@ to complete the installation from the command line.
 
 ## Example avatars ##
 
-An avatar package for three levels is delivered by default. To use it you can configure the avatar URLs as follows:
+Some avatar's package for three levels are delivered by default. To use it you can configure the avatar URLs as follows:
+
+Idea avatar:
+
+<img src="https://ludifica.bambuco.co/avatars/idea/1.png" width="200"/>
 
     https://ludifica.bambuco.co/avatars/idea/1.png
     https://ludifica.bambuco.co/avatars/idea/2.png
     https://ludifica.bambuco.co/avatars/idea/3.png
 
+Teacher avatar:
+
+<img src="https://ludifica.bambuco.co/avatars/profesor/1-pensar.svg" width="200"/>
+
+    https://ludifica.bambuco.co/avatars/profesor/1-pensar.svg
+    https://ludifica.bambuco.co/avatars/profesor/2-preparar.svg
+    https://ludifica.bambuco.co/avatars/profesor/3-ensenar.svg
+
+Travel avatar:
+
+<img src="https://ludifica.bambuco.co/avatars/viaje/1-iniciar.svg" width="200"/>
+
+    https://ludifica.bambuco.co/avatars/viaje/1-iniciar.svg
+    https://ludifica.bambuco.co/avatars/viaje/2-conocer.svg
+    https://ludifica.bambuco.co/avatars/viaje/3-recorrer.svg
+
 Additionally, you can download the bust from the following URL:
 
     https://ludifica.bambuco.co/avatars/idea/bust.png
+    https://ludifica.bambuco.co/avatars/profesor/bust.svg
+    https://ludifica.bambuco.co/avatars/viaje/bust.svg
 
 These images are delivered under a [Creative commins - Attribution license](https://creativecommons.org/licenses/by/4.0/)
 and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalus/)
