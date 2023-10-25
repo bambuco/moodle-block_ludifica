@@ -688,9 +688,10 @@ class controller {
      * @return array Processed users list.
      */
     private static function get_toplist($records, $includecurrent = true) {
-        global $USER;
+        global $USER, $PAGE;
 
-        $list = array();
+        $list = [];
+        $userealinformation = get_config('block_ludifica', 'userealinformation');
 
         $k = 0;
         $curentincluded = false;
@@ -699,12 +700,31 @@ class controller {
 
             $record->position = $k;
             $record->profileurl = self::user_profile_url($record->id)->out();
+            $record->avatarprofile = null;
             $avatarid = self::get_avatar_id($record->id);
+
+            if ($userealinformation) {
+                $user = \core_user::get_user($record->id);
+            }
 
             if (!empty($avatarid)) {
                 $avatar = new \block_ludifica\avatar($avatarid);
                 $record->avatarprofile = $avatar->get_busturi();
             } else {
+
+                if ($userealinformation) {
+                    // Return the user profile image.
+                    $userpicture = new \user_picture($user);
+
+                    if ($userpicture) {
+                        $userpicture->size = 'f2';
+                        $profileimageurl = $userpicture->get_url($PAGE);
+                        $record->avatarprofile = $profileimageurl;
+                    }
+                }
+            }
+
+            if (!$record->avatarprofile) {
                 $record->avatarprofile = avatar::default_avatar();
             }
 
@@ -716,9 +736,8 @@ class controller {
             }
 
             if (empty($record->nickname)) {
-                global $USER;
-                if ($record->id == $USER->id) {
-                    $record->nickname = fullname($USER);
+                if ($record->id == $USER->id || $userealinformation) {
+                    $record->nickname = fullname($user);
                 } else {
                     $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
                 }

@@ -265,5 +265,7 @@ $string['usedat'] = 'Usado el {$a}';
 $string['useddate'] = 'Fecha de uso';
 $string['usercode'] = 'Código del usuario';
 $string['usercodes'] = 'Códigos del usuario';
+$string['userealinformation'] = 'Usar información real';
+$string['userealinformation_help'] = 'Si está activo, el sistema usará la información real de los usuarios en los ranking.';
 $string['usertickets'] = 'Beneficios del usuario';
 $string['useup'] = 'Usar';

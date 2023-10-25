@@ -233,6 +233,14 @@ if ($ADMIN->fulltree) {
     $help = get_string('homeurl_help', 'block_ludifica');
     $setting = new admin_setting_configtext($name, $title, $help, $CFG->wwwroot, PARAM_URL);
     $generalsettings->add($setting);
+
+    // Acatar information.
+    $choices = [0 => get_string('no'), 1 => get_string('yes')];
+    $name = 'block_ludifica/userealinformation';
+    $title = get_string('userealinformation', 'block_ludifica');
+    $help = get_string('userealinformation_help', 'block_ludifica');
+    $setting = new admin_setting_configselect($name, $title, $help, 0, $choices);
+    $generalsettings->add($setting);
 }
 
 $settings->add('block_ludifica_settings', $generalsettings);
