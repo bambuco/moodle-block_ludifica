@@ -266,5 +266,7 @@ $string['usedat'] = 'Used at {$a}';
 $string['useddate'] = 'Used date';
 $string['usercode'] = 'User code';
 $string['usercodes'] = 'User codes';
+$string['userealinformation'] = 'Use real information';
+$string['userealinformation_help'] = 'If enabled, the user will be able to see the real information of the other users in the ranking.';
 $string['usertickets'] = 'User tickets';
 $string['useup'] = 'Use up';

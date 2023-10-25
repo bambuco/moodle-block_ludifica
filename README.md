@@ -51,6 +51,9 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 - **Powered by:** [BambuCo](https://bambuco.co/)
 
 ## In version ##
+2021031214
+- Setting to use real user information in rankings
+
 2021031213:
 - New home URL setting
 
