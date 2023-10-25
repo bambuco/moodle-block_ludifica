@@ -698,6 +698,11 @@ class controller {
         foreach ($records as $record) {
             $k++;
 
+            if ($k >= player::LIMIT_RANKING &&
+                    ($record->id != $USER->id || !$includecurrent || $curentincluded)) {
+                continue;
+            }
+
             $record->position = $k;
             $record->profileurl = self::user_profile_url($record->id)->out();
             $record->avatarprofile = null;
@@ -737,35 +742,17 @@ class controller {
 
             if (empty($record->nickname)) {
                 if ($record->id == $USER->id || $userealinformation) {
+
+                    if ($record->id == $USER->id) {
+                        $user = $USER;
+                    }
+
                     $record->nickname = fullname($user);
                 } else {
                     $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
                 }
             }
 
-            if ($k >= player::LIMIT_RANKING) {
-                break;
-            }
-        }
-
-        if ($includecurrent && !$curentincluded) {
-            $k = 0;
-            foreach ($records as $record) {
-
-                $k++;
-                if ($record->id !== $USER->id) {
-                    continue;
-                }
-
-                if (empty($record->nickname)) {
-                    $record->nickname = fullname($USER);
-                }
-
-                $record->position = $k;
-                $record->current = true;
-                $list[] = $record;
-                break;
-            }
         }
 
         return $list;
