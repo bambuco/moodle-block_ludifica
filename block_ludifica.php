@@ -125,6 +125,25 @@ class block_ludifica extends block_base {
             $tabs = ['profile', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'];
         }
 
+        if (!empty($this->config->userfieldsranking)) {
+            $userfieldsranking = explode(',', $this->config->userfieldsranking);
+            foreach ($userfieldsranking as $userfieldranking) {
+                $userfieldranking = trim($userfieldranking);
+                $inforanking = \block_ludifica\controller::customranking_info($userfieldranking);
+
+                if ($inforanking) {
+                    $tabs[] = $inforanking;
+                }
+            }
+        }
+
+        if (in_array('dynamichelps', $tabs)) {
+            // Remove dynamichelps in array and add it in the end.
+            $key = array_search('dynamichelps', $tabs);
+            unset($tabs[$key]);
+            $tabs[] = 'dynamichelps';
+        }
+
         if ($this->page->course->id == SITEID && ($key = array_search('topbycourse', $tabs)) !== false) {
             unset($tabs[$key]);
         }

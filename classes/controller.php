@@ -652,6 +652,73 @@ class controller {
     }
 
     /**
+     * Get list of top users in a course for the last month.
+     *
+     * @param object $custom Custom ranking information.
+     * @param int $courseid
+     * @param bool $includecurrent If include the current user
+     * @return array Users list.
+     */
+    public static function get_customranking($custom, $courseid = null, $includecurrent = true) {
+        global $DB, $CFG, $USER;
+
+        $conditions = [];
+        $tables = [];
+        $coursecondition = '';
+
+        if ($courseid != SITEID) {
+            $conditions['courseid'] = $courseid;
+            $coursecondition = "lu.courseid = :courseid AND ";
+        }
+
+        if (property_exists($custom, 'field')) {
+            // It is a custom profile field.
+
+            if (!$custom->value === '') {
+                // If the field dont exist or is empty, do not show any user.
+                return [];
+            }
+
+            $tables[] = ' INNER JOIN {user_info_data} uid ON ' .
+                        'uid.fieldid = :fieldid AND uid.data = :fieldvalue AND uid.userid = lu.userid ';
+            $conditions['fieldid'] = $custom->field->id;
+            $conditions['fieldvalue'] = $custom->value;
+        } else {
+            // It is a profile user field.
+            $tables[] = ' INNER JOIN {user} u ON u.' . $custom->key . ' = :fieldvalue AND u.id = lu.userid ';
+            $conditions['fieldvalue'] = $custom->value;
+        }
+
+        $isworkplace = isset($CFG->workplaceproductionstate);
+
+        // If is a Moodle Workplace instance.
+        if ($isworkplace) {
+            $usertenant = \tool_tenant\tenancy::get_tenant_id($USER->id);
+            $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    implode(' ', $tables) .
+                    " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
+                    " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
+                    " WHERE t.id = $usertenant AND " . $coursecondition .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        } else {
+            $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
+                    " FROM {block_ludifica_userpoints} lu " .
+                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    implode(' ', $tables) .
+                    (empty($coursecondition) ? '' : " WHERE " . $coursecondition) .
+                    " GROUP BY lu.userid, g.nickname" .
+                    " ORDER BY points DESC, g.nickname ASC";
+        }
+
+        $records = $DB->get_records_sql($sql, $conditions);
+
+        return self::get_toplist($records, $includecurrent);
+    }
+
+    /**
      * Get avatar id for a user.
      *
      * @param int $userid
@@ -952,6 +1019,8 @@ class controller {
 
     /**
      * Get the available improve criteria for badges.
+     *
+     * @return array The improve criteria list.
      */
     public static function badges_improvecriteria() : array {
         global $CFG;
@@ -1089,6 +1158,91 @@ class controller {
         self::$showtabs = !empty($tabview) ? $tabview !== 'none' : true;
 
         return self::$showtabs;
+    }
+
+    /**
+     * Get the info for a custom ranking group.
+     *
+     * @param string $name
+     * @return \stdClass The info: icon and title.
+     */
+    public static function customranking_info(string $name) : ?object {
+        global $DB, $USER;
+
+        if (strpos($name, 'profile_field_') !== false) {
+
+            // The 14 is for the prefix 'profile_field_' length.
+            $fieldname = substr($name, 14);
+            $field = $DB->get_record('user_info_field', ['shortname' => $fieldname]);
+
+            if (!$field) {
+                return null;
+            }
+
+            $infodata = $DB->get_record('user_info_data', ['fieldid' => $field->id, 'userid' => $USER->id]);
+
+            if (!$infodata || $infodata->data === '') {
+                // If the field dont exist or is empty, don't show.
+                return null;
+            }
+
+            $rankingfield = new \stdClass();
+            $rankingfield->icon = 'i/withsubcat';
+            $rankingfield->title = $field->name;
+            $rankingfield->key = $name;
+            $rankingfield->field = $field;
+            $rankingfield->value = $infodata->data;
+            $rankingfield->labeledvalue = $infodata->data;
+
+            return $rankingfield;
+        }
+
+        $userrankingavailables = [
+            'institution' => (object)[
+                'icon' => 'i/mnethost',
+                'title' => get_string('institution'),
+            ],
+            'department' => (object)[
+                'icon' => 't/groups',
+                'title' => get_string('department'),
+            ],
+            'city' => (object)[
+                'icon' => 'i/location',
+                'title' => get_string('city'),
+            ],
+            'country' => (object)[
+                'icon' => 'i/emojicategoryflags',
+                'title' => get_string('country'),
+            ],
+            'lang' => (object)[
+                'icon' => 'e/abbr',
+                'title' => get_string('language'),
+            ],
+        ];
+
+        if (isset($userrankingavailables[$name])) {
+
+            $rankingfield = $userrankingavailables[$name];
+            $rankingfield->key = $name;
+            $rankingfield->value = $USER->{$name};
+
+            switch ($name) {
+                case 'country':
+                    $rankingfield->labeledvalue = get_string($rankingfield->value, 'countries');
+                    break;
+                case 'lang':
+                    $langs = get_string_manager()->get_list_of_translations(true);
+                    $rankingfield->labeledvalue = isset($langs[$rankingfield->value]) ? $langs[$rankingfield->value] :
+                                                                                        $rankingfield->value;
+                    break;
+                default:
+                    $rankingfield->labeledvalue = $USER->{$name};
+            }
+
+            return $rankingfield;
+        }
+
+        return null;
     }
 
 }
