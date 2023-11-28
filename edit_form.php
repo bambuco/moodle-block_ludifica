@@ -69,6 +69,10 @@ class block_ludifica_edit_form extends block_edit_form {
         $mform->addElement('select', 'config_dynamichelps', get_string('dynamichelps', 'block_ludifica'), $options);
         $mform->setDefault('config_dynamichelps', 1);
 
+        $mform->addElement('text', 'config_userfieldsranking', get_string('userfieldsranking', 'block_ludifica'));
+        $mform->setType('config_userfieldsranking', PARAM_TEXT);
+        $mform->addHelpButton('config_userfieldsranking', 'userfieldsranking', 'block_ludifica');
+
         $coursemodules = \block_ludifica\controller::get_coursemodules();
 
         if (count($coursemodules) > 0) {

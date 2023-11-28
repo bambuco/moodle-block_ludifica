@@ -71,6 +71,9 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 - **Powered by:** [BambuCo](https://bambuco.co/)
 
 ## In version ##
+2021031215
+- New setting to show other rankings by user fields.
+
 2021031214
 - Setting to use real user information in rankings
 
