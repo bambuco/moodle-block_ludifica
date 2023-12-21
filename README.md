@@ -71,6 +71,9 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 - **Powered by:** [BambuCo](https://bambuco.co/)
 
 ## In version ##
+2021031216:
+- Default course duration setting.
+
 2021031215
 - New setting to show other rankings by user fields.
 

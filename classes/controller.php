@@ -92,8 +92,8 @@ class controller {
             return false;
         }
 
-        // Default course term is 1.
-        $duration = 1;
+        // Default course term.
+        $duration = intval(get_config('block_ludifica', 'endcoursedefaulttime'));
 
         // Check if duration is defined and configured.
         if (!empty($coursedurationfield)) {

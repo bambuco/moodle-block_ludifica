@@ -39,12 +39,15 @@ if ($ADMIN->fulltree) {
     // Duration field.
     $fields = [0 => ''];
 
-    $customfields = $DB->get_records_menu('customfield_field', null, 'name', 'id, name');
+    $sql = "SELECT f.id, f.name
+            FROM {customfield_field} f
+            INNER JOIN {customfield_category} fc ON fc.id = f.categoryid AND fc.component = 'core_course' AND fc.area = 'course'";
+    $customfields = $DB->get_records_sql($sql);
 
     if (is_array($fields) && count($fields) > 0) {
 
         foreach ($customfields as $k => $v) {
-            $fields[$k] = format_string($v, true);
+            $fields[$k] = format_string($v->name, true);
         }
     }
 
@@ -58,6 +61,13 @@ if ($ADMIN->fulltree) {
     $name = 'block_ludifica/pointsbyendcourse';
     $title = get_string('pointsbyendcourse', 'block_ludifica');
     $help = get_string('pointsbyendcourse_help', 'block_ludifica');
+    $setting = new admin_setting_configtext($name, $title, $help, 0, PARAM_INT);
+    $generalsettings->add($setting);
+
+    // Complete course time.
+    $name = 'block_ludifica/endcoursedefaulttime';
+    $title = get_string('endcoursedefaulttime', 'block_ludifica');
+    $help = get_string('endcoursedefaulttime_help', 'block_ludifica');
     $setting = new admin_setting_configtext($name, $title, $help, 0, PARAM_INT);
     $generalsettings->add($setting);
 
