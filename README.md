@@ -72,13 +72,13 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 
 ## In version ##
 2021031216:
-- Default course duration setting.
+- Default course duration setting. Funded by [Emtelco](https://emtelco.com.co/)
 
-2021031215
-- New setting to show other rankings by user fields.
+2021031215:
+- New setting to show other rankings by user fields. Funded by [Engagement](https://www.engagement.com.co/)
 
-2021031214
-- Setting to use real user information in rankings
+2021031214:
+- Setting to use real user information in rankings. Funded by [Engagement](https://www.engagement.com.co/)
 
 2021031213:
 - New home URL setting
