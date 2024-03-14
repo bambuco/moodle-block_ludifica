@@ -34,6 +34,7 @@ $string['privacy:metadata'] = 'El bloque de Ludifica no almacena datos personale
 $string['allbadges'] = 'Ver todos';
 $string['available'] = 'Total disponible';
 $string['availabledate'] = 'Hasta';
+$string['availableincourse'] = 'En curso: {$a}';
 $string['avatar'] = 'Avatar';
 $string['avatars'] = 'Avatares';
 $string['avatarbust'] = 'Busto';

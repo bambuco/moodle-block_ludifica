@@ -792,8 +792,15 @@
 }
 
 .block_ludifica #badges-list .unavailable .card {
-    pointer-events: none;
     background: none;
+    animation: none;
+    transform: none;
+    box-shadow: unset;
+}
+
+.block_ludifica #badges-list .unavailable .card:hover .card-header,
+.block_ludifica #badges-list .unavailable .card:hover .info-box {
+    color: #fff;
 }
 
 .block_ludifica #badges-list .unavailable .openshare {
@@ -806,6 +813,11 @@
     color: #f6d052;
     background: none;
     border: none;
+}
+
+.block_ludifica #badges-list .courseinfo {
+    text-align: center;
+    padding: 5px;
 }
 
 .block_ludifica #badges-list .card:hover .card-header,

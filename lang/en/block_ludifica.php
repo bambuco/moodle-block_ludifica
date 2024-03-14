@@ -34,6 +34,7 @@ $string['privacy:metadata'] = 'The Ludifica block does not store privacy user in
 $string['allbadges'] = 'View all';
 $string['available'] = 'Quantity available';
 $string['availabledate'] = 'Available until';
+$string['availableincourse'] = 'In course: {$a}';
 $string['avatar'] = 'Avatar';
 $string['avatars'] = 'Avatars';
 $string['avatarbust'] = 'Bust';

@@ -30,12 +30,20 @@
 <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}badges_help, block_ludifica{{/str}}"></button>
 <div id="badges-list" class="row">
     {{#badges}}
-    <div id="badge-{{id}}" class="col-lg-6 onebadge {{#inactive}}notactive{{/inactive}}" data-name="{{name}}" data-uniquehash="{{uniquehash}}" data-year="{{year}}" data-month="{{month}}">
+    <div id="badge-{{id}}" class="col-lg-6 onebadge {{#inactive}}notactive{{/inactive}} {{#fromcourse}}fromcourse{{/fromcourse}}{{^fromcourse}}fromsite{{/fromcourse}}" data-name="{{name}}" data-uniquehash="{{uniquehash}}" data-year="{{year}}" data-month="{{month}}">
         <div class="card">
             <h3 class="card-header">
                 {{name}}
                 {{#unavailablewarning}}<span class="unavailablewarning">{{unavailablewarning}}</span>{{/unavailablewarning}}
             </h3>
+            {{#fromcourse}}
+                <div class="card-header">
+                    {{#courseurl}}<a href="{{{courseurl}}}">{{/courseurl}}
+                        {{#str}} availableincourse, block_ludifica, {{coursename}} {{/str}}
+                    {{#courseurl}}</a>{{/courseurl}}
+                </div>
+            {{/fromcourse}}
+
             <div class="card-body badgecontent {{unavailable}}">
                 <div class="picture-box">
                     {{#url}}<a href="{{url}}" class="shareurl">{{/url}}

@@ -1228,7 +1228,8 @@ class controller {
 
             switch ($name) {
                 case 'country':
-                    $rankingfield->labeledvalue = get_string($rankingfield->value, 'countries');
+                    $rankingfield->labeledvalue = empty($rankingfield->value) ?
+                                                                '' : get_string($rankingfield->value, 'countries');
                     break;
                 case 'lang':
                     $langs = get_string_manager()->get_list_of_translations(true);

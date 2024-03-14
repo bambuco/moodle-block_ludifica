@@ -32,12 +32,13 @@
 {{>block_ludifica/eliza/buttonsbar}}
 <div id="badges-list" class="row">
     {{#badges}}
-    <div id="badge-{{id}}" class="col-lg-6 onebadge {{unavailable}} {{#inactive}}notactive{{/inactive}}" data-name="{{name}}" data-uniquehash="{{uniquehash}}" data-year="{{year}}" data-month="{{month}}">
+    <div id="badge-{{id}}" class="col-lg-6 onebadge {{unavailable}} {{#inactive}}notactive{{/inactive}} {{#fromcourse}}fromcourse{{/fromcourse}}{{^fromcourse}}fromsite{{/fromcourse}}" data-name="{{name}}" data-uniquehash="{{uniquehash}}" data-year="{{year}}" data-month="{{month}}">
         <div class="card">
             <h3 class="card-header">
                 {{name}}
                 {{#unavailablewarning}}<span class="unavailablewarning">{{unavailablewarning}}</span>{{/unavailablewarning}}
             </h3>
+
             <div class="card-body badgecontent {{unavailable}}">
                 <div class="picture-box">
                     {{#url}}<a href="{{url}}" class="shareurl">{{/url}}
@@ -60,6 +61,13 @@
                     </div>
                 </div>
             </div>
+            {{#fromcourse}}
+                <div class="courseinfo">
+                    {{#courseurl}}<a href="{{{courseurl}}}" class="btn btn-primary">{{/courseurl}}
+                        {{#str}} availableincourse, block_ludifica, {{coursename}} {{/str}}
+                    {{#courseurl}}</a>{{/courseurl}}
+                </div>
+            {{/fromcourse}}
            {{#canedit}}
                 <div class="card-footer improvecriteria">
                     <h5>{{#str}} improvecriteria, block_ludifica {{/str}}</h5>
