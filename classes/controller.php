@@ -550,6 +550,7 @@ class controller {
             $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                    " FROM {block_ludifica_userpoints} lu " .
                    " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                   " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                    " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
                    " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
                    " WHERE t.id = $usertenant AND lu.courseid = :courseid" .
@@ -559,6 +560,7 @@ class controller {
             $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                     " FROM {block_ludifica_userpoints} lu " .
                     " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                     " WHERE lu.courseid = :courseid" .
                     " GROUP BY lu.userid, g.nickname" .
                     " ORDER BY points DESC, g.nickname ASC";
@@ -587,6 +589,7 @@ class controller {
             $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                     " FROM {block_ludifica_userpoints} lu " .
                     " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                     " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
                     " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
                     " WHERE t.id = $usertenant" .
@@ -596,6 +599,7 @@ class controller {
             $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                     " FROM {block_ludifica_userpoints} lu " .
                     " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                     " GROUP BY lu.userid, g.nickname" .
                     " ORDER BY points DESC, g.nickname ASC";
         }
@@ -632,6 +636,7 @@ class controller {
             $sql = " SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                     " FROM {block_ludifica_userpoints} lu " .
                     " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                     " LEFT JOIN {tool_tenant_user} tu ON tu.userid = lu.userid" .
                     " LEFT JOIN {tool_tenant} t ON t.id = tu.tenantid AND t.archived = 0" .
                     " WHERE t.id = $usertenant AND " . $coursecondition . " lu.timecreated >= :timeinit" .
@@ -641,6 +646,7 @@ class controller {
             $sql = "SELECT lu.userid AS id, g.nickname, " . $DB->sql_ceil('SUM(lu.points)') . " AS points " .
                     " FROM {block_ludifica_userpoints} lu " .
                     " INNER JOIN {block_ludifica_general} g ON g.userid = lu.userid" .
+                    " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0" .
                     " WHERE " . $coursecondition . " lu.timecreated >= :timeinit" .
                     " GROUP BY lu.userid, g.nickname" .
                     " ORDER BY points DESC, g.nickname ASC";
@@ -683,9 +689,13 @@ class controller {
                         'uid.fieldid = :fieldid AND uid.data = :fieldvalue AND uid.userid = lu.userid ';
             $conditions['fieldid'] = $custom->field->id;
             $conditions['fieldvalue'] = $custom->value;
+
+            $tables[] = " INNER JOIN {user} u ON u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0";
+
         } else {
             // It is a profile user field.
-            $tables[] = ' INNER JOIN {user} u ON u.' . $custom->key . ' = :fieldvalue AND u.id = lu.userid ';
+            $tables[] = ' INNER JOIN {user} u ON u.' . $custom->key . ' = :fieldvalue
+                         AND u.id = lu.userid AND u.deleted = 0 AND u.suspended = 0 ';
             $conditions['fieldvalue'] = $custom->value;
         }
 
