@@ -28,6 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/lib/badgeslib.php');
 
+use context_course;
 use renderable;
 use renderer_base;
 use templatable;
@@ -255,9 +256,16 @@ class main implements renderable, templatable {
 
                 if ($badge->status == '3') {
 
+                    if ($badge->courseid) {
+                        $instancecontext = \context_course::instance($badge->courseid);
+                        $source = $instancecontext->id;
+                    } else {
+                        $source = SITEID;
+                    }
+
                     $badge->url = urldecode((string)(new \moodle_url('/badges/badge.php', ['hash' => $badge->uniquehash])));
-                    $badge->thumbnail = \moodle_url::make_pluginfile_url(SITEID,
-                    'badges', 'badgeimage', $badge->id, '/', 'f3', false);
+                    $badge->thumbnail = \moodle_url::make_pluginfile_url($source,
+                                                                            'badges', 'badgeimage', $badge->id, '/', 'f3', false);
 
                     $badges[] = $badge;
                 }
