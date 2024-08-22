@@ -63,26 +63,27 @@ function block_ludifica_pluginfile($course, $cm, $context, $filearea, $args, $fo
  */
 function block_ludifica_inplace_editable($itemtype, $itemid, $newvalue) {
     if ($itemtype === 'nickname') {
-        global $DB, $USER, $CFG;
+        global $DB, $USER;
 
         $newvalue = trim($newvalue);
 
-        \external_api::validate_context(context_system::instance());
+        $context = context_system::instance();
+        \core_external\external_api::validate_context($context);
 
-        $exists = $DB->get_record('block_ludifica_general', array('nickname' => $newvalue));
+        $exists = $DB->get_record('block_ludifica_general', ['nickname' => $newvalue]);
 
         if ($exists && $USER->id != $exists->userid) {
             throw new \moodle_exception('nicknameexists', 'block_ludifica');
         }
 
-        $record = $DB->get_record('block_ludifica_general', array('id' => $itemid), '*', MUST_EXIST);
+        $record = $DB->get_record('block_ludifica_general', ['id' => $itemid], '*', MUST_EXIST);
 
         if (isguestuser($USER) || $USER->id != $record->userid) {
             throw new \moodle_exception('cannotchangeprofiletoother');
         }
 
         // Check permission of the user to update your profile.
-        require_capability('moodle/user:editownprofile', context_system::instance());
+        require_capability('moodle/user:editownprofile', $context);
 
         // Clean input and update the record.
         $newvalue = substr(clean_param($newvalue, PARAM_NOTAGS), 0, 31);

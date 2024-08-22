@@ -1,6 +1,6 @@
 A block to implement a gamification strategy in site level.
 
-Package tested in: 3.11+, 4.0+, 4.1+
+Package tested in: 4.3+
 
 ![Block preview](pix/preview.png)
 
@@ -71,6 +71,9 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 - **Powered by:** [BambuCo](https://bambuco.co/)
 
 ## In version ##
+2024082100:
+- Compatibility with Moodle 4.3+
+
 2021031216:
 - Default course duration setting. Funded by [Emtelco](https://emtelco.com.co/)
 
