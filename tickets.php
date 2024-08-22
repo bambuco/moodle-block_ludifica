@@ -54,7 +54,7 @@ $PAGE->requires->js_call_amd('block_ludifica/tickets', 'init', [$USER->id]);
 
 \block_ludifica\controller::include_templatecss();
 
-$sortavailable = array('name', 'available', 'availabledate', 'cost');
+$sortavailable = ['name', 'available', 'availabledate', 'cost'];
 if (!in_array($sort, $sortavailable)) {
     $sort = 'name';
 }
@@ -63,12 +63,12 @@ echo $OUTPUT->header();
 
 // Delete a ticket, after confirmation.
 if ($hasmanage && $delete && confirm_sesskey()) {
-    $ticket = $DB->get_record('block_ludifica_tickets', array('id' => $delete), '*', MUST_EXIST);
+    $ticket = $DB->get_record('block_ludifica_tickets', ['id' => $delete], '*', MUST_EXIST);
 
     if ($confirm != md5($delete)) {
-        $returnurl = new moodle_url('/blocks/ludifica/tickets.php', array('sort' => $sort, 'bypage' => $bypage, 'spage' => $spage));
+        $returnurl = new moodle_url('/blocks/ludifica/tickets.php', ['sort' => $sort, 'bypage' => $bypage, 'spage' => $spage]);
         echo $OUTPUT->heading(get_string('ticketdelete', 'block_ludifica'));
-        $optionsyes = array('delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey());
+        $optionsyes = ['delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey()];
         echo $OUTPUT->confirm(get_string('deletecheck', '', "'{$ticket->name}'"),
                                 new moodle_url($returnurl, $optionsyes), $returnurl);
         echo $OUTPUT->footer();
@@ -82,13 +82,13 @@ if ($hasmanage && $delete && confirm_sesskey()) {
             $file->delete();
         }
 
-        $DB->delete_records('block_ludifica_usertickets', array('ticketid' => $ticket->id));
-        $DB->delete_records('block_ludifica_tickets', array('id' => $ticket->id));
+        $DB->delete_records('block_ludifica_usertickets', ['ticketid' => $ticket->id]);
+        $DB->delete_records('block_ludifica_tickets', ['id' => $ticket->id]);
 
-        $event = \block_ludifica\event\ticket_deleted::create(array(
+        $event = \block_ludifica\event\ticket_deleted::create([
             'objectid' => $ticket->id,
-            'context' => $syscontext
-        ));
+            'context' => $syscontext,
+        ]);
         $event->add_record_snapshot('block_ludifica_tickets', $ticket);
         $event->trigger();
 
@@ -106,12 +106,12 @@ if ($hasmanage) {
     $ticketscount = $DB->count_records('block_ludifica_tickets');
 } else {
     $select = "availabledate >= :availabledate AND available > 0 AND enabled = 1";
-    $params = array('availabledate' => time());
+    $params = ['availabledate' => time()];
     $tickets = $DB->get_records_select('block_ludifica_tickets', $select, $params, $sort . ' ASC', '*', $spage * $bypage, $bypage);
     $ticketscount = $DB->count_records_select('block_ludifica_tickets', $select, $params);
 }
 
-$pagingbar = new paging_bar($ticketscount, $spage, $bypage, "/blocks/ludifica/index.php?q={$query}&amp;sort={$sort}&amp;");
+$pagingbar = new paging_bar($ticketscount, $spage, $bypage, "/blocks/ludifica/tickets.php?q={$query}&amp;sort={$sort}&amp;");
 $pagingbar->pagevar = 'spage';
 
 $renderable = new \block_ludifica\output\tickets($tickets);

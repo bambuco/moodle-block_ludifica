@@ -56,7 +56,7 @@ $PAGE->requires->js_call_amd('block_ludifica/avatars', 'init', [$USER->id, $play
 
 \block_ludifica\controller::include_templatecss();
 
-$sortavailable = array('name', 'available', 'availabledate', 'cost');
+$sortavailable = ['name', 'available', 'availabledate', 'cost'];
 if (!in_array($sort, $sortavailable)) {
     $sort = 'name';
 }
@@ -65,12 +65,12 @@ echo $OUTPUT->header();
 
 // Delete an avatar, after confirmation.
 if ($hasmanage && $delete && confirm_sesskey()) {
-    $avatar = $DB->get_record('block_ludifica_avatars', array('id' => $delete), '*', MUST_EXIST);
+    $avatar = $DB->get_record('block_ludifica_avatars', ['id' => $delete], '*', MUST_EXIST);
 
     if ($confirm != md5($delete)) {
-        $returnurl = new moodle_url('/blocks/ludifica/avatars.php', array('sort' => $sort, 'bypage' => $bypage, 'spage' => $spage));
+        $returnurl = new moodle_url('/blocks/ludifica/avatars.php', ['sort' => $sort, 'bypage' => $bypage, 'spage' => $spage]);
         echo $OUTPUT->heading(get_string('avatardelete', 'block_ludifica'));
-        $optionsyes = array('delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey());
+        $optionsyes = ['delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey()];
         echo $OUTPUT->confirm(get_string('deletecheck', '', "'{$avatar->name}'"),
                                 new moodle_url($returnurl, $optionsyes), $returnurl);
         echo $OUTPUT->footer();
@@ -84,14 +84,14 @@ if ($hasmanage && $delete && confirm_sesskey()) {
             $file->delete();
         }
 
-        $DB->delete_records('block_ludifica_useravatars', array('avatarid' => $avatar->id));
-        $DB->delete_records('block_ludifica_avatars', array('id' => $avatar->id));
+        $DB->delete_records('block_ludifica_useravatars', ['avatarid' => $avatar->id]);
+        $DB->delete_records('block_ludifica_avatars', ['id' => $avatar->id]);
         $DB->set_field('block_ludifica_general', 'avatarid', null, ['avatarid' => $avatar->id]);
 
-        $event = \block_ludifica\event\avatar_deleted::create(array(
+        $event = \block_ludifica\event\avatar_deleted::create([
             'objectid' => $avatar->id,
-            'context' => $syscontext
-        ));
+            'context' => $syscontext,
+        ]);
         $event->add_record_snapshot('block_ludifica_avatars', $avatar);
         $event->trigger();
 
@@ -107,14 +107,14 @@ if (!empty($msg)) {
 $conditions = null;
 if (!$hasmanage) {
     // ToDo: Not integrated specific user avatars yet.
-    $conditions = array('enabled' => 1, 'type' => \block_ludifica\avatar::$defaulttype);
+    $conditions = ['enabled' => 1, 'type' => \block_ludifica\avatar::$defaulttype];
 }
 
 $avatars = $DB->get_records('block_ludifica_avatars', $conditions, $sort . ' ASC', '*', $spage * $bypage, $bypage);
 $avatarscount = $DB->count_records('block_ludifica_avatars');
 
 
-$pagingbar = new paging_bar($avatarscount, $spage, $bypage, "/blocks/ludifica/index.php?q={$query}&amp;sort={$sort}&amp;");
+$pagingbar = new paging_bar($avatarscount, $spage, $bypage, "/blocks/ludifica/avatars.php?q={$query}&amp;sort={$sort}&amp;");
 $pagingbar->pagevar = 'spage';
 
 $renderable = new \block_ludifica\output\avatars($avatars);
