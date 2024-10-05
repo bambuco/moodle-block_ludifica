@@ -47,42 +47,11 @@ module.exports = function(grunt) {
     // Load all grunt tasks.
     grunt.loadNpmTasks("grunt-stylelint");
     grunt.loadNpmTasks("grunt-eslint");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-
-    /**
-     * Function to generate the destination for the uglify task
-     * (e.g. build/file.min.js). This function will be passed to
-     * the rename property of files array when building dynamically:
-     * http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
-     *
-     * @param {String} destPath the current destination
-     * @param {String} srcPath the  matched src path
-     * @return {String} The rewritten destination path.
-     */
-    var uglifyRename = function(destPath, srcPath) {
-        destPath = srcPath.replace("src", "build");
-        destPath = destPath.replace(".js", ".min.js");
-        destPath = path.resolve(PWD, destPath);
-        return destPath;
-    };
 
     grunt.initConfig({
         eslint: {
             options: {quiet: !grunt.option("show-lint-warnings")},
             amd: {src: amdSrc}
-        },
-        uglify: {
-            amd: {
-                files: [{
-                    expand: true,
-                    src: amdSrc,
-                    rename: uglifyRename
-                }],
-                options: {
-                    report: "min",
-                    sourceMap: true
-                }
-            }
         },
         watch: {
             options: {

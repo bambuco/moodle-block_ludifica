@@ -1107,7 +1107,7 @@ class controller {
             'topbycourse' => 't/sort_by',
             'topbysite' => 't/award',
             'lastmonth' => 'e/insert_date',
-            'dynamichelps' => 'docs'
+            'dynamichelps' => 'docs',
         ];
 
         return $icons;
