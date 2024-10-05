@@ -29,7 +29,7 @@ $id = optional_param('id', 0, PARAM_INT);
 
 $ticket = null;
 if (!empty($id)) {
-    $ticket = $DB->get_record('block_ludifica_tickets', array('id' => $id), '*', MUST_EXIST);
+    $ticket = $DB->get_record('block_ludifica_tickets', ['id' => $id], '*', MUST_EXIST);
 }
 
 require_login();
@@ -43,10 +43,12 @@ $PAGE->set_pagelayout('incourse');
 $PAGE->set_heading(get_string('tickets', 'block_ludifica'));
 $PAGE->set_title(get_string('tickets', 'block_ludifica'));
 
-$filemanageroptions = array('maxbytes' => $CFG->maxbytes,
-                             'subdirs' => 0,
-                             'maxfiles' => 1,
-                             'accepted_types' => array('.jpg', '.png', '.svg'));
+$filemanageroptions = [
+                        'maxbytes' => $CFG->maxbytes,
+                        'subdirs' => 0,
+                        'maxfiles' => 1,
+                        'accepted_types' => ['.jpg', '.png', '.svg'],
+                    ];
 $draftitemid = file_get_submitted_draft_itemid('attachments_filemanager');
 file_prepare_draft_area($draftitemid, $syscontext->id, 'block_ludifica', 'ticket', $id, $filemanageroptions);
 
@@ -55,7 +57,7 @@ if ($ticket) {
 }
 
 // First create the form.
-$editform = new block_ludifica_ticket_edit(null, array('data' => $ticket, 'filemanageroptions' => $filemanageroptions));
+$editform = new block_ludifica_ticket_edit(null, ['data' => $ticket, 'filemanageroptions' => $filemanageroptions]);
 if ($editform->is_cancelled()) {
     $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/tickets.php');
     redirect($url);
@@ -96,25 +98,25 @@ if ($editform->is_cancelled()) {
     if (!empty($ticket->id)) {
         $DB->update_record('block_ludifica_tickets', $ticket);
 
-        $event = \block_ludifica\event\ticket_updated::create(array(
+        $event = \block_ludifica\event\ticket_updated::create([
             'objectid' => $ticket->id,
             'context' => $syscontext,
-        ));
+        ]);
         $event->trigger();
     } else {
         $id = $DB->insert_record('block_ludifica_tickets', $ticket, true);
 
-        $event = \block_ludifica\event\ticket_created::create(array(
+        $event = \block_ludifica\event\ticket_created::create([
             'objectid' => $id,
             'context' => $syscontext,
-        ));
+        ]);
         $event->trigger();
     }
 
     file_save_draft_area_files($data->attachments_filemanager, $syscontext->id, 'block_ludifica', 'ticket',
                                 $id, $filemanageroptions);
 
-    $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/tickets.php', array('msg' => 'changessaved'));
+    $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/tickets.php', ['msg' => 'changessaved']);
     redirect($url);
 }
 

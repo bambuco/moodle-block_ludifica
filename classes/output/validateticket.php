@@ -90,8 +90,7 @@ class validateticket implements renderable, templatable {
             'baseurl' => $CFG->wwwroot,
             'user' => $this->user,
             'params' => $params,
-            'used' => $this->userticket->timeused ? userdate($this->userticket->timeused, $dateformat) : null
-
+            'used' => $this->userticket->timeused ? userdate($this->userticket->timeused, $dateformat) : null,
         ];
 
         return $defaultvariables;

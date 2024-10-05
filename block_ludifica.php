@@ -59,7 +59,7 @@ class block_ludifica extends block_base {
      * @return array page-type prefix => true/false.
      */
     public function applicable_formats() {
-        return array('all' => true);
+        return ['all' => true];
     }
 
     /**

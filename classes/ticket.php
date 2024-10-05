@@ -51,7 +51,7 @@ class ticket extends entity {
             if (is_object($ticket) && property_exists($ticket, 'id')) {
                 $this->data = $ticket;
             } else {
-                $this->data = $DB->get_record('block_ludifica_tickets', array('id' => (int)$ticket));
+                $this->data = $DB->get_record('block_ludifica_tickets', ['id' => (int)$ticket]);
             }
         }
 
@@ -75,10 +75,12 @@ class ticket extends entity {
             $filename = $file->get_filename();
 
             if (!empty($filename) && $filename != '.') {
-                $path = '/' . implode('/', array($file->get_contextid(),
-                                                    'block_ludifica',
-                                                    'ticket',
-                                                    $file->get_itemid() . $file->get_filepath() . $filename));
+                $path = '/' . implode('/', [
+                                                $file->get_contextid(),
+                                                'block_ludifica',
+                                                'ticket',
+                                                $file->get_itemid() . $file->get_filepath() . $filename,
+                                            ]);
 
                 return \moodle_url::make_file_url('/pluginfile.php', $path);
 
@@ -96,7 +98,7 @@ class ticket extends entity {
      * @return array Tickets type list.
      */
     public static function get_types() {
-        return array('default' => get_string('ticketstype_default', 'block_ludifica'));
+        return ['default' => get_string('ticketstype_default', 'block_ludifica')];
     }
 
 }

@@ -48,7 +48,7 @@ $data = null;
 
 if (!empty($confirm) && !empty($utid) && confirm_sesskey()) {
 
-    $userticket = $DB->get_record('block_ludifica_usertickets', array('id' => $utid), '*', MUST_EXIST);
+    $userticket = $DB->get_record('block_ludifica_usertickets', ['id' => $utid], '*', MUST_EXIST);
 
     if ($confirm == md5($utid . $userticket->usercode . $userticket->userid)) {
         $userticket->timeused = time();
@@ -59,29 +59,31 @@ if (!empty($confirm) && !empty($utid) && confirm_sesskey()) {
     }
 
 } else {
-    $data = array('username' => $username, 'usercode' => $usercode);
+    $data = ['username' => $username, 'usercode' => $usercode];
 }
 
 // Create the form.
-$form = new block_ludifica_ticket_validate(null, array('data' => $data));
+$form = new block_ludifica_ticket_validate(null, ['data' => $data]);
 
 if ($data = $form->get_data()) {
 
-    $user = $DB->get_record('user', array('username' => $data->username, 'mnethostid' => $CFG->mnet_localhost_id), '*', MUST_EXIST);
+    $user = $DB->get_record('user', ['username' => $data->username, 'mnethostid' => $CFG->mnet_localhost_id], '*', MUST_EXIST);
 
-    $userticket = $DB->get_record('block_ludifica_usertickets', array(
+    $userticket = $DB->get_record('block_ludifica_usertickets', [
                                                                     'usercode' => $data->usercode,
-                                                                    'userid' => $user->id
-                                                                ), '*', MUST_EXIST);
+                                                                    'userid' => $user->id,
+                                                                ], '*', MUST_EXIST);
 
-    $ticket = $DB->get_record('block_ludifica_tickets', array('id' => $userticket->ticketid), '*', MUST_EXIST);
+    $ticket = $DB->get_record('block_ludifica_tickets', ['id' => $userticket->ticketid], '*', MUST_EXIST);
 
 }
 
 if ($ticket) {
-    $params = array('sesskey' => sesskey(),
-                    'confirm' => md5($userticket->id . $userticket->usercode . $userticket->userid),
-                    'ut' => $userticket->id);
+    $params = [
+                'sesskey' => sesskey(),
+                'confirm' => md5($userticket->id . $userticket->usercode . $userticket->userid),
+                'ut' => $userticket->id,
+            ];
 
     $renderable = new \block_ludifica\output\validateticket($ticket, $userticket, $user, $params);
     $renderer = $PAGE->get_renderer('block_ludifica');

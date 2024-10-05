@@ -75,7 +75,7 @@ class controller {
         $conditions = [
             'userid' => $userid,
             'courseid' => $courseid,
-            'type' => player::POINTS_TYPE_COURSECOMPLETED
+            'type' => player::POINTS_TYPE_COURSECOMPLETED,
         ];
 
         $record = $DB->get_record('block_ludifica_userpoints', $conditions);
@@ -141,7 +141,7 @@ class controller {
 
         $conditions = [
             'userid' => $userid,
-            'type' => player::POINTS_TYPE_RECURRENTLOGIN
+            'type' => player::POINTS_TYPE_RECURRENTLOGIN,
         ];
 
         // Only get the newest.
@@ -273,7 +273,7 @@ class controller {
                     'userid' => $userid,
                     'courseid' => $courseid,
                     'objectid' => $cmid,
-                    'type' => player::POINTS_TYPE_MODULECOMPLETED
+                    'type' => player::POINTS_TYPE_MODULECOMPLETED,
         ];
 
         $record = $DB->get_record('block_ludifica_userpoints', $conditions);
@@ -342,7 +342,7 @@ class controller {
         $conditions = [
             'userid' => $userid,
             'courseid' => SITEID,
-            'type' => player::POINTS_TYPE_EMAILCHANGED
+            'type' => player::POINTS_TYPE_EMAILCHANGED,
         ];
 
         // If exists not add points again.
@@ -495,7 +495,7 @@ class controller {
     public static function requirements_text($userid, $ticket) {
         global $CFG;
 
-        $captions = array();
+        $captions = [];
 
         $infodata = is_string($ticket->infodata) ? json_decode($ticket->infodata) : $ticket->infodata;
 
@@ -566,7 +566,7 @@ class controller {
                     " ORDER BY points DESC, g.nickname ASC";
         }
 
-        $records = $DB->get_records_sql($sql, array('courseid' => $courseid));
+        $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
 
         return self::get_toplist($records, $includecurrent);
 
@@ -737,7 +737,7 @@ class controller {
     public static function get_avatar_id($userid) {
         global $DB;
 
-        $records = $DB->get_record('block_ludifica_general', array('userid' => $userid));
+        $records = $DB->get_record('block_ludifica_general', ['userid' => $userid]);
         if (!empty($records)) {
             return $records->avatarid;
         } else {
@@ -754,7 +754,7 @@ class controller {
     public static function user_profile_url($userid) {
         global $CFG;
 
-        return new \moodle_url($CFG->wwwroot . '/user/view.php', array('id' => $userid));
+        return new \moodle_url($CFG->wwwroot . '/user/view.php', ['id' => $userid]);
     }
 
     /**
@@ -842,7 +842,7 @@ class controller {
      * @return array Tabs list.
      */
     public static function get_storetabs($active) {
-        $tabs = array();
+        $tabs = [];
 
         $avatars = new \stdClass();
         $avatars->text = get_string('avatars', 'block_ludifica');
@@ -888,7 +888,7 @@ class controller {
     public static function get_coursemodules() {
         global $COURSE;
 
-        $coursemodules = array();
+        $coursemodules = [];
 
         // Points by complete modules not apply in the site level.
         if ($COURSE->id > SITEID && $COURSE->enablecompletion) {
@@ -984,7 +984,7 @@ class controller {
                     // Use the first instance configuration found. This is the more recently block instance configured.
                     $cmconfig[$cmid] = (object)[
                         'instanceid' => $instance->id,
-                        'points' => $instanceconfig->{$fieldkey}
+                        'points' => $instanceconfig->{$fieldkey},
                     ];
                     break;
                 } else if (!$fieldkey) {
@@ -998,7 +998,7 @@ class controller {
                         if (!isset($cmconfig[$cmid])) {
                             $cmconfig[$cmid] = (object)[
                                 'instanceid' => $instance->id,
-                                'points' => $cmpoints
+                                'points' => $cmpoints,
                             ];
                         }
                     }
@@ -1032,7 +1032,7 @@ class controller {
      *
      * @return array The improve criteria list.
      */
-    public static function badges_improvecriteria() : array {
+    public static function badges_improvecriteria(): array {
         global $CFG;
         $criteria = [];
 
@@ -1063,7 +1063,7 @@ class controller {
      * @param string $type
      * @return \block_ludifica\improvecriteria\base
      */
-    public static function get_badges_improvecriteria(string $type) : \block_ludifica\improvecriteria\base {
+    public static function get_badges_improvecriteria(string $type): \block_ludifica\improvecriteria\base {
         global $CFG;
 
         $criteria = null;
@@ -1082,7 +1082,7 @@ class controller {
      * @param string $eventname
      * @param \core\event\base $event
      */
-    public static function trigger(string $eventname, \core\event\base $event) : void {
+    public static function trigger(string $eventname, \core\event\base $event): void {
 
         // Get available criteria to improve.
         $availablecriteria = self::badges_improvecriteria();
@@ -1100,7 +1100,7 @@ class controller {
      *
      * @return array The icons list.
      */
-    public static function get_views_icons() : array {
+    public static function get_views_icons(): array {
 
         $icons = [
             'profile' => 'i/completion_self',
@@ -1118,7 +1118,7 @@ class controller {
      *
      * @return bool If show icons.
      */
-    public static function show_tabicon() : bool {
+    public static function show_tabicon(): bool {
 
         if (self::$showicons !== null) {
             return self::$showicons;
@@ -1137,7 +1137,7 @@ class controller {
      *
      * @return bool If show the text.
      */
-    public static function show_tabtext() : bool {
+    public static function show_tabtext(): bool {
 
         if (self::$showtext !== null) {
             return self::$showtext;
@@ -1156,7 +1156,7 @@ class controller {
      *
      * @return bool If show the text.
      */
-    public static function show_tabs() : bool {
+    public static function show_tabs(): bool {
 
         if (self::$showtabs !== null) {
             return self::$showtabs;
@@ -1176,7 +1176,7 @@ class controller {
      * @param string $name
      * @return \stdClass The info: icon and title.
      */
-    public static function customranking_info(string $name) : ?object {
+    public static function customranking_info(string $name): ?object {
         global $DB, $USER;
 
         if (strpos($name, 'profile_field_') !== false) {

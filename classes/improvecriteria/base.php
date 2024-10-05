@@ -36,14 +36,14 @@ abstract class base {
      *
      * @return string
      */
-    abstract public static function key() : string;
+    abstract public static function key(): string;
 
     /**
      * Get the badge title.
      *
      * @return string
      */
-    public function title() : string {
+    public function title(): string {
         return '';
     }
 
@@ -53,7 +53,7 @@ abstract class base {
      * @param object|string $settings Setting data.
      * @return string
      */
-    public function label($settings = null) : string {
+    public function label($settings = null): string {
         return $this->title();
     }
 
@@ -63,7 +63,7 @@ abstract class base {
      * @param \MoodleQuickForm $mform Edit form.
      * @param object $data Form data.
      */
-    public function settings(\MoodleQuickForm $mform, object $data) : void {
+    public function settings(\MoodleQuickForm $mform, object $data): void {
     }
 
     /**
@@ -72,7 +72,7 @@ abstract class base {
      * @param object $data Form data.
      * @return string
      */
-    public function encode_settings(object $data) : string {
+    public function encode_settings(object $data): string {
         return '';
     }
 
@@ -82,7 +82,7 @@ abstract class base {
      * @param string $settings Criteria encode settings.
      * @return object|null
      */
-    public function decode_settings(string $settings) : ?object {
+    public function decode_settings(string $settings): ?object {
         return @json_decode($settings);
     }
 

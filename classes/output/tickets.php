@@ -77,8 +77,10 @@ class tickets implements renderable, templatable {
             $ticketcore = new \block_ludifica\ticket($ticket);
             $ticket->thumbnail = $ticketcore->get_thumbnail();
 
-            $ticket->usertickets = $DB->get_records('block_ludifica_usertickets', array('userid' => $USER->id,
-                                                                               'ticketid' => $ticket->id));
+            $ticket->usertickets = $DB->get_records('block_ludifica_usertickets', [
+                                                                                'userid' => $USER->id,
+                                                                               'ticketid' => $ticket->id,
+                                                                            ]);
 
             $ticket->userticketscount = count($ticket->usertickets);
             $ticket->usertickets = array_values($ticket->usertickets);

@@ -66,7 +66,7 @@ class avatars implements renderable, templatable {
 
         $dateformat = get_string('strftimedatetimeshort');
 
-        $useravatars = $DB->get_records('block_ludifica_useravatars', array('userid' => $USER->id), null, 'avatarid');
+        $useravatars = $DB->get_records('block_ludifica_useravatars', ['userid' => $USER->id], null, 'avatarid');
 
         foreach ($this->avatars as $key => $avatar) {
 

@@ -29,7 +29,7 @@ $id = optional_param('id', 0, PARAM_INT);
 
 $avatar = null;
 if (!empty($id)) {
-    $avatar = $DB->get_record('block_ludifica_avatars', array('id' => $id), '*', MUST_EXIST);
+    $avatar = $DB->get_record('block_ludifica_avatars', ['id' => $id], '*', MUST_EXIST);
 }
 
 require_login();
@@ -43,10 +43,12 @@ $PAGE->set_pagelayout('incourse');
 $PAGE->set_heading(get_string('avatars', 'block_ludifica'));
 $PAGE->set_title(get_string('avatars', 'block_ludifica'));
 
-$filemanageroptions = array('maxbytes' => $CFG->maxbytes,
-                             'subdirs' => 0,
-                             'maxfiles' => 1,
-                             'accepted_types' => array('.jpg', '.png', '.svg'));
+$filemanageroptions = [
+                        'maxbytes' => $CFG->maxbytes,
+                        'subdirs' => 0,
+                        'maxfiles' => 1,
+                        'accepted_types' => ['.jpg', '.png', '.svg'],
+                    ];
 $draftitemid = file_get_submitted_draft_itemid('attachments_filemanager');
 file_prepare_draft_area($draftitemid, $syscontext->id, 'block_ludifica', 'avatarbust', $id, $filemanageroptions);
 
@@ -55,7 +57,7 @@ if ($avatar) {
 }
 
 // First create the form.
-$editform = new block_ludifica_avatar_edit(null, array('data' => $avatar, 'filemanageroptions' => $filemanageroptions));
+$editform = new block_ludifica_avatar_edit(null, ['data' => $avatar, 'filemanageroptions' => $filemanageroptions]);
 if ($editform->is_cancelled()) {
     $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/avatars.php');
     redirect($url);
@@ -83,25 +85,25 @@ if ($editform->is_cancelled()) {
     if (!empty($avatar->id)) {
         $DB->update_record('block_ludifica_avatars', $avatar);
 
-        $event = \block_ludifica\event\avatar_updated::create(array(
+        $event = \block_ludifica\event\avatar_updated::create([
             'objectid' => $avatar->id,
             'context' => $syscontext,
-        ));
+        ]);
         $event->trigger();
     } else {
         $id = $DB->insert_record('block_ludifica_avatars', $avatar, true);
 
-        $event = \block_ludifica\event\avatar_created::create(array(
+        $event = \block_ludifica\event\avatar_created::create([
             'objectid' => $id,
             'context' => $syscontext,
-        ));
+        ]);
         $event->trigger();
     }
 
     file_save_draft_area_files($data->attachments_filemanager, $syscontext->id, 'block_ludifica', 'avatarbust',
                                 $id, $filemanageroptions);
 
-    $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/avatars.php', array('msg' => 'changessaved'));
+    $url = new moodle_url($CFG->wwwroot . '/blocks/ludifica/avatars.php', ['msg' => 'changessaved']);
     redirect($url);
 }
 

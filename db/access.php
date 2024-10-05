@@ -25,35 +25,35 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
 
-    'block/ludifica:manage' => array(
+    'block/ludifica:manage' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW
-        ),
-        'clonepermissionsfrom' => 'moodle/site:config'
-    ),
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/site:config',
+    ],
 
-    'block/ludifica:myaddinstance' => array(
+    'block/ludifica:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'user' => CAP_ALLOW
-        ),
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
 
-    'block/ludifica:addinstance' => array(
+    'block/ludifica:addinstance' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
+        'archetypes' => [
             'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    )
-);
+            'manager' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ],
+];

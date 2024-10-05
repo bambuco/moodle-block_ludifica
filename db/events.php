@@ -28,26 +28,26 @@ defined('MOODLE_INTERNAL') || die();
 $observers = [
     [
         'eventname' => '\core\event\course_completed',
-        'callback' => 'block_ludifica\observer::course_completed'
+        'callback' => 'block_ludifica\observer::course_completed',
     ],
     [
         'eventname' => '\core\event\user_loggedin',
-        'callback' => 'block_ludifica\observer::user_loggedin'
+        'callback' => 'block_ludifica\observer::user_loggedin',
     ],
     [
          'eventname' => '\core\event\user_created',
-         'callback' => 'block_ludifica\observer::user_created'
+         'callback' => 'block_ludifica\observer::user_created',
     ],
     [
         'eventname' => '\core\event\course_module_completion_updated',
-        'callback' => 'block_ludifica\observer::course_module_completion_updated'
+        'callback' => 'block_ludifica\observer::course_module_completion_updated',
     ],
     [
         'eventname' => '\core\event\user_updated',
-        'callback' => 'block_ludifica\observer::user_updated'
+        'callback' => 'block_ludifica\observer::user_updated',
     ],
     [
         'eventname' => '\core\event\badge_deleted',
-        'callback' => 'block_ludifica\observer::badge_deleted'
-    ]
+        'callback' => 'block_ludifica\observer::badge_deleted',
+    ],
 ];

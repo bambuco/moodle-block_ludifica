@@ -42,9 +42,9 @@ class external extends \external_api {
      */
     public static function get_ticket_parameters() {
         return new \external_function_parameters(
-            array(
-                'id' => new \external_value(PARAM_INT, 'Ticket id', VALUE_REQUIRED)
-            )
+            [
+                'id' => new \external_value(PARAM_INT, 'Ticket id', VALUE_REQUIRED),
+            ]
         );
     }
 
@@ -57,11 +57,10 @@ class external extends \external_api {
     public static function get_ticket($id) {
         global $DB, $USER;
 
-        $ticket = $DB->get_record('block_ludifica_tickets', array('id' => $id), '*', MUST_EXIST);
+        $ticket = $DB->get_record('block_ludifica_tickets', ['id' => $id], '*', MUST_EXIST);
 
         if (isloggedin() && !isguestuser()) {
-            $ticket->usertickets = $DB->get_records('block_ludifica_usertickets', array('userid' => $USER->id,
-                                                                                        'ticketid' => $id));
+            $ticket->usertickets = $DB->get_records('block_ludifica_usertickets', ['userid' => $USER->id, 'ticketid' => $id]);
 
             // Hack for external presentation.
             $dateformat = get_string('strftimedatetimeshort');
@@ -81,7 +80,7 @@ class external extends \external_api {
      */
     public static function get_ticket_returns() {
         return new \external_single_structure(
-            array(
+            [
                 'id' => new \external_value(PARAM_INT, 'Ticket id'),
                 'name' => new \external_value(PARAM_TEXT, 'Ticket name'),
                 'description' => new \external_value(PARAM_TEXT, 'Ticket description'),
@@ -94,18 +93,18 @@ class external extends \external_api {
                 'timecreated' => new \external_value(PARAM_INT, 'Ticket created time'),
                 'usertickets' => new \external_multiple_structure(
                     new \external_single_structure(
-                        array(
+                        [
                             'id' => new \external_value(PARAM_INT, 'User ticket id'),
                             'userid' => new \external_value(PARAM_INT, 'User id'),
                             'usercode' => new \external_value(PARAM_TEXT, 'Unique user ticket code'),
                             'timecreated' => new \external_value(PARAM_INT, 'Time created'),
                             'timeused' => new \external_value(PARAM_INT, 'Time used, null if not used yet', VALUE_DEFAULT, null),
                             'timeusedformatted' => new \external_value(PARAM_TEXT, 'Time used formatted', VALUE_DEFAULT, null),
-                        ),
+                        ],
                         'An user to access the resource'),
-                    'User access list', VALUE_DEFAULT, array()
-                )
-            ),
+                    'User access list', VALUE_DEFAULT, [],
+                ),
+            ],
             'A ticket info', VALUE_DEFAULT, null
         );
     }
@@ -116,9 +115,9 @@ class external extends \external_api {
      */
     public static function buy_ticket_parameters() {
         return new \external_function_parameters(
-            array(
-                'id' => new \external_value(PARAM_INT, 'Ticket id', VALUE_REQUIRED)
-            )
+            [
+                'id' => new \external_value(PARAM_INT, 'Ticket id', VALUE_REQUIRED),
+            ]
         );
     }
 
@@ -131,9 +130,8 @@ class external extends \external_api {
     public static function buy_ticket($id) {
         global $DB, $USER;
 
-        $ticket = $DB->get_record('block_ludifica_tickets', array('id' => $id), '*', MUST_EXIST);
-        $usertickets = $DB->count_records('block_ludifica_usertickets', array('userid' => $USER->id,
-                                                                                        'ticketid' => $id));
+        $ticket = $DB->get_record('block_ludifica_tickets', ['id' => $id], '*', MUST_EXIST);
+        $usertickets = $DB->count_records('block_ludifica_usertickets', ['userid' => $USER->id, 'ticketid' => $id]);
 
         $player = new \block_ludifica\player($USER->id);
 
@@ -147,7 +145,7 @@ class external extends \external_api {
             }
 
             $ticket->available--;
-            $DB->update_record('block_ludifica_tickets', array('id' => $id, 'available' => $ticket->available));
+            $DB->update_record('block_ludifica_tickets', ['id' => $id, 'available' => $ticket->available]);
 
             $data = new \stdClass();
             $data->userid = $USER->id;
@@ -158,8 +156,10 @@ class external extends \external_api {
             $data->timeused = null;
             $DB->insert_record('block_ludifica_usertickets', $data);
 
-            $DB->update_record('block_ludifica_general', array('id' => $player->general->id,
-                                                                'coins' => $player->general->coins - $ticket->cost));
+            $DB->update_record('block_ludifica_general', [
+                                                            'id' => $player->general->id,
+                                                            'coins' => $player->general->coins - $ticket->cost,
+                                                        ]);
 
             return true;
         }
@@ -181,10 +181,10 @@ class external extends \external_api {
      */
     public static function give_ticket_parameters() {
         return new \external_function_parameters(
-            array(
+            [
                 'ticketid' => new \external_value(PARAM_INT, 'Ticket id', VALUE_REQUIRED),
-                'contactid' => new \external_value(PARAM_INT, 'Contact id', VALUE_REQUIRED)
-            )
+                'contactid' => new \external_value(PARAM_INT, 'Contact id', VALUE_REQUIRED),
+            ]
         );
     }
 
@@ -199,7 +199,7 @@ class external extends \external_api {
         global $DB, $USER;
 
         $usertickets = $DB->get_records('block_ludifica_usertickets',
-                                            array('userid' => $USER->id, 'ticketid' => $ticketid, 'timeused' => null),
+                                            ['userid' => $USER->id, 'ticketid' => $ticketid, 'timeused' => null],
                                             '', '*', 0, 1);
 
         if (count($usertickets) > 0) {
@@ -228,9 +228,9 @@ class external extends \external_api {
      */
     public static function buy_avatar_parameters() {
         return new \external_function_parameters(
-            array(
-                'id' => new \external_value(PARAM_INT, 'Avatar id', VALUE_REQUIRED)
-            )
+            [
+                'id' => new \external_value(PARAM_INT, 'Avatar id', VALUE_REQUIRED),
+            ]
         );
     }
 
@@ -243,9 +243,8 @@ class external extends \external_api {
     public static function buy_avatar($id) {
         global $DB, $USER;
 
-        $avatar = $DB->get_record('block_ludifica_avatars', array('id' => $id), '*', MUST_EXIST);
-        $useravatar = $DB->count_records('block_ludifica_useravatars', array('userid' => $USER->id,
-                                                                                'avatarid' => $id));
+        $avatar = $DB->get_record('block_ludifica_avatars', ['id' => $id], '*', MUST_EXIST);
+        $useravatar = $DB->count_records('block_ludifica_useravatars', ['userid' => $USER->id, 'avatarid' => $id]);
 
         $player = new \block_ludifica\player($USER->id);
 
@@ -258,8 +257,10 @@ class external extends \external_api {
             $data->timecreated = time();
             $DB->insert_record('block_ludifica_useravatars', $data);
 
-            $DB->update_record('block_ludifica_general', array('id' => $player->general->id,
-                                                                'coins' => $player->general->coins - $avatar->cost));
+            $DB->update_record('block_ludifica_general', [
+                                                            'id' => $player->general->id,
+                                                            'coins' => $player->general->coins - $avatar->cost,
+                                                        ]);
 
             return true;
         }
@@ -281,9 +282,9 @@ class external extends \external_api {
      */
     public static function use_avatar_parameters() {
         return new \external_function_parameters(
-            array(
-                'id' => new \external_value(PARAM_INT, 'Avatar id', VALUE_REQUIRED)
-            )
+            [
+                'id' => new \external_value(PARAM_INT, 'Avatar id', VALUE_REQUIRED),
+            ]
         );
     }
 
@@ -296,9 +297,8 @@ class external extends \external_api {
     public static function use_avatar($id) {
         global $DB, $USER;
 
-        $general = $DB->get_record('block_ludifica_general', array('userid' => $USER->id), '*', MUST_EXIST);
-        $useravatar = $DB->count_records('block_ludifica_useravatars', array('userid' => $USER->id,
-                                                                                'avatarid' => $id));
+        $general = $DB->get_record('block_ludifica_general', ['userid' => $USER->id], '*', MUST_EXIST);
+        $useravatar = $DB->count_records('block_ludifica_useravatars', ['userid' => $USER->id, 'avatarid' => $id]);
 
         // Check if user has the avatar.
         if ($useravatar > 0) {
@@ -327,7 +327,7 @@ class external extends \external_api {
      */
     public static function get_profile_parameters() {
         return new \external_function_parameters(
-            array()
+            []
         );
     }
 
@@ -337,7 +337,7 @@ class external extends \external_api {
      * @return object Current player profile.
      */
     public static function get_profile() {
-        global $DB, $USER;
+        global $USER;
 
         if (!isloggedin() || isguestuser()) {
             return null;
@@ -358,20 +358,20 @@ class external extends \external_api {
      */
     public static function get_profile_returns() {
         return new \external_single_structure(
-            array(
+            [
                 'fullname' => new \external_value(PARAM_TEXT, 'Player fullname'),
                 'points' => new \external_value(PARAM_INT, 'Current points'),
                 'coins' => new \external_value(PARAM_INT, 'Current coins'),
                 'level' => new \external_single_structure(
-                    array(
+                    [
                         'name' => new \external_value(PARAM_TEXT, 'Level name'),
                         'maxpoints' => new \external_value(PARAM_INT, 'Level max points'),
-                        'index' => new \external_value(PARAM_INT, 'Level position')
-                    ),
+                        'index' => new \external_value(PARAM_INT, 'Level position'),
+                    ],
                     'The user level information'),
                 'nickname' => new \external_value(PARAM_TEXT, 'Player nickname'),
-                'avatarurl' => new \external_value(PARAM_TEXT, 'Player avatar URL')
-            ),
+                'avatarurl' => new \external_value(PARAM_TEXT, 'Player avatar URL'),
+            ],
             'General current player info', VALUE_DEFAULT, null
         );
     }

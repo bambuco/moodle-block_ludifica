@@ -51,7 +51,7 @@ class avatar extends entity {
             if (is_object($avatar) && property_exists($avatar, 'id')) {
                 $this->data = $avatar;
             } else {
-                $this->data = $DB->get_record('block_ludifica_avatars', array('id' => (int)$avatar));
+                $this->data = $DB->get_record('block_ludifica_avatars', ['id' => (int)$avatar]);
             }
         }
 
@@ -112,10 +112,12 @@ class avatar extends entity {
             $filename = $file->get_filename();
 
             if (!empty($filename) && $filename != '.') {
-                $path = '/' . implode('/', array($file->get_contextid(),
-                                                    'block_ludifica',
-                                                    'avatarbust',
-                                                    $file->get_itemid() . $file->get_filepath() . $filename));
+                $path = '/' . implode('/', [
+                                                $file->get_contextid(),
+                                                'block_ludifica',
+                                                'avatarbust',
+                                                $file->get_itemid() . $file->get_filepath() . $filename,
+                                            ]);
 
                 return \moodle_url::make_file_url('/pluginfile.php', $path);
 
@@ -144,7 +146,7 @@ class avatar extends entity {
      * @return array Avatar types.
      */
     public static function get_types() {
-        return array(self::$defaulttype => get_string('avatartype_normal', 'block_ludifica'));
+        return [self::$defaulttype => get_string('avatartype_normal', 'block_ludifica')];
         // The 'user' type is not avaible yet. The string is 'avatartype_user'.
     }
 

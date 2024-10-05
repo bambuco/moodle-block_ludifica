@@ -51,16 +51,20 @@ class block_ludifica_ticket_edit extends moodleform {
         $this->_data = $this->_customdata['data'];
 
         if ($this->_data) {
-            $this->_data->moreinfo = array('text' => $this->_data->moreinfo);
+            $this->_data->moreinfo = ['text' => $this->_data->moreinfo];
             if ($this->_data->infodata == 'null') {
                 $this->_data->infodata = '';
             }
         }
 
-        $dateattributes = array('stopyear' => date('Y', time()) + 15, 'startyear' => date('Y', time()));
-        $editoroptions = array('maxfiles' => 0, 'maxbytes' => $CFG->maxbytes,
-                                    'trusttext' => false, 'noclean' => true);
-        $editorattributes = array ('rows' => 5, 'cols' => 50);
+        $dateattributes = ['stopyear' => date('Y', time()) + 15, 'startyear' => date('Y', time())];
+        $editoroptions = [
+                            'maxfiles' => 0,
+                            'maxbytes' => $CFG->maxbytes,
+                            'trusttext' => false,
+                            'noclean' => true,
+                        ];
+        $editorattributes = ['rows' => 5, 'cols' => 50];
         $filemanageroptions = $this->_customdata['filemanageroptions'];
 
         $mform->addElement('header', 'general', get_string('general'));
@@ -97,7 +101,7 @@ class block_ludifica_ticket_edit extends moodleform {
         $mform->addElement('text', 'byuser', get_string('ticketbyuser', 'block_ludifica'), 'maxlength="10" size="10"');
         $mform->setType('byuser', PARAM_INT);
 
-        $values = array('1' => get_string('yes'), '0' => get_string('no'));
+        $values = ['1' => get_string('yes'), '0' => get_string('no')];
         $mform->addElement('select', 'enabled', get_string('enabled', 'block_ludifica'), $values);
 
         $mform->addElement('hidden', 'id', null);

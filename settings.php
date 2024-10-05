@@ -210,7 +210,7 @@ if ($ADMIN->fulltree) {
     $options = ['default' => get_string('none')];
 
     $path = $CFG->dirroot . '/blocks/ludifica/templates/';
-    $files = array_diff(scandir($path), array('..', '.'));
+    $files = array_diff(scandir($path), ['..', '.']);
 
     foreach ($files as $file) {
         if (is_dir($path . $file)) {
@@ -229,7 +229,7 @@ if ($ADMIN->fulltree) {
         'default' => get_string('textandicon', 'block_ludifica'),
         'showtext' => get_string('showtext', 'block_ludifica'),
         'showicon' => get_string('showicon', 'block_ludifica'),
-        'none' => get_string('none')
+        'none' => get_string('none'),
     ];
 
     $name = 'block_ludifica/tabview';

@@ -64,7 +64,7 @@ class entity {
         } else if (property_exists($this->data, $name)) {
             return $this->data->$name;
         } else if (method_exists($this, 'get_' . $name)) {
-            return call_user_func(array($this, 'get_' . $name));
+            return call_user_func([$this, 'get_' . $name]);
         } else {
             throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->'. $name);
         }
@@ -82,7 +82,7 @@ class entity {
         } else if (property_exists($this->data, $name)) {
             $this->data->$name = $value;
         } else if (method_exists($this, 'set_' . $name)) {
-            return call_user_func(array($this, 'set_' . $name), $value);
+            return call_user_func([$this, 'set_' . $name], $value);
         } else {
             throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->'. $name);
         }

@@ -51,15 +51,20 @@ class block_ludifica_avatar_edit extends moodleform {
         $this->_data = $this->_customdata['data'];
 
         if ($this->_data) {
-            $this->_data->description = array('text' => $this->_data->description);
+            $this->_data->description = ['text' => $this->_data->description];
             if ($this->_data->description == 'null') {
                 $this->_data->description = '';
             }
         }
 
-        $editoroptions = array('maxfiles' => 0, 'maxbytes' => 0, 'enable_filemanagement' => false,
-                                    'trusttext' => false, 'noclean' => false);
-        $editorattributes = array ('rows' => 5, 'cols' => 50);
+        $editoroptions = [
+                            'maxfiles' => 0,
+                            'maxbytes' => 0,
+                            'enable_filemanagement' => false,
+                            'trusttext' => false,
+                            'noclean' => false,
+                        ];
+        $editorattributes = ['rows' => 5, 'cols' => 50];
         $filemanageroptions = $this->_customdata['filemanageroptions'];
 
         $mform->addElement('header', 'general', get_string('general'));
@@ -84,7 +89,7 @@ class block_ludifica_avatar_edit extends moodleform {
         $mform->setType('sources', PARAM_TEXT);
         $mform->addHelpButton('sources', 'avatarsources', 'block_ludifica');
 
-        $values = array('1' => get_string('yes'), '0' => get_string('no'));
+        $values = ['1' => get_string('yes'), '0' => get_string('no')];
         $mform->addElement('select', 'enabled', get_string('enabled', 'block_ludifica'), $values);
 
         $mform->addElement('hidden', 'id', null);

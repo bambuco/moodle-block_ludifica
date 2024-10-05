@@ -87,10 +87,10 @@ class player extends entity {
         if (!$userid) {
             $this->data = $USER;
         } else {
-            $this->data = $DB->get_record('user', array('id' => $userid), '*', MUST_EXIST);
+            $this->data = $DB->get_record('user', ['id' => $userid], '*', MUST_EXIST);
         }
 
-        $general = $DB->get_record('block_ludifica_general', array('userid' => $this->data->id));
+        $general = $DB->get_record('block_ludifica_general', ['userid' => $this->data->id]);
 
         if (!$general) {
             $general = new \stdClass();
@@ -107,7 +107,7 @@ class player extends entity {
 
         if ($this->data->general->avatarid) {
             $this->data->avatar = $DB->get_record('block_ludifica_avatars',
-                                                    array('id' => $this->data->general->avatarid), '*', MUST_EXIST);
+                                                    ['id' => $this->data->general->avatarid], '*', MUST_EXIST);
         } else {
             $this->data->avatar = null;
         }
@@ -155,11 +155,11 @@ class player extends entity {
      * @return array Tickets list.
      */
     public function get_tickets() {
-        global $OUTPUT, $DB;
+        global $DB;
 
-        $usertickets = $DB->get_records('block_ludifica_usertickets', array('userid' => $this->data->id));
+        $usertickets = $DB->get_records('block_ludifica_usertickets', ['userid' => $this->data->id]);
 
-        $response = array();
+        $response = [];
         foreach ($usertickets as $one) {
 
             if (!isset($response[$one->ticketid])) {
@@ -203,7 +203,7 @@ class player extends entity {
      * @param object $infodata Information depend of points type
      * @param int $objectid Other item related with the points.
      */
-    public function add_points(int $newpoints, int $courseid, string $type, object $infodata = null, $objectid = null) {
+    public function add_points(int $newpoints, int $courseid, string $type, object $infodata, $objectid) {
         global $DB;
 
         $totalpoints = $newpoints + $this->data->general->points;

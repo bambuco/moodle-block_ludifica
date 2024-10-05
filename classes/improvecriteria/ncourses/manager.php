@@ -36,7 +36,7 @@ class manager extends \block_ludifica\improvecriteria\base {
      *
      * @return string
      */
-    public static function key() : string {
+    public static function key(): string {
         return 'ncourses';
     }
 
@@ -45,7 +45,7 @@ class manager extends \block_ludifica\improvecriteria\base {
      *
      * @return string
      */
-    public function title() : string {
+    public function title(): string {
         return get_string('improvecriteria_ncourses', 'block_ludifica');
     }
 
@@ -55,7 +55,7 @@ class manager extends \block_ludifica\improvecriteria\base {
      * @param object|string $settings Setting data.
      * @return string
      */
-    public function label($settings = null) : string {
+    public function label($settings = null): string {
 
         if ($settings) {
 
@@ -77,7 +77,7 @@ class manager extends \block_ludifica\improvecriteria\base {
      * @param \MoodleQuickForm $mform Edit form.
      * @param object $data Form data.
      */
-    public function settings(\MoodleQuickForm $mform, object $data) : void {
+    public function settings(\MoodleQuickForm $mform, object $data): void {
 
         // Define control to set the number of courses.
         $mform->addElement('text', 'ncourses', get_string('improvecriteria_ncourses_n', 'block_ludifica'));
@@ -99,7 +99,7 @@ class manager extends \block_ludifica\improvecriteria\base {
      * @param object $data Form data.
      * @return string
      */
-    public function encode_settings(object $data) : string {
+    public function encode_settings(object $data): string {
         $settings = new \stdClass();
         $settings->ncourses = property_exists($data, 'ncourses') ? $data->ncourses : 0;
         return json_encode($settings);
