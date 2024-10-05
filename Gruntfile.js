@@ -69,14 +69,27 @@ module.exports = function(grunt) {
         },
         stylelint: {
             css: {
-                src: ["templates/*/styles.css", "styles.css"]
+                src: ["templates/*/styles.css", "styles.css"],
+                options: {
+                    configOverrides: {
+                        rules: {
+                            "at-rule-no-unknown": true,
+                        }
+                    }
+                }
             }
         },
     });
 
+    // Load contrib tasks.
+    grunt.loadNpmTasks("grunt-contrib-watch");
+
+    // Load core tasks.
+    grunt.loadNpmTasks("grunt-eslint");
+    grunt.loadNpmTasks("grunt-stylelint");
+
     // Register tasks.
-    grunt.registerTask("css", ["stylelint"]);
+    grunt.registerTask("css", ["stylelint:css"]);
     grunt.registerTask("default", ["watch"]);
-    grunt.registerTask('amd', ['eslint:amd', 'uglify:amd']);
 
 };
