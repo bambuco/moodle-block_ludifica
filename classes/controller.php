@@ -1257,6 +1257,11 @@ class controller {
         return null;
     }
 
+    /**
+     * Get the player contact list.
+     *
+     * @return array The contact list.
+     */
     public static function get_contacts() {
         global $CFG, $USER, $PAGE, $DB;
 

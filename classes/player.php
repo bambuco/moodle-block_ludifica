@@ -288,10 +288,10 @@ class player extends entity {
     }
 
     /**
-     * Update user coins.
+     * Give coins to other player.
      *
-     * @param int $userid
      * @param int $coins
+     * @param int $touser
      * @return bool True if successful, false in other case.
      */
     public function give_coins(int $coins, int $touser): bool {
