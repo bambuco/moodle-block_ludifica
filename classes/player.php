@@ -72,6 +72,16 @@ class player extends entity {
     const COINS_TYPE_BYPOINTS = 'bypoints';
 
     /**
+     * @var string Give coins.
+     */
+    const COINS_TYPE_GIVE = 'give';
+
+    /**
+     * @var string Receive gifted coins.
+     */
+    const COINS_TYPE_RECIVEGIVE = 'recivegive';
+
+    /**
      * @var int Ranking users.
      */
     const LIMIT_RANKING = 10;
@@ -119,7 +129,6 @@ class player extends entity {
      * @return object Profile.
      */
     public function get_profile() {
-        global $OUTPUT;
 
         $info = new \stdClass();
         $info->fullname = fullname($this->data);
@@ -274,6 +283,51 @@ class player extends entity {
         $data->infodata = json_encode($infodata);
         $data->timecreated = time();
         $DB->insert_record('block_ludifica_usercoins', $data);
+
+        return true;
+    }
+
+    /**
+     * Update user coins.
+     *
+     * @param int $userid
+     * @param int $coins
+     * @return bool True if successful, false in other case.
+     */
+    public function give_coins(int $coins, int $touser): bool {
+        global $DB;
+
+        $data = new \stdClass();
+        $data->courseid = 0;
+        $data->userid = $this->data->id;
+        $data->type = self::COINS_TYPE_GIVE;
+        $data->coins = $coins * -1;
+        $data->infodata = json_encode(['touser' => $touser]);
+        $data->timecreated = time();
+        $DB->insert_record('block_ludifica_usercoins', $data);
+
+        $data = new \stdClass();
+        $data->courseid = 0;
+        $data->userid = $touser;
+        $data->type = self::COINS_TYPE_RECIVEGIVE;
+        $data->coins = $coins;
+        $data->infodata = json_encode(['fromuser' => $this->data->id]);
+        $data->timecreated = time();
+        $DB->insert_record('block_ludifica_usercoins', $data);
+
+        // Save the current coins.
+        $data = new \stdClass();
+        $data->id = $this->data->general->id;
+        $data->coins = $this->data->general->coins - $coins;
+        $data->timeupdated = time();
+        $DB->update_record('block_ludifica_general', $data);
+
+        $contactplayer = new player($touser);
+        $data = new \stdClass();
+        $data->id = $contactplayer->data->general->id;
+        $data->coins = $contactplayer->data->general->coins + $coins;
+        $data->timeupdated = time();
+        $DB->update_record('block_ludifica_general', $data);
 
         return true;
     }

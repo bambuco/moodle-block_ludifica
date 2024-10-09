@@ -104,7 +104,8 @@ class block_ludifica extends block_base {
 
         if (isset($this->config) && is_object($this->config)) {
 
-            $tabstoadd = ['tabprofile' => ['profile', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'],
+            $tabstoadd = ['tabprofile' => ['profile', 'contacts', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'],
+                          'tabcontacts' => ['contacts'],
                           'tabtopbycourse' => ['topbycourse'],
                           'tabtopbysite' => ['topbysite'],
                           'tablastmonth' => ['lastmonth'],
@@ -122,7 +123,7 @@ class block_ludifica extends block_base {
                 }
             }
         } else {
-            $tabs = ['profile', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'];
+            $tabs = ['profile', 'contacts', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'];
         }
 
         if (!empty($this->config->userfieldsranking)) {

@@ -113,7 +113,7 @@ class controller {
         $infodata->completionid = $completionid;
 
         $player = new player($userid);
-        $player->add_points($pointsbycomplete, $courseid, player::POINTS_TYPE_COURSECOMPLETED, $infodata);
+        $player->add_points($pointsbycomplete, $courseid, player::POINTS_TYPE_COURSECOMPLETED, $infodata, null);
 
         return true;
     }
@@ -216,13 +216,13 @@ class controller {
                 $infodata->days = $recurrentdays + 1;
                 $infodata->step = $userpoints->infodata->steps;
 
-                $player->add_points($points, SITEID, player::POINTS_TYPE_RECURRENTLOGINBASIC, $infodata);
+                $player->add_points($points, SITEID, player::POINTS_TYPE_RECURRENTLOGINBASIC, $infodata, null);
                 $updateuserpoints = true;
             } else {
                 // Points after the minimum login days recurrently.
                 $points = intval(get_config('block_ludifica', 'pointsbyrecurrentlogin2'));
 
-                $player->add_points($points, SITEID, player::POINTS_TYPE_RECURRENTLOGIN, $userpoints->infodata);
+                $player->add_points($points, SITEID, player::POINTS_TYPE_RECURRENTLOGIN, $userpoints->infodata, null);
             }
         } else {
             $updateuserpoints = true;
@@ -252,7 +252,7 @@ class controller {
         }
 
         $player = new player($userid);
-        $player->add_points($points, SITEID, player::POINTS_TYPE_USERCREATED);
+        $player->add_points($points, SITEID, player::POINTS_TYPE_USERCREATED, null, null);
 
         return true;
     }
@@ -1104,6 +1104,7 @@ class controller {
 
         $icons = [
             'profile' => 'i/completion_self',
+            'contacts' => 'i/group',
             'topbycourse' => 't/sort_by',
             'topbysite' => 't/award',
             'lastmonth' => 'e/insert_date',
@@ -1256,4 +1257,58 @@ class controller {
         return null;
     }
 
+    public static function get_contacts() {
+        global $CFG, $USER, $PAGE, $DB;
+
+        // Check if messaging is enabled.
+        if (empty($CFG->messaging)) {
+            return [];
+        }
+
+        $contacts = \core_message\api::get_user_contacts($USER->id);
+
+        $list = [];
+        $userealinformation = get_config('block_ludifica', 'userealinformation');
+
+        foreach ($contacts as $user) {
+
+            $record = $DB->get_record('block_ludifica_general', ['userid' => $user->id]);
+            $record->profileurl = $user->profileurl;
+            $record->avatarprofile = null;
+            $avatarid = self::get_avatar_id($user->id);
+
+            if (!empty($avatarid)) {
+                $avatar = new \block_ludifica\avatar($avatarid);
+                $record->avatarprofile = $avatar->get_busturi();
+            } else {
+
+                if ($userealinformation) {
+                    // Return the user profile image.
+                    $userpicture = new \user_picture($record);
+
+                    if ($userpicture) {
+                        $userpicture->size = 'f2';
+                        $profileimageurl = $userpicture->get_url($PAGE);
+                        $record->avatarprofile = $profileimageurl;
+                    }
+                }
+            }
+
+            if (!$record->avatarprofile) {
+                $record->avatarprofile = avatar::default_avatar();
+            }
+
+            if (empty($record->nickname)) {
+                if ($userealinformation) {
+                    $record->nickname = $record->fullname;
+                } else {
+                    $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
+                }
+            }
+
+            $list[] = $record;
+        }
+
+        return $list;
+    }
 }

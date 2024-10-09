@@ -79,4 +79,12 @@ $functions = [
         'ajax' => true,
         'loginrequired' => true,
     ],
+    'block_ludifica_give_coins' => [
+        'classname' => '\block_ludifica\external\givecoins',
+        'classpath' => '',
+        'description' => 'Give coins to a contact',
+        'type' => 'write',
+        'ajax' => true,
+        'loginrequired' => true,
+    ],
 ];

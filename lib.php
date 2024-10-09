@@ -98,4 +98,23 @@ function block_ludifica_inplace_editable($itemtype, $itemid, $newvalue) {
             format_string($newvalue), $newvalue, get_string('edit'),
             get_string('newnickname', 'block_ludifica', format_string($newvalue)));
     }
+
+}
+
+/**
+ * Get icon mapping.
+ *
+ * @return array Icon mapping.
+ */
+function block_ludifica_get_fontawesome_icon_map() {
+    return [
+        'block_ludifica:profile' => 'fa-user-circle-o',
+        'block_ludifica:topbycourse' => 'fa-sort-amount-asc',
+        'block_ludifica:topbysite' => 'fa-trophy',
+        'block_ludifica:lastmonth' => 'fa-calendar',
+        'block_ludifica:contacts' => 'fa-address-card',
+        'block_ludifica:dynamichelps' => 'fa-question-circle',
+        'block_ludifica:coins' => 'fa-database',
+        'block_ludifica:points' => 'fa-star',
+    ];
 }

@@ -21,14 +21,22 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(['jquery', 'core/str', 'core/modal_factory', 'block_ludifica/alertc', 'core/log'],
-function($, str, ModalFactory, Alertc, Log) {
+define(['jquery', 'core/str', 'core/modal_factory', 'block_ludifica/alertc', 'core/log', 'core/notification', 'core/ajax'],
+function($, str, ModalFactory, Alertc, Log, Notification, Ajax) {
 
     // Load strings.
     var strings = [];
     strings.push({key: 'badgelinkcopiedtoclipboard', component: 'block_ludifica'});
     strings.push({key: 'showranking', component: 'block_ludifica'});
     strings.push({key: 'hideranking', component: 'block_ludifica'});
+    strings.push({key: 'givecoins', component: 'block_ludifica'});
+    strings.push({key: 'givecoinsmessage', component: 'block_ludifica'});
+    strings.push({key: 'give', component: 'block_ludifica'});
+    strings.push({key: 'notgivecoins', component: 'block_ludifica'});
+    strings.push({key: 'amount', component: 'block_ludifica'});
+    strings.push({key: 'cancel', component: 'block_ludifica'});
+    strings.push({key: 'coins', component: 'block_ludifica'});
+    strings.push({key: 'deliveredcoins', component: 'block_ludifica'});
 
     var s = [];
 
@@ -95,6 +103,74 @@ function($, str, ModalFactory, Alertc, Log) {
             }
         });
     };
+
+    /**
+     * Show the give coins view.
+     *
+     * @param {Integer} contactid
+     */
+    function giveCoinsView(contactid) {
+
+        var $content = $('<div></div>');
+        var $amount = $('<input type="number" id="block_ludifica_givecoins_amount" class="form-control" placeholder="'
+                            + s.amount + '">');
+
+        $content.append('<h4>' + s.givecoinsmessage + '</h4>');
+        $content.append($amount);
+
+        Notification.confirm(s.givecoins, $content.html(), s.give, s.cancel, function() {
+            var amount = parseInt($('#block_ludifica_givecoins_amount').val());
+
+            // Give the coins.
+            Ajax.call([{
+                methodname: 'block_ludifica_give_coins',
+                args: {'amount': amount, 'contactid': contactid},
+                done: function(data) {
+
+                    if (data) {
+                        Alertc.success(s.deliveredcoins);
+                        updateCoinsData();
+                    } else {
+                        Alertc.error(s.notgivecoins);
+                    }
+
+                },
+                fail: function(e) {
+                    Alertc.error(e.message);
+                    Log.debug(e);
+                }
+            }]);
+
+        });
+    }
+
+    /**
+     * Update the coins in user profile.
+     *
+     */
+    function updateCoinsData() {
+        Ajax.call([{
+            methodname: 'block_ludifica_get_profile',
+            args: {},
+            done: function(data) {
+                console.log(data);
+
+                if (data && typeof data == 'object') {
+                    var $coinstcontrol = $('.ludifica-playerstats-coins');
+
+                    $coinstcontrol.attr('title', s.coins + ' ' + data.coins);
+                    $coinstcontrol.find('em').html(data.coins);
+
+                    if (data.coins == 0) {
+                        $('[data-action="givecoins"]').hide();
+                    }
+                }
+            },
+            fail: function(e) {
+                Log.debug(e);
+            }
+        }]);
+    }
 
     /**
      * Initialise all for the block.
@@ -274,6 +350,15 @@ function($, str, ModalFactory, Alertc, Log) {
                     }
                 });
             });
+        });
+
+        // Give coins.
+        $('[data-action="givecoins"]').on('click', function() {
+            var $element = $(this);
+            var contactid = $element.data('contact');
+
+            giveCoinsView(contactid);
+
         });
 
         $('body').on('updatefailed', '[data-inplaceeditable]', function(e) {
