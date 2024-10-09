@@ -177,6 +177,7 @@ $string['notickets'] = 'Not available tickets yet';
 $string['nottopyet'] = 'Not positions yet';
 $string['notuserbadges'] = 'Not badges yet';
 $string['notusertickets'] = 'Not tickets yet';
+$string['notvalidamount'] = 'Invalid amount';
 $string['numcoins'] = '{$a} coins';
 $string['numpoints'] = '{$a} points';
 $string['overcomelevel'] = 'Get <strong>{$a->maxpoints} points</strong> to reach the level <strong>{$a->name}</strong>.';

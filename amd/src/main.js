@@ -37,6 +37,7 @@ function($, str, ModalFactory, Alertc, Log, Notification, Ajax) {
     strings.push({key: 'cancel', component: 'block_ludifica'});
     strings.push({key: 'coins', component: 'block_ludifica'});
     strings.push({key: 'deliveredcoins', component: 'block_ludifica'});
+    strings.push({key: 'notvalidamount', component: 'block_ludifica'});
 
     var s = [];
 
@@ -120,6 +121,11 @@ function($, str, ModalFactory, Alertc, Log, Notification, Ajax) {
 
         Notification.confirm(s.givecoins, $content.html(), s.give, s.cancel, function() {
             var amount = parseInt($('#block_ludifica_givecoins_amount').val());
+
+            if (isNaN(amount) || amount <= 0) {
+                Alertc.error(s.notvalidamount);
+                return;
+            }
 
             // Give the coins.
             Ajax.call([{
