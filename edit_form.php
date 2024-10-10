@@ -54,6 +54,10 @@ class block_ludifica_edit_form extends block_edit_form {
         $mform->setDefault('config_tabprofile', 1);
         $mform->addHelpButton('config_tabprofile', 'tabprofile', 'block_ludifica');
 
+        $mform->addElement('select', 'config_tabcontacts', get_string('tabcontacts', 'block_ludifica'), $options);
+        $mform->setDefault('config_tabcontacts', 1);
+        $mform->addHelpButton('config_tabcontacts', 'tabcontacts', 'block_ludifica');
+
         $mform->addElement('select', 'config_tabtopbysite', get_string('tabtopbysite', 'block_ludifica'), $options);
         $mform->setDefault('config_tabtopbysite', 1);
 

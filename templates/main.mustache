@@ -221,7 +221,10 @@
                         <span class="pix-toggle" style="display: none;">{{#pix}} i/window_close, core {{/pix}}</span>
                     </button>
 
-                    <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                    {{#hasranking}}
+                        <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                    {{/hasranking}}
+
                     {{/myprofile}}
 
                 </div>

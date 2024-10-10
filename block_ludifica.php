@@ -104,7 +104,7 @@ class block_ludifica extends block_base {
 
         if (isset($this->config) && is_object($this->config)) {
 
-            $tabstoadd = ['tabprofile' => ['profile', 'contacts', 'topbysite', 'topbycourse', 'lastmonth', 'dynamichelps'],
+            $tabstoadd = ['tabprofile' => ['profile'],
                           'tabcontacts' => ['contacts'],
                           'tabtopbycourse' => ['topbycourse'],
                           'tabtopbysite' => ['topbysite'],

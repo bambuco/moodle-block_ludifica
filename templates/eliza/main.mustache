@@ -215,7 +215,9 @@
                             <span class="pix-toggle" style="display: none;">{{#pix}} i/window_close, core {{/pix}}</span>
                         </button>
 
-                        <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                        {{#hasranking}}
+                            <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                        {{#hasranking}}
                     {{/myprofile}}
                 </div>
                 {{#player}}
@@ -262,6 +264,44 @@
         </div>
     </div>
     {{/player}}
+
+    {{#hascontacts}}
+    <div class="tab-contacts block_ludifica-tabcontent {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{tabcontactsstate}}">
+        <div class="rankingheader">
+            <h3>{{#str}} tabtitle_contacts, block_ludifica {{/str}}</h3>
+        </div>
+        {{#hasrowscontacts}}
+        <table class="generaltable">
+            <thead>
+                <tr>
+                    <th>{{#str}}playerhead, block_ludifica{{/str}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#contacts}}
+                <tr>
+                    <td><a class="rankingprofile" href="{{profileurl}}" target="_blank"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td class="cellactions">
+                        {{#cangivecoins}}
+                        <button type="button" class="btn btn-primary" data-action="givecoins" data-contact="{{userid}}">
+                            {{#str}} givecoins, block_ludifica {{/str}}
+                        </button>
+                        {{/cangivecoins}}
+                    </td>
+                </tr>
+            {{/contacts}}
+            </tbody>
+        </table>
+        {{/hasrowscontacts}}
+        {{^hasrowscontacts}}
+            <p>
+                {{#str}} notcontactsyet, block_ludifica {{/str}}
+            </p>
+        {{/hasrowscontacts}}
+        <p>{{#pix}} docs, core {{/pix}} {{#str}} contacts_help, block_ludifica, {{baseurl}}/message/ {{/str}}</p>
+    </div>
+    {{/hascontacts}}
 
     {{#hastopbycourse}}
     <div class="tab-topbycourse block_ludifica-tabcontent tabranking {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}} {{topbycoursestate}}">

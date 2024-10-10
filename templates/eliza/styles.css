@@ -151,15 +151,30 @@
     max-width: 230px;
 }
 
+.ludifica_stats > div .icon {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.ludifica_stats > div em {
+    font-style: normal;
+}
+
 .block_ludifica .showhelpsbutton {
     margin: 10px 0;
     color: #2d3351;
-    background-color: #3db1d1;
     border: none;
-    width: 40px;
-    height: 40px;
     display: flex;
     align-items: center;
+    padding: 0;
+}
+
+.block_ludifica .showhelpsbutton:hover {
+    background: transparent;
+}
+
+.block_ludifica .showhelpsbutton:hover .icon {
+    background-color: #fff;
 }
 
 .block_ludifica .showhelpsbutton .icon {
@@ -170,9 +185,19 @@
     margin-left: 2px;
 }
 
-.ludifica_stats > h2,
+.ludifica_stats > h2 {
+    font-size: 24px;
+}
+
 .block_ludifica .showhelpsbutton .icon {
     font-size: 24px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #3db1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .block_ludifica .ludifica_help,
@@ -262,6 +287,10 @@
     border-radius: 10px;
 }
 
+.block_ludifica .generaltable tr:hover {
+    background-color: unset;
+}
+
 .block_ludifica .generaltable p,
 .closeludifica:hover {
     color: #fff;
@@ -311,6 +340,15 @@
 
 .block_ludifica .tabranking .generaltable tr {
     background: none;
+}
+
+.block_ludifica .tab-contacts .generaltable tbody tr {
+    background: none;
+    border-bottom: 1px solid #eee3;
+}
+
+.block_ludifica .tab-contacts > p {
+    color: #fff;
 }
 
 .block_ludifica .tab-dynamichelps .card {

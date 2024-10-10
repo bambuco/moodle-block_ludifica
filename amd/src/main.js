@@ -159,8 +159,6 @@ function($, str, ModalFactory, Alertc, Log, Notification, Ajax) {
             methodname: 'block_ludifica_get_profile',
             args: {},
             done: function(data) {
-                console.log(data);
-
                 if (data && typeof data == 'object') {
                     var $coinstcontrol = $('.ludifica-playerstats-coins');
 
