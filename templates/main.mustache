@@ -25,7 +25,8 @@
         "player": {
             "fullname": "Pepito Perez",
             "avatarbust": "https://moodle_wwwroot_url/some_image",
-            "nickcontent": "Some html with edit control"
+            "nickcontent": "Some html with edit control",
+            "nickname": "Pepito"
         },
         "baseurl": "https://moodle_wwwroot_url"
     }
@@ -177,7 +178,7 @@
                     {{#pointsbymodules}}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
-                                <img src="{{{iconurl}}}" alt="{{typetitle}}" title="{{typetitle}}" />
+                                <img src="{{{iconurl}}}" alt="{{typetitle}}" title="{{typetitle}}">
                                 {{name}} ({{typetitle}})
                             </div>
                             <span class="badge bg-primary rounded-pill">{{#str}} dynamic_help-pointsbymodule, block_ludifica, {{points}} {{/str}}</span>
@@ -230,7 +231,7 @@
                 </div>
                 <div class="avatarbust">
                 <a href="{{baseurl}}/blocks/ludifica/avatars.php">
-                        <img src="{{avatarbust}}" alt="{{nickname}}" /><br />
+                        <img src="{{avatarbust}}" alt="{{nickname}}"><br>
                     </a>
                 </div>
                 <div>
@@ -251,11 +252,11 @@
                     {{#myprofile}}
                         <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button>
                     {{/myprofile}}
-                    <br />
+                    <br>
                 <div class="userbadges-ludifica">
                     {{#badges}}
                         <div class="onebadge">
-                            <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}" /></a>
+                            <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}"></a>
                         </div>
                     {{/badges}}
                     {{^badges}}
@@ -306,7 +307,7 @@
             <tbody>
             {{#contacts}}
                 <tr>
-                    <td><a class="rankingprofile" href="{{profileurl}}" target="_blank"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td><a class="rankingprofile" href="{{profileurl}}" target="_blank"><img src="{{avatarprofile}}" alt="{{nickname}}"><p>{{nickname}}</p></a></td>
                     <td class="cellactions">
                         {{#cangivecoins}}
                         <button type="button" class="btn btn-primary" data-action="givecoins" data-contact="{{userid}}">
@@ -352,7 +353,7 @@
             {{#topbycourse}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}"><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbycourse}}
@@ -392,7 +393,7 @@
             {{#topbysite}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}"><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/topbysite}}
@@ -431,7 +432,7 @@
             {{#lastmonth}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}"><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/lastmonth}}{{thumbnail}}
@@ -471,7 +472,7 @@
             {{#rows}}
                 <tr class="{{#current}}current-user{{/current}}">
                     <td class="numeric-cel">{{position}}</td>
-                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}" /><p>{{nickname}}</p></a></td>
+                    <td><a class="rankingprofile" href="{{profileurl}}"><img src="{{avatarprofile}}" alt="{{nickname}}"><p>{{nickname}}</p></a></td>
                     <td class="numeric-cel">{{points}}</td>
                 </tr>
             {{/rows}}

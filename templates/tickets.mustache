@@ -42,7 +42,7 @@
             <div class="card-body ticketcontent">
                 {{#thumbnail}}
                 <div class="picture-box">
-                    <img src="{{thumbnail}}" alt="{{name}}" />
+                    <img src="{{thumbnail}}" alt="{{name}}">
                 </div>
                 {{/thumbnail}}
                 <div class="info-box">
@@ -50,13 +50,13 @@
                         {{description}}
                     </p>
                     <p>
-                        <strong>{{#str}} available, block_ludifica {{/str}}</strong> <val key="available">{{available}}</val><br />
-                        <strong>{{#str}} availabledate, block_ludifica {{/str}}</strong> {{availabledateformated}}<br />
-                        <strong>{{#str}} ticketbyuser, block_ludifica {{/str}}</strong> {{byuser}}<br />
+                        <strong>{{#str}} available, block_ludifica {{/str}}</strong> <val key="available">{{available}}</val><br>
+                        <strong>{{#str}} availabledate, block_ludifica {{/str}}</strong> {{availabledateformated}}<br>
+                        <strong>{{#str}} ticketbyuser, block_ludifica {{/str}}</strong> {{byuser}}<br>
                         {{#hascompliancecaptions}}
-                            <strong>{{#str}} requiretext, block_ludifica {{/str}}</strong> {{{compliancecaption}}}<br />
+                            <strong>{{#str}} requiretext, block_ludifica {{/str}}</strong> {{{compliancecaption}}}<br>
                         {{/hascompliancecaptions}}
-                        <strong>{{#str}} cost, block_ludifica {{/str}}</strong> {{cost}}<br />
+                        <strong>{{#str}} cost, block_ludifica {{/str}}</strong> {{cost}}<br>
                         <em><strong>{{#str}} usertickets, block_ludifica {{/str}}</strong> <val key="usertickets">{{userticketscount}}</val></em>
                     </p>
                 </div>
