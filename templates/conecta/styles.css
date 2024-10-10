@@ -5,7 +5,7 @@ body.editing .block_ludifica .block_ludifica-content {
 body.editing .block_ludifica .action-menu .action-menu-item i,
 body.editing .block_ludifica .action-menu a.dropdown-toggle > i,
 body.editing .block_ludifica .action-menu .dropdown-toggle::after{
-    color: #fff;
+    text-shadow: 1px 1px 1px #fff;
 }
 
 .block_ludifica {
@@ -35,6 +35,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     text-decoration: none;
     padding-left: 68px;
     padding-right: 12px;
+    box-shadow: none;
 }
 
 .block_ludifica .conecta-btns a:hover {
@@ -320,6 +321,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .block_ludifica .tab-contacts > p {
     color: #fff;
     background-color: #3338;
+    padding: 10px;
 }
 
 .block_ludifica .tab-dynamichelps .card {
@@ -757,7 +759,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica #tickets-list .card:hover .info-box strong,
-.block_ludifica .rankingheader + p,
+.block_ludifica .rankingheader,
 .block_ludifica .notavailableyet {
     color: #004282;
 }
