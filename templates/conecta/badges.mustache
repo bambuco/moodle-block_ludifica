@@ -1,0 +1,93 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_ludifica/conecta/badges
+
+    This template renders the template content area for a resource.
+
+    Example context (json):
+    {
+        "badges": [],
+        "baseurl": "https://moodle_wwwroot_url"
+    }
+}}
+
+{{>block_ludifica/storetabs}}
+<div class="block_ludifica ludifica-page">
+<button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}badges_help, block_ludifica{{/str}}"></button>
+{{>block_ludifica/conecta/buttonsbar}}
+<div id="badges-list" class="row">
+    {{#badges}}
+    <div id="badge-{{id}}" class="col-lg-6 onebadge {{unavailable}} {{#inactive}}notactive{{/inactive}}" data-name="{{name}}" data-uniquehash="{{uniquehash}}" data-year="{{year}}" data-month="{{month}}">
+        <div class="card">
+            <h3 class="card-header">
+                {{name}}
+                {{#unavailablewarning}}<span class="unavailablewarning">{{unavailablewarning}}</span>{{/unavailablewarning}}
+            </h3>
+            <div class="card-body badgecontent {{unavailable}}">
+                <div class="picture-box">
+                    {{#url}}<a href="{{url}}" class="shareurl">{{/url}}
+                        {{{thumbnail}}}
+                    {{#url}}</a>{{/url}}
+                </div>
+                <div class="info-box">
+                    <p>{{description}}</p>
+                    {{^inactive}}
+                        <button class="btn btn-secondary openshare" data-badgeid="{{id}}">
+                            {{#pix}} i/publish, core {{/pix}} {{#str}} badge_share, block_ludifica {{/str}}
+                        </button>
+                    {{/inactive}}
+                    <div class="share_badge_modal block_ludifica-modal" title="{{#str}} badge_share_title, block_ludifica {{/str}}"></div>
+                    <div class="expirebadge">
+                        {{#dateexpire}}
+                        <hr>
+                        <p><em>{{#str}} badge_expire, block_ludifica {{/str}} {{expire}}</em></p>
+                        {{/dateexpire}}
+                    </div>
+                </div>
+            </div>
+           {{#canedit}}
+                <div class="card-footer improvecriteria">
+                    <h5>{{#str}} improvecriteria, block_ludifica {{/str}}</h5>
+                    {{#currentcriteria}}
+                        <span class="badge bg-primary rounded-pill" data-type="{{type}}">{{label}}</span>
+                    {{/currentcriteria}}
+                    {{^hascriteria}}
+                        {{#str}} improvecriterianot, block_ludifica {{/str}}
+                    {{/hascriteria}}
+                    {{#inactive}}
+                        <a class="btn btn-link" href="{{baseurl}}/blocks/ludifica/improvecriteria.php?badgeid={{id}}">
+                            {{#pix}} i/settings, core {{/pix}}
+                        </a>
+                    {{/inactive}}
+                </div>
+            {{/canedit}}
+        </div>
+    </div>
+    {{/badges}}
+    {{^badges}}
+        <p class="notavailableyet">
+            {{#str}} notuserbadges, block_ludifica {{/str}}
+        </p>
+    {{/badges}}
+</div>
+{{#canedit}}
+<div>
+    <a href="{{baseurl}}/badges/index.php?type=1" class="btn btn-primary btncanedit">{{#str}} badgemanage, block_ludifica {{/str}}</a>
+</div>
+{{/canedit}}
+</div>

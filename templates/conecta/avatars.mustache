@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_ludifica/conecta/avatars
+
+    This template renders the template content area for a resource.
+
+    Example context (json):
+    {
+        "avatars": [],
+        "baseurl": "https://moodle_wwwroot_url"
+    }
+}}
+
+{{>block_ludifica/storetabs}}
+<div class="block_ludifica ludifica-page">
+<button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}avatar_help, block_ludifica{{/str}}"></button>
+{{>block_ludifica/conecta/buttonsbar}}
+<div id="avatars-list" class="row">
+{{#avatars}}
+    <div id="avatar-{{id}}" class="oneavatar {{^userhas}}usernothas{{/userhas}} {{#userhas}}userhas{{/userhas}} {{#inuse}}inuse{{/inuse}}">
+        <div class="card">
+            <strong class="card-header">
+                <i class="fa fa-check-circle used"></i> {{name}}
+            </strong>
+            <div class="avatarcontent">
+                <div class="picture-box">
+                    <img class="thumbnail" src="{{uri}}" alt="{{name}}" />
+                    <div class="cost">
+                        {{#str}} numcoins, block_ludifica, {{cost}} {{/str}}</strong>
+                    </div>
+                </div>
+                <div class="description">
+                    {{{description}}}
+                </div>
+            </div>
+            <div class="card-footer">
+                {{#notenabledtext}}
+                <div class="alert alert-dismissible alert-danger">
+                    {{notenabledtext}}
+                </div>
+                {{/notenabledtext}}
+                {{^notenabledtext}}
+                    {{^userhas}}
+                        <button type="button" class="btn btn-primary" data-action="buy" data-id="{{id}}">
+                            {{#str}} buy, block_ludifica {{/str}}
+                        </button>
+                    {{/userhas}}
+                    <button type="button" class="btn btn-primary" data-action="use" data-id="{{id}}">
+                        {{#str}} use, block_ludifica {{/str}}
+                    </button>
+                {{/notenabledtext}}
+                {{#canedit}}
+                    <a href="{{baseurl}}/blocks/ludifica/avatar_edit.php?id={{id}}" class="btn btn-primary">{{#str}} edit {{/str}}</a>
+                    <a href="{{baseurl}}/blocks/ludifica/avatars.php?delete={{id}}&sesskey={{sesskey}}" class="btn btn-danger">{{#str}} delete {{/str}}</a>
+                {{/canedit}}
+            </div>
+        </div>
+    </div>
+{{/avatars}}
+{{^avatars}}
+    <p class="notavailableyet">
+        {{#str}} noavatars, block_ludifica {{/str}}
+    </p>
+{{/avatars}}
+</div>
+{{#canedit}}
+<div>
+    <a href="{{baseurl}}/blocks/ludifica/avatar_edit.php" class="btn btn-primary btncanedit">{{#str}} avatarnew, block_ludifica {{/str}}</a>
+</div>
+{{/canedit}}
+</div>

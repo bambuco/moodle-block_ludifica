@@ -607,7 +607,7 @@
 
 .block_ludifica .rankingprofile {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .block_ludifica .rankingprofile p,
@@ -620,6 +620,7 @@
     border-radius: 50%;
     border: 1px solid #4c4c4c;
     margin-right: 10px;
+    background-color: #fff8;
 }
 
 .lateralbar-ludifica > div > div,
