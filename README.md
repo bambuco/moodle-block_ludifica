@@ -71,6 +71,10 @@ and are based on the resources of: [RutaTIC](https://rutatic.udea.edu.co/crotalu
 - **Powered by:** [BambuCo](https://bambuco.co/)
 
 ## In version ##
+2024082101:
+- New template: conecta. Funded by [Engagement](https://www.engagement.com.co/)
+- Contacts feature with give coins.
+
 2024082100:
 - Compatibility with Moodle 4.3+
 

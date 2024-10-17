@@ -337,11 +337,14 @@ class external extends \external_api {
      * @return object Current player profile.
      */
     public static function get_profile() {
-        global $USER;
+        global $USER, $PAGE;
 
         if (!isloggedin() || isguestuser()) {
             return null;
         }
+
+        // Set the context because the player class needs it when use OUTPUT in default_avatar.
+        $PAGE->set_context(\context_system::instance());
 
         $player = new \block_ludifica\player($USER->id);
 

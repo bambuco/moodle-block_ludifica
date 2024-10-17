@@ -135,9 +135,21 @@ class avatar extends entity {
      * @return string Image URI.
      */
     public static function default_avatar() {
-        global $OUTPUT;
+        global $OUTPUT, $CFG;
 
-        return $OUTPUT->image_url('defaultavatar', 'block_ludifica');
+        $template = get_config('block_ludifica', 'templatetype');
+
+        if ($template != 'default') {
+            $exts = ['svg', 'png', 'jpg', 'jpeg', 'gif'];
+            foreach ($exts as $ext) {
+                $path = $CFG->dirroot . '/blocks/ludifica/templates/' . $template . '/defaultavatar.' . $ext;
+                if (file_exists($path)) {
+                    return $CFG->wwwroot . '/blocks/ludifica/templates/' . $template . '/defaultavatar.' . $ext;
+                }
+            }
+        }
+
+        return (string)$OUTPUT->image_url('defaultavatar', 'block_ludifica');
     }
 
     /**

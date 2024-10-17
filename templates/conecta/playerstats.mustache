@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_ludifica/eliza/playerstats
+    @template block_ludifica/conecta/playerstats
 
     This template renders the template content area for a resource.
 
@@ -33,9 +33,11 @@
         {{#myprofile}}
             <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}points_help, block_ludifica{{/str}}"></button>
         {{/myprofile}}
-        <span title="{{#str}} numpoints, block_ludifica, {{points}} {{/str}}">{{#pix}} i/star, core {{/pix}} <em>{{points}}</em></span>
+        <span title="{{#str}} numpoints, block_ludifica, {{points}} {{/str}}">{{#pix}} i/star, core {{/pix}} {{points}}</span>
         {{#myprofile}}
-            <span class="ludifica-playerstats-coins" title="{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}">{{#pix}} i/db, core {{/pix}} <em>{{coins}}</em></span>
+            <span class="ludifica-playerstats-coins" title="{{#str}} numcoins, block_ludifica, {{coins}} {{/str}}">
+                <img src="{{baseurl}}/blocks/ludifica/templates/conecta/pix/coin.png" alt="{{#str}} coins, block_ludifica {{/str}}"/>  <em>{{coins}}</em>
+            </span>
         {{/myprofile}}
     </div>
 {{/player}}

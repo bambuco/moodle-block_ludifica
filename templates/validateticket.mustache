@@ -15,13 +15,23 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_ludifica/tickets
+    @template block_ludifica/validateticket
 
     This template renders the template content area for a resource.
 
     Example context (json):
     {
-        "tickets": [],
+        "ticket": {
+            "name": "Ticket 1",
+            "thumbnail": "https://moodle_wwwroot_url/some_image",
+            "description": "This is a ticket",
+            "user": {
+                "fullname": "Pepito Perez"
+            },
+            "used": false,
+            "params": "param1=value1&param2=value2",
+            "baseurl": "https://moodle_wwwroot_url"
+        },
         "baseurl": "https://moodle_wwwroot_url"
     }
 }}
@@ -34,7 +44,7 @@
     <div class="card-body ticketcontent">
         {{#thumbnail}}
         <div class="picture-box">
-            <img src="{{thumbnail}}" alt="{{name}}" />
+            <img src="{{thumbnail}}" alt="{{name}}">
         </div>
         {{/thumbnail}}
         <div class="info-box">
@@ -58,6 +68,6 @@
         </a>
         {{/used}}
     </div>
-<div>
+</div>
 {{/ticket}}
-<hr />
+<hr>

@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_ludifica/main
+    @template block_ludifica/conecta/main
 
     This template renders the template content area for a resource.
 
@@ -24,7 +24,7 @@
         "uniqueid": "unique_id_string",
         "player": {
             "fullname": "Pepito Perez",
-            "avatarbust": "https://moodle_wwwroot_url/some_image",
+            "avatarurl": "https://moodle_wwwroot_url/some_image",
             "nickcontent": "Some html with edit control",
             "nickname": "Pepito"
         },
@@ -37,7 +37,7 @@
     {{#myprofile}}
         {{#showtabs}}
             {{#hastabs}}
-                <div class="block_ludifica-tabs {{incourse}}">
+                <div class="block_ludifica-tabs {{incourse}} {{#iconsonly}}iconsonly{{/iconsonly}}">
                 {{#tabs}}
                     <div data-ref="#{{uniqueid}} .tab-{{key}}" title="{{title}}" class="{{state}}">
                         {{#showicon}}
@@ -60,6 +60,7 @@
         <div class="closeludifica">
             {{#pix}} i/window_close, core {{/pix}}
         </div>
+        <h3>{{#str}} tabtitle_dynamichelps, block_ludifica {{/str}}</h3>
         <div class="pointsinfo">
             {{#insitecontext}}
             <div class="card">
@@ -95,7 +96,7 @@
                             {{/recurrentlogindays}}
                             {{#coinsbypoints}}
                             <li class="list-group-item d-flex">
-                                {{#pix}} coins, block_ludifica {{/pix}}
+                                {{#pix}} i/db, core {{/pix}}
                                 <div>{{#str}} dynamic_help-pointstocoins, block_ludifica, {{pointstocoins}} {{/str}}
                                 {{#str}} dynamic_help-coinsbypoints, block_ludifica, {{coinsbypoints}} {{/str}}</div>
                             </li>
@@ -206,87 +207,61 @@
 
     {{#player}}
     <div class="tab-profile block_ludifica-tabcontent {{profilestate}}" style="background-image: url('{{avatarurl}}');">
-
         <div class="player_info">
             <div class="avatar-box">
                 <div>
-                    <div class="ludifica_stats">
-
-                        {{>block_ludifica/playerstats}}
-
-                    </div>
-
                     {{#myprofile}}
-                    <button class="btn btn-secondary showhelpsbutton">
-                        <span class="pix-initial">{{#pix}} dynamichelps, block_ludifica {{/pix}}</span>
-                        <span class="pix-toggle" style="display: none;">{{#pix}} i/window_close, core {{/pix}}</span>
-                    </button>
+                        <button class="btn btn-secondary showhelpsbutton">
+                            <span class="pix-initial">{{#pix}} i/info, core {{/pix}}</span>
+                            <span class="pix-toggle" style="display: none;">{{#pix}} i/window_close, core {{/pix}}</span>
+                        </button>
 
-                    {{#hasranking}}
-                        <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
-                    {{/hasranking}}
-
+                        {{#hasranking}}
+                            <button class="btn btn-secondary showrankingbutton">{{#str}} showranking, block_ludifica {{/str}}</button>
+                        {{/hasranking}}
                     {{/myprofile}}
-
                 </div>
-                <div class="avatarbust">
-                <a href="{{baseurl}}/blocks/ludifica/avatars.php">
-                        <img src="{{avatarbust}}" alt="{{nickname}}"><br>
-                    </a>
-                </div>
-                <div>
-                    <h2>
-
-                        {{{nickcontent}}}
-
+                {{#player}}
+                    <span class="ludificalevel">
                         {{#myprofile}}
-                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
+                            <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button>
                         {{/myprofile}}
-
-                    </h2>
-                </div>
-                    {{#player}}
-                        <span>{{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}</span>
-                    {{/player}}
-
-                    {{#myprofile}}
-                        <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}level_help, block_ludifica{{/str}}"></button>
-                    {{/myprofile}}
-                    <br>
-                <div class="userbadges-ludifica">
-                    {{#badges}}
-                        <div class="onebadge">
-                            <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}"></a>
-                        </div>
-                    {{/badges}}
-                    {{^badges}}
-                        <p class="notavailableyet">
-                            {{#str}} notuserbadges, block_ludifica {{/str}}
-                        </p>
-                    {{/badges}}
-
-                    {{#morebadges}}
-                        <a class="btn btn-secondary" href="{{baseurl}}/blocks/ludifica/badges.php">{{#str}} allbadges, block_ludifica {{/str}}</a>
-                    {{/morebadges}}
-
-                </div>
+                        {{#str}} labellevel, block_ludifica, {{#level}}{{name}}{{/level}} {{/str}}
+                    </span>
+                {{/player}}
             </div>
-            {{#myprofile}}
-            <div class="lateralbar-ludifica">
-                <div>
-                    <div>
-                        <a href="{{baseurl}}/blocks/ludifica/tickets.php"><span style = "background-image: url('{{ticketicon}}');" class="ticket-ico"></span> {{#str}} tickets, block_ludifica {{/str}}</a>
-                    </div>
-                    <div>
-                        <a href="{{baseurl}}/blocks/ludifica/avatars.php"><span style = "background-image: url('{{avataricon}}');" class="avatar-ico"></span> {{#str}} avatars, block_ludifica {{/str}}</a>
-
-                    </div>
-                    <div>
-                        <a href="{{baseurl}}/blocks/ludifica/badges.php"><span style = "background-image: url('{{badgeicon}}');" class="badge-ico"></span> {{#str}} badges, block_ludifica {{/str}}</a>
-                    </div>
-                </div>
+        </div>
+        <div class="ludifica_stats {{#iconsonly}}iconsonly{{/iconsonly}} {{incourse}}">
+            <h2>
+                {{#myprofile}}
+                    <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}name_help, block_ludifica{{/str}}"></button>
+                {{/myprofile}}
+                {{{nickcontent}}}
+            </h2>
+            <div>
+                {{>block_ludifica/conecta/playerstats}}
             </div>
-            {{/myprofile}}
+        </div>
+        {{#myprofile}}
+            {{>block_ludifica/conecta/buttonsbar}}
+        {{/myprofile}}
+        <div class="userbadges-ludifica">
+            <div>
+                {{#badges}}
+                <div class="onebadge">
+                    <a href="{{url}}"><img src="{{thumbnail}}" title="{{name}}"></a>
+                </div>
+                {{/badges}}
+                {{^badges}}
+                <p class="notavailableyet">
+                    {{#str}} notuserbadges, block_ludifica {{/str}}
+                </p>
+                {{/badges}}
+            </div>
+
+            {{#morebadges}}
+                <a class="btn btn-secondary" href="{{baseurl}}/blocks/ludifica/badges.php">{{#str}} allbadges, block_ludifica {{/str}}</a>
+            {{/morebadges}}
         </div>
     </div>
     {{/player}}
@@ -325,7 +300,7 @@
                 {{#str}} notcontactsyet, block_ludifica {{/str}}
             </p>
         {{/hasrowscontacts}}
-        {{#pix}} docs, core {{/pix}} {{#str}} contacts_help, block_ludifica, {{baseurl}}/message/ {{/str}}
+        <p>{{#pix}} docs, core {{/pix}} {{#str}} contacts_help, block_ludifica, {{baseurl}}/message/ {{/str}}</p>
     </div>
     {{/hascontacts}}
 

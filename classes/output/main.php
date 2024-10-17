@@ -73,8 +73,6 @@ class main implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $CFG, $COURSE, $USER, $OUTPUT, $DB;
 
-        $icons = \block_ludifica\controller::get_views_icons();
-
         $showtabs = [];
         $customranking = [];
         foreach ($this->tabs as $tab) {
@@ -85,12 +83,12 @@ class main implements renderable, templatable {
             if (is_object($tab)) {
                 $one->title = $tab->title;
                 $one->key = $tab->key;
-                $one->icon = $output->image_icon($tab->icon, $one->title);
+                $one->icon = $output->pix_icon($tab->icon, $one->title);
                 $customranking[] = $tab;
             } else {
                 $one->title = get_string('tabtitle_' . $tab, 'block_ludifica');
                 $one->key = $tab;
-                $one->icon = $output->image_icon($icons[$tab], $one->title);
+                $one->icon = $output->pix_icon($tab, $one->title, 'block_ludifica');
             }
             $showtabs[] = $one;
         }
@@ -301,6 +299,15 @@ class main implements renderable, templatable {
             $defaultvariables['player'] = $getprofile;
             $defaultvariables['profilestate'] = 'active';
             $defaultvariables['ownprofile'] = $ownprofile;
+            $activetab = true;
+        }
+
+        if (in_array('contacts', $this->tabs)) {
+            $defaultvariables['hascontacts'] = true;
+            $defaultvariables['contacts'] = array_values(\block_ludifica\controller::get_contacts());
+            $defaultvariables['hasrowscontacts'] = count($defaultvariables['contacts']) > 0;
+            $defaultvariables['tabcontactsstate'] = !$activetab ? 'active' : '';
+            $defaultvariables['cangivecoins'] = $getprofile->coins > 0;
             $activetab = true;
         }
 

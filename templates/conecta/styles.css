@@ -1,102 +1,67 @@
+body.editing .block_ludifica .block_ludifica-content {
+    margin-top: 30px;
+}
+
 body.editing .block_ludifica .action-menu .action-menu-item i,
 body.editing .block_ludifica .action-menu a.dropdown-toggle > i,
 body.editing .block_ludifica .action-menu .dropdown-toggle::after{
-    color: #fff;
+    text-shadow: 1px 1px 1px #fff;
 }
 
 .block_ludifica {
-    background: url('pix/bg1_ludifica.png') no-repeat center center;
-    background-color: #383a70;
+    background: #383a70 url('pix/bg.jpg') no-repeat center center;
     min-height: 650px;
     background-size: cover;
 }
 
-.block_ludifica .eliza-btn {
-    width: 130px;
-    height: 44px;
-    margin-top: 15px;
-    background-color: #f6d052;
-    border: none;
-    color: #2d3351;
-    display: flex;
-    border-radius: 30px 10px 10px 30px;
-    padding: 10px;
-    text-align: center;
-    font-weight: bolder;
-    box-sizing: border-box;
-    box-shadow: 0 0 16px 0 rgb(0 0 0 / 32%);
-    transition: 0.1s ease;
-    transform: scale(1, 1);
-}
-
-.block_ludifica .eliza-btn::before {
-    height: 44px;
-    min-width: 44px;
-    position: relative;
-    left: 0;
-    content: '';
-    border-radius: 30px;
-    padding: 10px;
-    margin-top: -10px;
-    margin-left: -13px;
-    background: #eaaf0a url('pix/icons.png') no-repeat center center / cover;
-    transform: rotate(0deg);
-    transition: 0.3s ease;
-    box-shadow: 0 0 0 0 #f6d052;
-}
-
-.block_ludifica .eliza-btn:hover {
-    box-shadow: 0 0 10px 0 rgb(45, 51, 81);
-    transform: scale(1.2, 1.2);
-    background-color: #2d3351;
-    /* stylelint-disable-next-line declaration-no-important */
-    color: #fff !important;
-    text-decoration: none;
-}
-
-.block_ludifica .eliza-btns {
+.block_ludifica .conecta-btns {
     position: absolute;
     top: 260px;
     right: 15px;
 }
 
-.block_ludifica .eliza-btns .eliza-btn:hover::before {
-    transform: rotate(-20deg);
-    box-shadow: 0 0 10px 0 #f6d052;
+.block_ludifica .conecta-btns a {
+    background: transparent url('pix/buttons.png') no-repeat;
+    background-size: 178px;
+    width: 180px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+    padding-left: 68px;
+    padding-right: 12px;
+    box-shadow: none;
 }
 
-.block_ludifica .eliza-btns span {
-    display: block;
-    width: 100%;
-    text-align: center;
+.block_ludifica .conecta-btns a:hover {
+    filter: brightness(1.2);
+    color: #fff;
+    text-decoration: none;
 }
 
-.block_ludifica .eliza-btns .badges-btn::before {
-    background-position-x: -1px;
+.block_ludifica .conecta-btns .badges-btn {
+    background-position-y: -196px;
 }
 
-.block_ludifica .eliza-btns .top-btn::before {
-    background-position-x: -323px;
+.block_ludifica .conecta-btns .avatars-btn {
+    background-position-y: -98px;
 }
 
-.block_ludifica .eliza-btns .avatars-btn::before {
-    background-position-x: -582px;
-}
-
-.block_ludifica .eliza-btns .store-btn::before {
-    background-position-x: -76px;
-}
-
-.block_ludifica [data-ludifica-tab="profile"]::before {
-    background-position-x: -640px;
+.block_ludifica .conecta-btns .store-btn {
+    background-position-y: -294px;
 }
 
 .block_ludifica .showrankingbutton {
     font-size: 20px;
-    background-color: #3db1d1;
+    background: linear-gradient(white, #9d9b9b);
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     border: none;
-    color: #2d3351;
+    color: #004282;
 }
 
 .block_ludifica .avatar-box > div:first-child {
@@ -118,11 +83,12 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .ludifica_stats > h2,
 .ludifica_stats > div {
     margin-top: 7px;
-    background-color: #2d3351aa;
+    background-color: #ffffff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 16px 0 rgb(0 0 0 / 50%);
     font-weight: bold;
+    background: linear-gradient(white, #9d9b9b);
 }
 
 .ludifica_stats > h2 {
@@ -145,7 +111,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .ludifica_stats > h2 a,
 .ludifica_stats > div {
     /* stylelint-disable-next-line declaration-no-important */
-    color: #3db1d1 !important;
+    color: #004282 !important;
 }
 
 .ludifica_stats > div {
@@ -164,19 +130,14 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 
 .block_ludifica .showhelpsbutton {
     margin: 10px 0;
-    color: #2d3351;
+    color: #004282;
+    background: linear-gradient(white, #9d9b9b);
     border: none;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     padding: 0;
-}
-
-.block_ludifica .showhelpsbutton:hover {
-    background: transparent;
-}
-
-.block_ludifica .showhelpsbutton:hover .icon {
-    background-color: #fff;
 }
 
 .block_ludifica .showhelpsbutton.activebtn .icon {
@@ -193,10 +154,10 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #3db1d1;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: none;
 }
 
 .block_ludifica .ludifica_help,
@@ -211,6 +172,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .ludificalevel {
+    display: none;
     background-color: #2d3351cc;
     color: #3db1d1;
     position: absolute;
@@ -242,7 +204,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .block_ludifica .tab-dynamichelps.showhelps,
 .block_ludifica .tabranking.showranking {
     background: linear-gradient(90deg, rgba(61, 177, 209, 0) 0%, rgba(61, 177, 209, 1) 46%);
-    animation: appearright_eliza 0.2s ease-in-out;
+    animation: appearright_conecta 0.2s ease-in-out;
     right: 16px;
     left: inherit;
     top: 80px;
@@ -250,6 +212,10 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     padding-left: 21%;
     border-radius: 0 10px 10px 0;
     box-shadow: 16px 0 17px 0 rgb(0 0 0 / 50%);
+}
+
+.block_ludifica .tabranking.showranking .generaltable {
+    background: transparent;
 }
 
 .block_ludifica .tabranking.showranking .rankingheader {
@@ -266,11 +232,11 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica .rankingheader button:hover {
-    background-color: #3db1d1;
+    background-color: #fff;
     color: #2d3351;
 }
 
-@keyframes appearright_eliza {
+@keyframes appearright_conecta {
     0% {
         opacity: 0;
         right: 50px;
@@ -284,10 +250,16 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .block_ludifica .generaltable {
     color: #fff;
     border-radius: 10px;
+    background-color: #3338;
 }
 
 .block_ludifica .generaltable tr:hover {
     background-color: unset;
+    color: inherit;
+}
+
+.block_ludifica .generaltable tbody a:hover {
+    text-decoration: none;
 }
 
 .block_ludifica .generaltable p,
@@ -300,7 +272,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica .generaltable th {
-    background-color: #2d3351;
+    background-color: #004282;
 }
 
 .block_ludifica .generaltable th:first-child {
@@ -348,12 +320,18 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 
 .block_ludifica .tab-contacts > p {
     color: #fff;
+    background-color: #3338;
+    padding: 10px;
 }
 
 .block_ludifica .tab-dynamichelps .card {
-    background: none;
+    background: transparent;
     border: none;
     color: #fff;
+}
+
+.block_ludifica .tab-dynamichelps:not(.showhelps) .card {
+    background: #3338;
 }
 
 .block_ludifica .tab-dynamichelps .card strong {
@@ -402,9 +380,9 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica .userbadges-ludifica {
-    background: linear-gradient(0deg, rgba(45, 51, 81, 1) 24%, rgba(45, 51, 81, 0) 100%);
+    background: linear-gradient(0deg, rgb(255 255 255 / 68%) 24%, rgba(45, 51, 81, 0) 100%);
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     padding: 35px 0 15px 0;
     border-radius: 0.5rem;
     width: 100%;
@@ -458,7 +436,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 
 .block_ludifica-tabcontent h3,
 .block_ludifica-tabcontent h5 {
-    color: #f6d052;
+    color: #ffffff;
     font-weight: bolder;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.531);
 }
@@ -466,29 +444,6 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 .block_ludifica h5 {
     color: #3db1d1;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.531);
-}
-
-#page-blocks-ludifica-badges .eliza-btns .badges-btn,
-#page-blocks-ludifica-avatars .eliza-btns .avatars-btn,
-#page-blocks-ludifica-tickets .eliza-btns .store-btn,
-.block_ludifica .tab-profile .eliza-btns [data-ludifica-tab="profile"] {
-    box-shadow: 0 0 10px 0 rgb(45, 51, 81);
-    transform: scale(1.2, 1.2);
-    background-color: #2d3351;
-    color: #fff;
-    text-decoration: none;
-    border: 1px solid #eaaf0a;
-    pointer-events: none;
-    position: relative;
-    left: -12px;
-}
-
-#page-blocks-ludifica-badges .eliza-btns .badges-btn::before,
-#page-blocks-ludifica-avatars .eliza-btns .avatars-btn::before,
-#page-blocks-ludifica-tickets .eliza-btns .store-btn::before,
-.block_ludifica .tab-profile .eliza-btns [data-ludifica-tab="profile"]::before {
-    box-shadow: 0 0 10px 0 #f6d052;
-    top: -2px;
 }
 
 [data-region="blocks-column"] .block_ludifica .avatar-box,
@@ -551,16 +506,16 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     top: 324px;
 }
 
-[data-region="blocks-column"] .block_ludifica .eliza-btns,
+[data-region="blocks-column"] .block_ludifica .conecta-btns,
 [data-region="blocks-column"] .block_ludifica .userbadges-ludifica,
 .drawer .block_ludifica .userbadges-ludifica,
-.drawer .block_ludifica .eliza-btns {
+.drawer .block_ludifica .conecta-btns {
     position: unset;
     background: none;
 }
 
-[data-region="blocks-column"] .block_ludifica .eliza-btns,
-.drawer .block_ludifica .eliza-btns {
+[data-region="blocks-column"] .block_ludifica .conecta-btns,
+.drawer .block_ludifica .conecta-btns {
     position: unset;
     display: flex;
     flex-wrap: wrap;
@@ -594,10 +549,6 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     margin: 10px;
 }
 
-.block_ludifica #avatars-list > div:hover {
-    transform: scale(1.1) rotate(2deg);
-}
-
 #page-blocks-ludifica-avatars .store-tabs,
 #page-blocks-ludifica-tickets .store-tabs,
 #page-blocks-ludifica-badges .store-tabs {
@@ -608,7 +559,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     box-shadow: 0 0 0 0 #f6d052;
     filter: contrast(100%) brightness(100%);
     background: none;
-    border: 1px solid #eaaf0a;
+    border: none;
 }
 
 #page-blocks-ludifica-avatars #avatars-list .userhas .card {
@@ -621,16 +572,16 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 #page-blocks-ludifica-avatars #avatars-list .oneavatar,
-#page-blocks-ludifica-badges #badges-list .onebadge,
-#page-blocks-ludifica-tickets #tickets-list .oneticket {
+#page-blocks-ludifica-badges #badges-list .onebadge {
     width: 300px;
     max-width: 300px;
+    background-color: #3338;
+    border-radius: 20px;
 }
 
-#page-blocks-ludifica-avatars #avatars-list .oneavatar:hover .card {
-    box-shadow: 0 0 20px 0 #f6d052;
-    animation: hover-animation 0.3s forwards;
-    background-color: #f6d052;
+#page-blocks-ludifica-avatars #avatars-list .oneavatar:hover {
+    box-shadow: 0 0 20px 0 #ffffff;
+    background-color: #ffffff;
 }
 
 #page-blocks-ludifica-avatars #avatars-list .oneavatar:hover .card-header {
@@ -661,7 +612,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 #page-blocks-ludifica-avatars #avatars-list .oneavatar .card .card-header {
-    color: #f6d052;
+    color: #ffffff;
     text-align: center;
     background: none;
     border: none;
@@ -669,16 +620,21 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 
 #page-blocks-ludifica-avatars #avatars-list .oneavatar .btn-primary,
 #page-blocks-ludifica-tickets #tickets-list .oneticket .btn-primary {
-    background-color: #2d3351;
+    background-color: #002657;
     border: 1px solid #3db1d1;
     color: #fff;
     margin: 5px;
 }
 
 #page-blocks-ludifica-avatars #avatars-list .oneavatar .btn-primary:hover,
-#page-blocks-ludifica-tickets #tickets-list .oneticket .btn-primary:hover,
 #page-blocks-ludifica-badges #badges-list .openshare:hover {
-    background-color: #eaaf0a;
+    background-color: #3db1d1;
+    color: #2d3351;
+    border: 1px solid #2d3351;
+}
+
+#page-blocks-ludifica-tickets #tickets-list .oneticket .btn-primary:hover {
+    background-color: #fff;
     color: #2d3351;
     border: 1px solid #2d3351;
 }
@@ -738,28 +694,30 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     margin: auto;
 }
 
-.block_ludifica #tickets-list .card {
-    background: none;
-    border: 1px solid #3db1d1;
-    color: #fff;
+.block_ludifica #tickets-list .oneticket {
+    border: 1px solid #ffffff36;
+    color: #002657;
+    background-color: #ffffff96;
     box-shadow: 0 0 0 0 #3db1d1;
-    filter: contrast(100%) brightness(100%);
-    transform: perspective(1px);
-    transition-duration: 0.3s;
-    transition-property: transform;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
 }
 
-.block_ludifica #tickets-list .card:hover {
+.block_ludifica #tickets-list .oneticket .card {
+    background: transparent;
+    border: none;
+}
+
+.block_ludifica #tickets-list .oneticket:hover {
     box-shadow: 0 0 20px 0 #3db1d1;
-    animation: hover-animation 0.3s forwards;
     background-color: #3db1d1;
-    transform: scale(1.1) rotate(2deg);
 }
 
 .block_ludifica #tickets-list .card-header {
     font-size: 19px;
     text-align: center;
-    color: #3db1d1;
+    color: #002657;
     background: none;
     border: none;
 }
@@ -770,7 +728,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica #tickets-list .moreinfo-ticket {
-    color: #3db1d1;
+    color: #002657;
     position: absolute;
     right: 0;
 }
@@ -797,13 +755,13 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica #tickets-list .card .info-box strong {
-    color: #e59428;
+    color: #002657;
 }
 
 .block_ludifica #tickets-list .card:hover .info-box strong,
-.block_ludifica .rankingheader + p,
+.block_ludifica .rankingheader,
 .block_ludifica .notavailableyet {
-    color: #fff;
+    color: #004282;
 }
 
 .block_ludifica p {
@@ -829,15 +787,8 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
 }
 
 .block_ludifica #badges-list .unavailable .card {
+    pointer-events: none;
     background: none;
-    animation: none;
-    transform: none;
-    box-shadow: unset;
-}
-
-.block_ludifica #badges-list .unavailable .card:hover .card-header,
-.block_ludifica #badges-list .unavailable .card:hover .info-box {
-    color: #fff;
 }
 
 .block_ludifica #badges-list .unavailable .openshare {
@@ -850,11 +801,6 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     color: #f6d052;
     background: none;
     border: none;
-}
-
-.block_ludifica #badges-list .courseinfo {
-    text-align: center;
-    padding: 5px;
 }
 
 .block_ludifica #badges-list .card:hover .card-header,
@@ -922,8 +868,21 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     padding: 25px;
 }
 
-.ludifica-page.block_ludifica .eliza-btns {
+.ludifica-page.block_ludifica .conecta-btns {
     right: 85px;
+}
+
+#page-blocks-ludifica-avatars .notavailableyet,
+#page-blocks-ludifica-tickets .notavailableyet,
+#page-blocks-ludifica-badges .notavailableyet {
+    background-color: #3338;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.block_ludifica .notavailableyet {
+    text-shadow: 0px 1px 1px #fff;
 }
 
 @media screen and (max-width: 700px) {
@@ -943,7 +902,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
         position: unset;
     }
 
-    .block_ludifica .eliza-btns {
+    .block_ludifica .conecta-btns {
         position: unset;
         display: flex;
         flex-wrap: wrap;
@@ -955,18 +914,12 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
         min-height: 250px;
     }
 
-    .ludifica-page.block_ludifica .eliza-btns {
+    .ludifica-page.block_ludifica .conecta-btns {
         /* stylelint-disable-next-line declaration-no-important */
         right: 15px !important;
     }
 
     .block_ludifica .ludificalevel {
-        /*transform: rotate(0);
-        margin-left: 0;
-        top: 208px;
-        right: 0;
-        left: 0;
-        width: unset;*/
         top: 130px;
         padding: 5px;
         width: auto;

@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_ludifica/avatars
+    @template block_ludifica/conecta/avatars
 
     This template renders the template content area for a resource.
 
@@ -27,8 +27,9 @@
 }}
 
 {{>block_ludifica/storetabs}}
-
+<div class="block_ludifica ludifica-page">
 <button class="ludifica_help icon fa fa-question-circle" data-toggle="popover" data-container="body" data-placement="right" data-content="{{#str}}avatar_help, block_ludifica{{/str}}"></button>
+{{>block_ludifica/conecta/buttonsbar}}
 <div id="avatars-list" class="row">
 {{#avatars}}
     <div id="avatar-{{id}}" class="oneavatar {{^userhas}}usernothas{{/userhas}} {{#userhas}}userhas{{/userhas}} {{#inuse}}inuse{{/inuse}}">
@@ -38,15 +39,13 @@
             </strong>
             <div class="avatarcontent">
                 <div class="picture-box">
-                    <img src="{{uri}}" alt="{{name}}">
+                    <img class="thumbnail" src="{{uri}}" alt="{{name}}">
                     <div class="cost">
                         {{#str}} numcoins, block_ludifica, {{cost}} {{/str}}</strong>
                     </div>
                 </div>
-                <div class="info-box">
-                    <p>
-                        {{{description}}}
-                    </p>
+                <div class="description">
+                    {{{description}}}
                 </div>
             </div>
             <div class="card-footer">
@@ -81,6 +80,7 @@
 </div>
 {{#canedit}}
 <div>
-    <a href="{{baseurl}}/blocks/ludifica/avatar_edit.php" class="btn btn-primary">{{#str}} avatarnew, block_ludifica {{/str}}</a>
+    <a href="{{baseurl}}/blocks/ludifica/avatar_edit.php" class="btn btn-primary btncanedit">{{#str}} avatarnew, block_ludifica {{/str}}</a>
 </div>
 {{/canedit}}
+</div>
