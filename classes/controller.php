@@ -1288,13 +1288,8 @@ class controller {
             } else {
 
                 if ($userealinformation) {
-                    // Return the user profile image.
-                    $userpicture = new \user_picture($record);
-
-                    if ($userpicture) {
-                        $userpicture->size = 'f2';
-                        $profileimageurl = $userpicture->get_url($PAGE);
-                        $record->avatarprofile = $profileimageurl;
+                    if (property_exists($user, 'profileimageurl')) {
+                        $record->avatarprofile = $user->profileimageurl;
                     }
                 }
             }
@@ -1305,9 +1300,9 @@ class controller {
 
             if (empty($record->nickname)) {
                 if ($userealinformation) {
-                    $record->nickname = $record->fullname;
+                    $record->nickname = $user->fullname;
                 } else {
-                    $record->nickname = get_string('nicknameunasined', 'block_ludifica', $record->id);
+                    $record->nickname = get_string('nicknameunasined', 'block_ludifica', $user->id);
                 }
             }
 

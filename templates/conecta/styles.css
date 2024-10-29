@@ -318,6 +318,7 @@ body.editing .block_ludifica .action-menu .dropdown-toggle::after{
     border-bottom: 1px solid #eee3;
 }
 
+.block_ludifica .tabranking > p,
 .block_ludifica .tab-contacts > p {
     color: #fff;
     background-color: #3338;
