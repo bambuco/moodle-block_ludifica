@@ -1278,6 +1278,12 @@ class controller {
         foreach ($contacts as $user) {
 
             $record = $DB->get_record('block_ludifica_general', ['userid' => $user->id]);
+
+            // Contact user don't have profile in ludifica yet.
+            if (!$record) {
+                continue;
+            }
+
             $record->profileurl = $user->profileurl;
             $record->avatarprofile = null;
             $avatarid = self::get_avatar_id($user->id);

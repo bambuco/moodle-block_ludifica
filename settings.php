@@ -54,7 +54,7 @@ if ($ADMIN->fulltree) {
     $name = 'block_ludifica/duration';
     $title = get_string('durationfield', 'block_ludifica');
     $help = get_string('durationfield_help', 'block_ludifica');
-    $setting = new admin_setting_configselect($name, $title, $help, '', $fields);
+    $setting = new admin_setting_configselect($name, $title, $help, 0, $fields);
     $generalsettings->add($setting);
 
     // Complete course points.
